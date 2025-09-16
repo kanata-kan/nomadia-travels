@@ -1,17 +1,16 @@
+// app/layout.tsx
+import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-// 🟢 استدعاء ThemeProviderWrapper
-import { ThemeProviderWrapper } from "@/components/providers/theme-provider";
-
 const geistSans = Geist({
-  variable: "--font-geist-sans",
   subsets: ["latin"],
+  variable: "--font-geist-sans",
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
+  variable: "--font-geist-mono",
 });
 
 export const metadata: Metadata = {
@@ -27,7 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* 🟢 ThemeProviderWrapper هنا */}
         <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
       </body>
     </html>

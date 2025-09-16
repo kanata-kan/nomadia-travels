@@ -8,7 +8,12 @@ declare module "styled-components" {
       secondary: string;
       accent: string;
       background: string;
-      text: string;
+      text: {
+        primary: string;
+        secondary: string;
+        muted: string;
+        inverse: string;
+      };
     };
     spacing: {
       xs: string;
