@@ -4,6 +4,7 @@ export const lightColors = {
   secondary: "#22C55E", // Green Logo
   accent: "#1D4ED8", // Blue Logo
   background: "#FFFFFF",
+  danger: "#DC2626",
 
   text: {
     primary: "#1E293B", // Main text
@@ -18,6 +19,7 @@ export const darkColors = {
   secondary: "#22C55E", // Green Logo
   accent: "#3B82F6", // Brighter Blue Accent
   background: "#0F172A", // Dark navy background
+  danger: "#DC2626",
 
   text: {
     primary: "#F8FAFC", // Main text (white-ish)

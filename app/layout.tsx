@@ -1,5 +1,5 @@
 // app/layout.tsx
-import ThemeProviderWrapper from "@/components/ThemeProviderWrapper";
+import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
