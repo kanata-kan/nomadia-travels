@@ -1,4 +1,5 @@
-import { dirname } from "path";
+// eslint.config.mjs
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 
@@ -19,6 +20,11 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules: {
+      // 🔑 هاد rule كيقول: أي prop غريبة على DOM → warning
+      // ولكن تجاهل أي prop اللي بدايتها بـ $
+      "react/no-unknown-property": ["warn", { ignore: ["$.*"] }],
+    },
   },
 ];
 
