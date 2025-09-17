@@ -19,11 +19,30 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "*.lock",
+      "*.config.js",
+      "*.config.ts",
+      "*.log",
+      "desktop.ini",
     ],
+    settings: {
+      "import/resolver": {
+        typescript: {
+          project: path.resolve(__dirname, "./tsconfig.json"),
+        },
+      },
+    },
     rules: {
-      // 🔑 هاد rule كيقول: أي prop غريبة على DOM → warning
-      // ولكن تجاهل أي prop اللي بدايتها بـ $
-      "react/no-unknown-property": ["warn", { ignore: ["$.*"] }],
+      // DOM props
+      "react/no-unknown-property": ["warn", { ignore: ["^\\$.*"] }],
+
+      // ⚠️ TypeScript rules (كاملة Dev-friendly)
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/triple-slash-reference": "off",
     },
   },
 ];

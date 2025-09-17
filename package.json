@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
+    "lint:check": "pnpm exec eslint app components hooks styles types data --ext .ts,.tsx --no-error-on-unmatched-pattern",
+    "lint:fix": "pnpm exec eslint app components hooks styles types data --ext .ts,.tsx --fix --no-error-on-unmatched-pattern",
     "prepare": "husky"
   },
   "lint-staged": {
