@@ -1,6 +1,6 @@
-// app/layout.tsx
 import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
-import type { Metadata } from "next";
+import { ThemeProviderCustom } from "@/hooks/useThemeToggle";
+import { baseMetadata } from "@/lib/metadata";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -13,10 +13,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-export const metadata: Metadata = {
-  title: "Nomadia Travels",
-  description: "Pick your own travel experience",
-};
+// ✅ Metadata
+export const metadata = baseMetadata;
 
 export default function RootLayout({
   children,
@@ -24,9 +22,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+        <ThemeProviderCustom>
+          <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+        </ThemeProviderCustom>
       </body>
     </html>
   );

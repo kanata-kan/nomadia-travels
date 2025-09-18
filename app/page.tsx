@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/Button";
+import ThemeToggleButton from "@/components/ui/ThemeToggleButton";
 
 export default function Home() {
   return (
-    <div>
-      <h1>this is page home</h1>
-      <Button>Click Me</Button>
-    </div>
+    <main>
+      <h1>Welcome to Nomadia Travels</h1>
+      <ThemeToggleButton />
+    </main>
   );
 }

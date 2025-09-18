@@ -23,17 +23,43 @@ export const GlobalStyle = createGlobalStyle`
 
   html, body {
     height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
     background-color: var(--color-background);
     color: var(--color-text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+  }
+
+  p {
+    margin-bottom: 1rem;
+    color: var(--color-text-secondary);
+  }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
   button, input, textarea, select {
     font: inherit;
+    background: none;
+    border: none;
+    color: inherit;
   }
 
   :focus {
