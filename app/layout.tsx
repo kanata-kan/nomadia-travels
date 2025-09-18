@@ -1,4 +1,5 @@
 import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
+import Navbar from "@/components/ui/Navbar";
 import { ThemeProviderCustom } from "@/hooks/useThemeToggle";
 import { baseMetadata } from "@/lib/metadata";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -25,7 +26,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ThemeProviderCustom>
-          <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+          <ThemeProviderWrapper>
+            <Navbar />
+            {children}
+          </ThemeProviderWrapper>
         </ThemeProviderCustom>
       </body>
     </html>

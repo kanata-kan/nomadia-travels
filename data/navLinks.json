@@ -1,0 +1,8 @@
+[
+  { "label": "Home", "href": "/" },
+  { "label": "Travel packs", "href": "/travel-packs" },
+  { "label": "Cars", "href": "/cars" },
+  { "label": "Gallery", "href": "/gallery" },
+  { "label": "About", "href": "/about" },
+  { "label": "Contact", "href": "/contact" }
+]

@@ -34,11 +34,17 @@ It helps new engineers understand what’s already done and what’s next.
    - Wrapped children with `ThemeProviderWrapper` in `layout.tsx`.
    - Verified hydration safety + suppress warnings.
 
+6. **Task 2.2 — Navbar Setup**
+   - Built responsive `NavbarDesktop` + `NavbarResponsive` components.
+   - Added `ThemeToggleButton` + `LanguageSwitcher`.
+   - Centralized navigation links in `data/navLinks.json`.
+   - Styled Drawer with smooth fade/slide animations.
+   - Verified routing + UI/UX across devices.
+
 ---
 
 ## ⏳ Pending Steps
 
-6. **Task 2.2 — Navbar Setup** // TODO
 7. **Task 2.3 — Footer Setup** // TODO
 8. **Task 2.4 — Metadata Refactor** // TODO
 9. **Task 2.5 — Global Error & Loading UI** // TODO
