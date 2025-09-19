@@ -2,7 +2,7 @@ import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
 import Footer from "@/components/ui/Footer/Footer";
 import Navbar from "@/components/ui/Navbar";
 import { ThemeProviderCustom } from "@/hooks/useThemeToggle";
-import { baseMetadata } from "@/lib/metadata";
+import { baseMetadata } from "@/lib/metadata/base";
 import { Geist, Geist_Mono } from "next/font/google";
 
 const geistSans = Geist({
@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-// ✅ Metadata
+// ✅ Metadata site-wide
 export const metadata = baseMetadata;
 
 export default function RootLayout({

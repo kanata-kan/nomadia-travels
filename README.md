@@ -16,6 +16,15 @@ This repo is part of the **Nomadia Travels** ecosystem.
 - [🛠️ Setup Timeline](./docs/SETUP_TIMELINE.md)  
   Step-by-step setup log (Purpose, Actions, Results, Next Steps).
 
+- [📑 Metadata Usage](./docs/METADATA_USAGE.md)  
+  How to handle **static/dynamic metadata** for SEO optimization.
+
+- [🎨 Theme Schema](./docs/THEME_SCHEMA.md)  
+  Flow of theme/tokens (colors, spacing, radii) and how they integrate with components.
+
+- [🔧 Git Workflow](./docs/GIT_WORKFLOW.md)  
+  Checklist for feature branching, commits, PRs, and merging.
+
 ---
 
 ## 🚀 Current Phase

@@ -50,11 +50,20 @@ It helps new engineers understand what’s already done and what’s next.
   - Social icons placeholders.
   - Integrated into `app/layout.tsx`.
 
+- **Task 2.4 — Add `metadata.ts**
+- Created folder structure: `lib/metadata/`.
+- Added `base.ts` with **baseMetadata** (site-wide defaults).
+- Implemented `getMetadataStatic` for static pages.
+- Implemented `getMetadataDynamic` for dynamic pages.
+- Added `index.ts` to re-export all helpers (clean imports).
+- Configured `.env.local` to hold `NEXT_PUBLIC_SITE_URL` for canonical URLs.
+- Verified integration in `app/layout.tsx` and example pages.
+- Result: Centralized, scalable SEO-ready metadata system.
+
 ---
 
 ## ⏳ Pending Steps
 
-8. **Task 2.4 — Metadata Refactor** // TODO
 9. **Task 2.5 — Global Error & Loading UI** // TODO
 10. **Task 2.6 — i18n EN/FR Setup** // TODO
 
