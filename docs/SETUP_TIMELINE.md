@@ -41,11 +41,19 @@ It helps new engineers understand what’s already done and what’s next.
    - Styled Drawer with smooth fade/slide animations.
    - Verified routing + UI/UX across devices.
 
+- **Task 2.3 — Build Footer**
+  - Added `components/ui/Footer` (client component).
+  - Created `Footer.styled.tsx` with styled-components + theme tokens.
+  - Added `footer.data.ts` (Company / Support / Legal links).
+  - Built responsive grid (4 → 2 → 1).
+  - Newsletter form with validation + feedback.
+  - Social icons placeholders.
+  - Integrated into `app/layout.tsx`.
+
 ---
 
 ## ⏳ Pending Steps
 
-7. **Task 2.3 — Footer Setup** // TODO
 8. **Task 2.4 — Metadata Refactor** // TODO
 9. **Task 2.5 — Global Error & Loading UI** // TODO
 10. **Task 2.6 — i18n EN/FR Setup** // TODO
