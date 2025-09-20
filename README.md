@@ -25,6 +25,9 @@ This repo is part of the **Nomadia Travels** ecosystem.
 - [🔧 Git Workflow](./docs/GIT_WORKFLOW.md)  
   Checklist for feature branching, commits, PRs, and merging.
 
+- [🧯 Status UI (Global)](./docs/STATUS_UI_SCHEMA.md)
+  Global loading/error/not-found; client/server boundaries, tokens mapping, overrides, quick testing.
+
 ---
 
 ## 🚀 Current Phase

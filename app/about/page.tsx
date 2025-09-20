@@ -8,7 +8,7 @@ export const metadata = getMetadataStatic({
 
 export default function AboutPage() {
   return (
-    <main style={{ padding: "2rem" }}>
+    <main style={{ padding: "2rem", minHeight: "60vh" }}>
       <h1>About Us</h1>
       <p>
         Learn more about Nomadia Travels and our mission to explore Kyrgyzstan.

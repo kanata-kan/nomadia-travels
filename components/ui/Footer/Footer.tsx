@@ -24,7 +24,15 @@ export default function Footer() {
         {/* Brand */}
         <BrandCol>
           <div className="logo">
-            <Image src={Logo} alt="Nomadia Travels" width={160} height={64} />
+            <Image
+              src={Logo} // مسار الصورة
+              alt="Explore Kyrgyzstan logo" // وصف مناسب
+              width={160}
+              height={64}
+              priority // ✅ أهم سطر
+              fetchPriority="high" // (اختياري) يدعم المتصفحات الحديثة
+              sizes="120px" // (اختياري) بما أنها أيقونة ثابتة
+            />
           </div>
           <div className="brand-title">EXPLORE KYRGYZSTAN</div>
           <div className="brand-sub">
