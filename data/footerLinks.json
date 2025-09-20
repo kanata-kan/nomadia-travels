@@ -1,0 +1,8 @@
+{
+  "company": [{ "label": "About", "href": "/about" }],
+  "support": [{ "label": "Contact", "href": "/contact" }],
+  "legal": [
+    { "label": "Terms", "href": "/terms" },
+    { "label": "Privacy", "href": "/privacy" }
+  ]
+}

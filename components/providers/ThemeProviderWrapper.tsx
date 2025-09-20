@@ -1,24 +1,15 @@
-// components/ThemeProviderWrapper.tsx
 "use client";
 
 import { ThemeProvider } from "styled-components";
-import { ThemeProviderCustom, useThemeToggle } from "@/hooks/useThemeToggle";
 import { GlobalStyle } from "@/styles/global";
+import { useThemeToggle } from "@/hooks/useThemeToggle";
 
-export default function ThemeProviderWrapper({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
-  return (
-    <ThemeProviderCustom>
-      <InnerWrapper>{children}</InnerWrapper>
-    </ThemeProviderCustom>
-  );
-}
+};
 
-function InnerWrapper({ children }: { children: React.ReactNode }) {
-  const { theme } = useThemeToggle();
+export default function ThemeProviderWrapper({ children }: Props) {
+  const { theme } = useThemeToggle(); // ✅ جبد theme من Context
 
   return (
     <ThemeProvider theme={theme}>

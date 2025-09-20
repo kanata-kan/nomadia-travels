@@ -8,6 +8,7 @@ declare module "styled-components" {
       secondary: string;
       accent: string;
       background: string;
+      surface: string;
       danger: string;
       text: {
         primary: string;
@@ -15,6 +16,7 @@ declare module "styled-components" {
         muted: string;
         inverse: string;
       };
+      divider: string;
     };
     spacing: {
       xs: string;

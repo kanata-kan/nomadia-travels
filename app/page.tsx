@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/Button";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div>
-      <h1>this is page home</h1>
-      <Button>Click Me</Button>
-    </div>
+    <main style={{ padding: "2rem", minHeight: "60vh" }}>
+      <h1>Welcome to Nomadia Travels</h1>
+      <p>
+        Explore Kyrgyzstan with Nomadia Travels — your trusted travel partner.
+      </p>
+    </main>
   );
 }
