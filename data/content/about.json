@@ -1,0 +1,38 @@
+{
+  "id": "about-page",
+  "heading": "About Nomadia Travels",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Nomadia Travels is dedicated to showcasing the natural beauty and cultural heritage of Kyrgyzstan. We aim to provide unique travel experiences that combine adventure and tradition."
+    },
+    {
+      "type": "paragraph",
+      "text": "Our team consists of experienced guides, travel experts, and local partners who work together to ensure your journey is unforgettable."
+    }
+  ],
+  "team": [
+    {
+      "id": "team-1",
+      "name": "Aizada",
+      "role": "Lead Travel Guide",
+      "bio": "Specialist in mountain tours with 10+ years of experience.",
+      "image": "/images/team/aizada.jpg"
+    },
+    {
+      "id": "team-2",
+      "name": "Bakyt",
+      "role": "Cultural Expert",
+      "bio": "Passionate about Kyrgyz traditions and local heritage.",
+      "image": "/images/team/bakyt.jpg"
+    }
+  ],
+
+  "metadata": {
+    "title": "About Us | Nomadia Travels",
+    "description": "Learn more about Nomadia Travels and our mission to promote Kyrgyzstan tourism.",
+    "path": "/about",
+    "image": "/images/about-og.png",
+    "alt": "About Nomadia Travels team and mission"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "home-page",
+  "hero": {
+    "title": "Explore Kyrgyzstan with Nomadia Travels",
+    "subtitle": "Discover mountains, culture, and adventures like never before.",
+    "heroImage": "/images/home/hero.jpg",
+    "ctaText": "Start Your Journey",
+    "ctaLink": "/travel-packs"
+  },
+  "sections": [
+    {
+      "id": "services-preview",
+      "heading": "Our Services",
+      "description": "From car rentals to cultural tours, we provide everything you need.",
+      "linkText": "View All Services",
+      "link": "/travel-packs"
+    },
+    {
+      "id": "cars-preview",
+      "heading": "Top Cars",
+      "description": "Comfortable and affordable cars for your trips.",
+      "limit": 3,
+      "linkText": "View All Cars",
+      "link": "/cars"
+    },
+    {
+      "id": "gallery-preview",
+      "heading": "Travel Gallery",
+      "description": "A glimpse into our adventures across Kyrgyzstan.",
+      "limit": 6,
+      "linkText": "View Full Gallery",
+      "link": "/gallery"
+    },
+    {
+      "id": "about-preview",
+      "heading": "Who We Are",
+      "description": "Get to know more about Nomadia Travels and our mission.",
+      "linkText": "Learn More",
+      "link": "/about"
+    }
+  ],
+
+  "metadata": {
+    "title": "Nomadia Travels | Explore Kyrgyzstan",
+    "description": "Your gateway to Kyrgyzstan adventures — cars, tours, and cultural experiences.",
+    "path": "/",
+    "image": "/images/home-og.png",
+    "alt": "Nomadia Travels home page hero image"
+  }
+}
