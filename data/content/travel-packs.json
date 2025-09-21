@@ -1,0 +1,55 @@
+[
+  {
+    "id": "pack-1",
+    "name": "Silk Road Adventure",
+    "description": "7-day guided tour along the historic Silk Road with cultural experiences.",
+    "coverImage": "/images/travel-packs/silk-road-cover.jpg",
+    "images": [
+      "/images/travel-packs/silk-road-1.jpg",
+      "/images/travel-packs/silk-road-2.jpg",
+      "/images/travel-packs/silk-road-3.jpg"
+    ],
+    "price": "1200$",
+    "duration": "7 days",
+    "features": [
+      "Airport pickup",
+      "Hotel accommodation",
+      "Local guide",
+      "Meals included"
+    ],
+
+    "metadata": {
+      "title": "Silk Road Adventure Tour | Explore Kyrgyzstan",
+      "description": "7-day guided tour along the Silk Road with cultural experiences.",
+      "path": "/travel-packs/pack-1",
+      "image": "/images/travel-packs/silk-road-og.png",
+      "alt": "Silk Road Adventure tour in Kyrgyzstan"
+    }
+  },
+  {
+    "id": "pack-2",
+    "name": "Nomadic Lifestyle Experience",
+    "description": "3-day cultural immersion with traditional Kyrgyz families.",
+    "coverImage": "/images/travel-packs/nomadic-cover.jpg",
+    "images": [
+      "/images/travel-packs/nomadic-1.jpg",
+      "/images/travel-packs/nomadic-2.jpg"
+    ],
+    "price": "500$",
+    "duration": "3 days",
+    "features": [
+      "Yurt stay",
+      "Horse riding",
+      "Traditional meals",
+      "Craft workshops"
+    ],
+
+    "metadata": {
+      "title": "Nomadic Lifestyle Experience | Explore Kyrgyzstan",
+      "description": "3-day immersion with Kyrgyz nomadic families, including horse riding.",
+      "path": "/travel-packs/pack-2",
+      "image": "/images/travel-packs/nomadic-og.png",
+      "alt": "Nomadic lifestyle experience in Kyrgyzstan"
+    }
+  }
+]

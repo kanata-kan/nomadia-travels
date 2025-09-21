@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
     "Default description for Nomadia Travels website",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  url: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
   twitter: process.env.NEXT_PUBLIC_SITE_TWITTER || "@nomadia_travels",
   contact: {
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "support@nomadia.com",

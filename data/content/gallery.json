@@ -1,0 +1,41 @@
+[
+  {
+    "id": "gallery-1",
+    "title": "Mountain Adventures",
+    "description": "Discover the breathtaking mountains of Kyrgyzstan with guided tours.",
+    "coverImage": "/images/gallery/mountains-cover.jpg",
+    "images": [
+      "/images/gallery/mountains-1.jpg",
+      "/images/gallery/mountains-2.jpg",
+      "/images/gallery/mountains-3.jpg"
+    ],
+    "category": "Nature",
+
+    "metadata": {
+      "title": "Mountain Adventures | Explore Kyrgyzstan",
+      "description": "Stunning gallery showcasing Kyrgyzstan's mountain landscapes.",
+      "path": "/gallery/gallery-1",
+      "image": "/images/gallery/mountains-og.png",
+      "alt": "Kyrgyzstan mountain landscapes"
+    }
+  },
+  {
+    "id": "gallery-2",
+    "title": "Local Culture",
+    "description": "Experience Kyrgyz traditions, crafts, and cultural heritage.",
+    "coverImage": "/images/gallery/culture-cover.jpg",
+    "images": [
+      "/images/gallery/culture-1.jpg",
+      "/images/gallery/culture-2.jpg"
+    ],
+    "category": "Culture",
+
+    "metadata": {
+      "title": "Local Culture | Explore Kyrgyzstan",
+      "description": "Gallery showcasing Kyrgyz traditions and cultural life.",
+      "path": "/gallery/gallery-2",
+      "image": "/images/gallery/culture-og.png",
+      "alt": "Traditional Kyrgyz cultural activities"
+    }
+  }
+]
