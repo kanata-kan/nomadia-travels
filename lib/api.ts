@@ -1,7 +1,25 @@
 // lib/api.ts
+import {
+  Car,
+  GalleryItem,
+  TravelPack,
+  AboutPage,
+  ContactPage,
+  HomePage,
+} from "@/types";
+
+import {
+  validateCar,
+  validateGalleryItem,
+  validateTravelPack,
+  validateAboutPage,
+  validateContactPage,
+  validateHomePage,
+} from "./validators";
+
 type FetchOptions = {
-  cache?: RequestCache; // "default" | "force-cache" | "no-store"
-  revalidate?: number; // ISR: revalidate seconds
+  cache?: RequestCache;
+  revalidate?: number;
   headers?: Record<string, string>;
 };
 
@@ -11,23 +29,22 @@ export async function fetchAPI<T>(
 ): Promise<T> {
   try {
     const { cache, revalidate, headers } = options;
+    const url = new URL(`/api/${endpoint}`, process.env.NEXT_PUBLIC_BASE_URL);
 
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/${endpoint}`,
-      {
-        // default → force-cache (SSG)
-        cache: cache ?? "force-cache",
-        // إذا عطينا revalidate نستعمل ISR
-        next: revalidate ? { revalidate } : undefined,
-        headers,
-      },
-    );
+    const res = await fetch(url.toString(), {
+      cache: cache ?? "force-cache",
+      next: revalidate ? { revalidate } : undefined,
+      headers,
+    });
 
-    if (!res.ok) throw new Error(`Failed to fetch ${endpoint}`);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch ${endpoint} (status: ${res.status})`);
+    }
 
     const json = await res.json();
-    if (json.status !== "success")
+    if (json.status !== "success") {
       throw new Error(json.message || "Unknown error");
+    }
 
     return json.data as T;
   } catch (error) {
@@ -36,28 +53,40 @@ export async function fetchAPI<T>(
   }
 }
 
-// ---- Specific Wrappers ---- //
-
-export async function getCars(options?: FetchOptions) {
-  return fetchAPI<any[]>("cars", options);
+// ---- Wrappers with Validation ---- //
+export async function getCars(options?: FetchOptions): Promise<Car[]> {
+  const data = await fetchAPI<Car[]>("cars", options);
+  return data.filter(validateCar);
 }
 
-export async function getGallery(options?: FetchOptions) {
-  return fetchAPI<any[]>("gallery", options);
+export async function getGallery(
+  options?: FetchOptions,
+): Promise<GalleryItem[]> {
+  const data = await fetchAPI<GalleryItem[]>("gallery", options);
+  return data.filter(validateGalleryItem);
 }
 
-export async function getTravelPacks(options?: FetchOptions) {
-  return fetchAPI<any[]>("travel-packs", options);
+export async function getTravelPacks(
+  options?: FetchOptions,
+): Promise<TravelPack[]> {
+  const data = await fetchAPI<TravelPack[]>("travel-packs", options);
+  return data.filter(validateTravelPack);
 }
 
-export async function getAbout(options?: FetchOptions) {
-  return fetchAPI<any>("about", options);
+export async function getAbout(options?: FetchOptions): Promise<AboutPage> {
+  const data = await fetchAPI<AboutPage>("about", options);
+  if (!validateAboutPage(data)) throw new Error("Invalid about.json data");
+  return data;
 }
 
-export async function getContact(options?: FetchOptions) {
-  return fetchAPI<any>("contact", options);
+export async function getContact(options?: FetchOptions): Promise<ContactPage> {
+  const data = await fetchAPI<ContactPage>("contact", options);
+  if (!validateContactPage(data)) throw new Error("Invalid contact.json data");
+  return data;
 }
 
-export async function getHome(options?: FetchOptions) {
-  return fetchAPI<any>("home", options);
+export async function getHome(options?: FetchOptions): Promise<HomePage> {
+  const data = await fetchAPI<HomePage>("home", options);
+  if (!validateHomePage(data)) throw new Error("Invalid home.json data");
+  return data;
 }
