@@ -28,6 +28,9 @@ This repo is part of the **Nomadia Travels** ecosystem.
 - [🧯 Status UI (Global)](./docs/STATUS_UI_SCHEMA.md)
   Global loading/error/not-found; client/server boundaries, tokens mapping, overrides, quick testing.
 
+- [🗄️ Data Layer](./docs/DATA_LAYER.md)  
+   JSON Schemas, API Wrappers, Types & Validators — Epic 5 summary.
+
 ---
 
 ## 🚀 Current Phase

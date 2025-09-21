@@ -62,6 +62,39 @@ It helps new engineers understand what’s already done and what’s next.
 
 ---
 
+**Task 5.1 – Define JSON Schemas**
+
+- Designed JSON structures for all content resources:
+  - `cars.json`, `gallery.json`, `travel-packs.json`, `about.json`, `contact.json`, `home.json`.
+- Organized under `data/content/`.
+- Metadata handled separately (lib/metadata).
+- Result: Consistent, client-friendly schemas (clear separation static/dynamic).
+
+---
+
+**Task 5.2 – API Wrapper & Fetch**
+
+- Created API Routes for each resource under `/app/api/{resource}`.
+- Standardized response contract: `{ status, data }` or `{ status, message }`.
+- Built generic `fetchAPI<T>()` in `lib/api.ts`.
+- Implemented wrappers: `getCars`, `getGallery`, `getTravelPacks`, `getAbout`, `getContact`, `getHome`.
+- Tested caching strategies (SSG, ISR, SSR) with demo pages under `/app/tests/{resource}`.
+- Result: Scalable data layer with clean, reusable API interface.
+
+---
+
+**Task 5.3 – Validation & Type Safety**
+
+- Defined TypeScript interfaces under `types/` (Car, GalleryItem, TravelPack, AboutPage, ContactPage, HomePage).
+- Added `lib/validators.ts` with validation functions (`validateCar`, `validateGallery`, ...).
+- Connected validators to API wrappers (ensuring type safety).
+- Flow: JSON → API → fetchAPI<T> → Types → Validators → Pages.
+- Result: Strong type safety + validation before data reaches UI.
+
+---
+
+---
+
 ## ⏳ Pending Steps
 
 9. **Task 2.5 — Global Error & Loading UI** // TODO
