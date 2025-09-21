@@ -1,8 +1,9 @@
-export default function ContactPage() {
-  return (
-    <main style={{ padding: "2rem", minHeight: "60vh" }}>
-      <h1>Contact</h1>
-      <p>Reach out to us for bookings, questions, or more information.</p>
-    </main>
-  );
+// app/contact/page.tsx
+export const dynamic = "force-static";
+
+import { getContact } from "@/lib/api";
+
+export default async function ContactPage() {
+  const contact = await getContact({ cache: "force-cache" });
+  return <h1>{contact.heading}</h1>;
 }

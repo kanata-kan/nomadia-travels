@@ -1,10 +1,15 @@
-export default function HomePage() {
+// app/tests/home/page.tsx
+export const dynamic = "force-dynamic"; // Explicit SSR
+import { getHome } from "@/lib/api";
+
+export default async function HomePage() {
+  const home = await getHome({ cache: "no-store" }); // دايما fresh
+
   return (
-    <main style={{ padding: "2rem", minHeight: "60vh" }}>
-      <h1>Welcome to Nomadia Travels</h1>
-      <p>
-        Explore Kyrgyzstan with Nomadia Travels — your trusted travel partner.
-      </p>
-    </main>
+    <div>
+      <h1>🏠 Home — SSR</h1>
+      <h2>{home.hero.title}</h2>
+      <p>{home.hero.subtitle}</p>
+    </div>
   );
 }
