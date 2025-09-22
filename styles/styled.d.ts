@@ -30,5 +30,34 @@ declare module "styled-components" {
       md: string;
       lg: string;
     };
+    breakpoints: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      "2xl": string;
+    };
+    layout: {
+      container: {
+        padding: {
+          mobile: string;
+          md: string;
+          lg: string;
+        };
+        maxWidth: {
+          md: string;
+          lg: string;
+          xl: string;
+          "2xl": string;
+        };
+      };
+      section: {
+        spacing: {
+          tight: { mobile: string; md: string; lg: string };
+          default: { mobile: string; md: string; lg: string };
+          loose: { mobile: string; md: string; lg: string };
+        };
+      };
+    };
   }
 }

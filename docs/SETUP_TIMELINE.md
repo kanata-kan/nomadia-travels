@@ -93,6 +93,16 @@ It helps new engineers understand what’s already done and what’s next.
 
 ---
 
+**Task 7.1 — Foundation Wrappers**
+
+- Built 3 base UI wrappers under `components/ui/`:
+  - `Container` → responsive max-width + gutters.
+  - `SectionWrapper` → vertical rhythm (tight, default, loose) + background tokens.
+  - `FullBleed` → edge-to-edge layout with optional inner container.
+- Connected to `theme.layout` + fixed React prop warnings.
+
+_Result:_ Solid baseline for consistent, production-ready layouts.
+
 ---
 
 ## ⏳ Pending Steps
