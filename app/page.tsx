@@ -1,15 +1,22 @@
-// app/tests/home/page.tsx
-export const dynamic = "force-dynamic"; // Explicit SSR
+// app/home/page.tsx
+export const dynamic = "force-dynamic";
 import { getHome } from "@/lib/api";
+import HeroSection from "@/components/ui/Hero";
 
 export default async function HomePage() {
-  const home = await getHome({ cache: "no-store" }); // دايما fresh
+  const home = await getHome({ cache: "no-store" });
 
   return (
-    <div>
-      <h1>🏠 Home — SSR</h1>
-      <h2>{home.hero.title}</h2>
-      <p>{home.hero.subtitle}</p>
-    </div>
+    <main>
+      <HeroSection
+        title={home.hero.title}
+        subtitle={home.hero.subtitle}
+        heroImage={home.hero.heroImage}
+        ctaText={home.hero.ctaText}
+        ctaLink={home.hero.ctaLink}
+        align="center"
+        overlay="dark"
+      />
+    </main>
   );
 }

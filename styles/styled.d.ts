@@ -10,6 +10,7 @@ declare module "styled-components" {
       background: string;
       surface: string;
       danger: string;
+      heroText: string;
       text: {
         primary: string;
         secondary: string;

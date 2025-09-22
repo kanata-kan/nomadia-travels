@@ -6,6 +6,7 @@ export const lightColors = {
   background: "#FFFFFF",
   surface: "#F9FAFB", // Panels, cards, footer sections
   danger: "#DC2626",
+  heroText: "#FFFFFF",
 
   text: {
     primary: "#1E293B", // Main text
@@ -24,6 +25,7 @@ export const darkColors = {
   background: "#0F172A", // Dark navy background
   surface: "#1E293B", // Panels, cards, footer sections
   danger: "#DC2626",
+  heroText: "#FFFFFF",
 
   text: {
     primary: "#F8FAFC", // Main text (white-ish)

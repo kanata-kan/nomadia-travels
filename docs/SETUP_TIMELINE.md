@@ -105,10 +105,18 @@ _Result:_ Solid baseline for consistent, production-ready layouts.
 
 ---
 
-## ⏳ Pending Steps
+---
 
-9. **Task 2.5 — Global Error & Loading UI** // TODO
-10. **Task 2.6 — i18n EN/FR Setup** // TODO
+**Task 7.2 — Hero Component**
+
+- Built `HeroSection` (HeroContainer, HeroInner, HeroTitle, HeroSubtitle, HeroCTA).
+- Connected to `home.json` → title, subtitle, heroImage, ctaText, ctaLink.
+- Overlay logic (`dark | light | auto`) ensures text readability in both themes.
+- CTA uses Next.js `Link` with auto-detect (internal vs external).
+- Used transient props (`$bgImage`, `$overlay`, `$align`) to avoid React warnings.
+- Result: Production-ready Hero, responsive & dynamic.
+
+---
 
 ---
 
