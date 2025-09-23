@@ -9,6 +9,8 @@ declare module "styled-components" {
       accent: string;
       background: string;
       surface: string;
+      surfaceAlt: string;
+
       danger: string;
       heroText: string;
       text: {

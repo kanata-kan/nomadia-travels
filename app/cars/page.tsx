@@ -4,6 +4,8 @@ import { getCars } from "@/lib/api";
 
 export default async function CarsPage() {
   const cars = await getCars({ revalidate: 60 });
+  console.log(cars);
+
   return (
     <ul>
       {cars.map((c: any) => (

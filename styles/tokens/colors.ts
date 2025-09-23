@@ -1,38 +1,48 @@
 // styles/tokens/colors.ts
+
+// Light theme
 export const lightColors = {
-  primary: "#F97316", // Orange CTA
-  secondary: "#22C55E", // Green Logo
-  accent: "#1D4ED8", // Blue Logo
-  background: "#FFFFFF",
-  surface: "#F9FAFB", // Panels, cards, footer sections
-  danger: "#DC2626",
-  heroText: "#FFFFFF",
+  primary: "#F97316", // main CTA (orange)
+  secondary: "#16A34A", // secondary accent (green)
+  accent: "#2563EB", // extra accent (blue)
+
+  background: "#FDFDFD", // base background
+  surface: "#FFFFFF", // cards / panels
+
+  surfaceAlt: "#F3F4F6", // section bg
+
+  danger: "#DC2626", // errors
+  heroText: "#FFFFFF", // text on hero
 
   text: {
-    primary: "#1E293B", // Main text
-    secondary: "#475569", // Subtitles
-    muted: "#94A3B8", // Captions / less important
-    inverse: "#F8FAFC", // Text فوق خلفية داكنة
+    primary: "#111827", // main text
+    secondary: "#374151", // subtitles
+    muted: "#6B7280", // less important
+    inverse: "#F9FAFB", // light text on dark
   },
-  // NEW
-  divider: "#E2E8F0", // Light gray (gray-200)
+
+  divider: "#E5E7EB", // borders
 };
 
+// Dark theme
 export const darkColors = {
-  primary: "#F97316", // Orange CTA
-  secondary: "#22C55E", // Green Logo
-  accent: "#3B82F6", // Brighter Blue Accent
-  background: "#0F172A", // Dark navy background
-  surface: "#1E293B", // Panels, cards, footer sections
-  danger: "#DC2626",
-  heroText: "#FFFFFF",
+  primary: "#FB923C", // CTA orange for dark
+  secondary: "#22C55E", // green
+  accent: "#3B82F6", // blue
+
+  background: "#0F172A", // base bg
+  surface: "#1E293B", // panels
+  surfaceAlt: "#334155", // section bg
+
+  danger: "#F87171", // errors
+  heroText: "#FFFFFF", // text on hero
 
   text: {
-    primary: "#F8FAFC", // Main text (white-ish)
-    secondary: "#CBD5E1", // Subtitles (gray 300)
-    muted: "#64748B", // Muted text (gray 500)
-    inverse: "#1E293B", // Dark text فوق خلفية فاتحة
+    primary: "#F9FAFB", // main text
+    secondary: "#E5E7EB", // subtitles
+    muted: "#9CA3AF", // less important
+    inverse: "#111827", // dark text on light
   },
-  // NEW
-  divider: "#1E293B", // Dark gray (gray-800) for borders
+
+  divider: "#374151", // borders
 };

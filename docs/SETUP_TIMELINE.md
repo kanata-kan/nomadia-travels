@@ -138,6 +138,26 @@ _Result:_ Production-ready **Services section** → responsive, reusable, connec
 
 ---
 
+**Task 7.4 — CarCard Component**
+
+- Built `CarCard` under `components/ui/molecules/`.
+- Typed with `Car` interface from `types/`.
+- Contains:
+  - `ImageWrapper` → optimized with `next/image`.
+  - `Title`, `Description`, `Price`.
+  - `Specs` (seats, transmission, fuel).
+  - CTA Button (`View Details`) with icon.
+- Styled with `styled-components`:
+  - Hover effects (lift card, scale image).
+  - Consistent spacing using `theme.tokens`.
+- Connected to `cars.json` via `getCars()` in `CarsSection`.
+
+_Result_: Production-ready **CarCard component** → reusable, typed, styled, linked to data layer.
+
+---
+
+---
+
 ## 🧭 Notes for Future Engineers
 
 - Every task is documented both in **code** and in **docs/**.

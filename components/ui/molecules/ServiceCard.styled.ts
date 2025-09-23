@@ -1,3 +1,4 @@
+//components/ui/molecules/ServiceCard.styled.ts
 "use client";
 import styled from "styled-components";
 

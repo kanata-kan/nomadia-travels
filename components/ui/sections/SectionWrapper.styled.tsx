@@ -1,3 +1,4 @@
+// components/ui/sections/SectionWrapper.styled.ts
 "use client";
 
 import styled, { css } from "styled-components";
@@ -28,6 +29,9 @@ const getSpacing = (theme: any, variant: Variant = "default") => {
 export const SectionWrapper = styled.section<Props>`
   width: 100%;
   box-sizing: border-box;
+
   ${({ theme, $variant = "default" }) => getSpacing(theme, $variant)}
   background: ${({ theme, $bg }) => ($bg ? theme.colors[$bg] : "transparent")};
+
+  text-align: center;
 `;

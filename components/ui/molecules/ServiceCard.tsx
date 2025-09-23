@@ -1,3 +1,5 @@
+//components/ui/molecules/ServiceCard.tsx
+
 "use client";
 import React, { ReactNode } from "react";
 import { Card, IconWrapper, Title, Description } from "./ServiceCard.styled";
