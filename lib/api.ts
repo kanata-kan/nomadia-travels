@@ -15,7 +15,9 @@ import {
   validateAboutPage,
   validateContactPage,
   validateHomePage,
+  validateService,
 } from "./validators";
+import { Service } from "@/types/Service";
 
 type FetchOptions = {
   cache?: RequestCache;
@@ -89,4 +91,9 @@ export async function getHome(options?: FetchOptions): Promise<HomePage> {
   const data = await fetchAPI<HomePage>("home", options);
   if (!validateHomePage(data)) throw new Error("Invalid home.json data");
   return data;
+}
+
+export async function getServices(options?: FetchOptions): Promise<Service[]> {
+  const data = await fetchAPI<Service[]>("services", options);
+  return data.map(validateService);
 }

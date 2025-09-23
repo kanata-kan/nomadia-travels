@@ -1,7 +1,8 @@
 // app/home/page.tsx
 export const dynamic = "force-dynamic";
 import { getHome } from "@/lib/api";
-import HeroSection from "@/components/ui/Hero";
+import ServicesSectionServer from "@/components/ui/sections/ServicesSection.server";
+import HeroSection from "@/components/ui/molecules/Hero";
 
 export default async function HomePage() {
   const home = await getHome({ cache: "no-store" });
@@ -17,6 +18,7 @@ export default async function HomePage() {
         align="center"
         overlay="dark"
       />
+      <ServicesSectionServer />
     </main>
   );
 }

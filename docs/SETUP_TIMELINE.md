@@ -120,6 +120,24 @@ _Result:_ Solid baseline for consistent, production-ready layouts.
 
 ---
 
+**Task 7.3 — Services Section**
+
+- Built `ServicesSection` under `components/sections/`:
+  - Uses `SectionWrapper` + `Container` from foundation wrappers (Task 7.1).
+  - Grid layout (`ServicesGrid`) → responsive (auto-fit minmax).
+  - Connected to `services.json` via `getServices()`.
+
+- Added `ServiceCard` under `components/molecules/`:
+  - Contains `Card`, `Title`, `Description`, `IconWrapper`.
+  - Icon auto-mapped via `iconsMap` (transportation, private-tours, city-tours, airport-transfers).
+  - Fallback icon defined.
+
+_Result:_ Production-ready **Services section** → responsive, reusable, connected to data layer.
+
+---
+
+---
+
 ## 🧭 Notes for Future Engineers
 
 - Every task is documented both in **code** and in **docs/**.

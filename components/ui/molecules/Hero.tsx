@@ -2,14 +2,15 @@
 "use client";
 
 import React from "react";
+
+import { Hero } from "@/types";
 import {
   HeroContainer,
   HeroInner,
   HeroTitle,
   HeroSubtitle,
   HeroCTA,
-} from "./Hero.styled";
-import { Hero } from "@/types";
+} from "../foundation/Hero.styled";
 
 export default function HeroSection({
   title,

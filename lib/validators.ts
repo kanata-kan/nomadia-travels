@@ -7,6 +7,7 @@ import {
   ContactPage,
   HomePage,
 } from "@/types";
+import { Service } from "@/types/Service";
 
 // ---- Helpers ---- //
 function hasValues(obj: Record<string, any>, keys: string[]): boolean {
@@ -113,4 +114,13 @@ export function validateHomePage(page: HomePage): boolean {
     ) &&
     validateMetadata(page.metadata)
   );
+}
+
+// ---- Service ---- //
+// lib/validators.ts
+export function validateService(service: Service): Service {
+  if (!service.id || !service.title || !service.description) {
+    throw new Error(`Invalid Service: ${JSON.stringify(service)}`);
+  }
+  return service;
 }
