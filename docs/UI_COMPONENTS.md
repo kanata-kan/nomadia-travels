@@ -1,110 +1,134 @@
-🟦 Tasks Breakdown
-7.1 → Foundation Wrappers
+# 📘 UI Components Library — Explore Kyrgyzstan
 
-Components: Container, SectionWrapper, FullBleed.
+## 🎯 Purpose
 
-Goal: Base layout wrappers for consistent responsive design.
+This document explains the **UI architecture** of the project.  
+It is designed for **onboarding new engineers** so they can quickly understand how the UI is structured, how to extend it, and how to build new components/pages in a consistent way.
 
-Commit:
+---
 
-feat(ui): add foundation wrappers (Container, SectionWrapper, FullBleed)
+## 🏗️ UI Architecture (Atomic Design)
 
-7.2 → Hero Component
+Our UI system follows an **atomic design–inspired hierarchy**:
 
-Component: Hero.tsx + Hero.styled.ts.
+1. **Foundation (Base Styling)**
+   - Pure layout & style utilities.
+   - Examples: `Container.styled.ts`, `Grid.styled.ts`, `SectionWrapper.styled.ts`.
 
-Goal: Full-bleed hero section with CTA, responsive background.
+2. **Atoms**
+   - Small, reusable building blocks.
+   - Examples: `Button.tsx`, `Input.tsx`, `Label.tsx`, `Title.tsx`.
 
-Commit:
+3. **Molecules**
+   - Small groups of atoms combined into a meaningful UI element.
+   - Examples: `ContactForm.tsx`, `Card.tsx`.
 
-feat(ui): add Hero component with styled
+4. **Sections**
+   - Page sections composed of molecules & atoms.
+   - Examples: `HeroSection.tsx`, `GallerySection.tsx`, `ContactSection.tsx`.
 
-7.3 → ServiceCard
+5. **Pages**
+   - Located in `/app/`.
+   - Each page is responsible for:
+     - Routing
+     - Metadata (SEO)
+     - Data fetching
+     - Rendering sections
 
-Component: ServiceCard.tsx.
+---
 
-Goal: Represent services (title, description, icon).
+## 📂 Folder Structure
 
-Commit:
+```bash
+components/
+└── ui/
+    ├── foundation/    # Base styled utilities
+    ├── atoms/         # Reusable small components
+    ├── molecules/     # Components combining atoms
+    ├── sections/      # Page-level sections
+    ├── gallery/       # Domain-specific (GalleryGrid, Lightbox…)
+    ├── skeleton/      # Loading placeholders
+    └── status/        # Error / status components
+app/
+└── contact/           # Example page
+    └── page.tsx
+```
 
-feat(ui): add ServiceCard component
+## 📐 UI Flow Diagram
 
-7.4 → CarCard
+```css
+[ app/page.tsx ]
+        |
+        v
+[ Section (HeroSection, ContactSection, GallerySection) ]
+        |
+        v
+[ Molecules (ContactForm, Card, Grid) ]
+        |
+        v
+[ Atoms (Input, Button, Label, Title) ]
+        |
+        v
+[ Foundation (Container, Grid, SectionWrapper) ]
 
-Component: CarCard.tsx.
+```
 
-Goal: Typed with Car schema, show car image, price, details.
+## 🔄 How to Add a New UI Component
 
-Commit:
+Case 1: Add a New Page (/app/new-page)
+Create a folder in /app/ → /app/new-page/page.tsx.
+Add metadata using getMetadataStatic.
+Render one or more Sections.
 
-feat(ui): add CarCard component (typed with Car)
+```tsx
+// app/new-page/page.tsx
+import NewSection from "@/components/ui/sections/NewSection";
+import { getMetadataStatic } from "@/lib/metadata/static";
 
-7.5 → GalleryGrid
+export const metadata = getMetadataStatic({
+  title: "New Page | Explore Kyrgyzstan",
+  description: "Description for the new page",
+  path: "/new-page",
+  image: "/og-newpage.png",
+});
 
-Component: GalleryGrid.tsx.
+export default function NewPage() {
+  return <NewSection />;
+}
+```
 
-Goal: Typed with GalleryItem, responsive image grid.
+## Case 2: Add a New Section
 
-Commit:
+1- Create a file in /components/ui/sections/.
+2- Use foundation + atoms/molecules inside.
+3- Export it and import into the desired page.
 
-feat(ui): add GalleryGrid component (typed with GalleryItem)
+## Case 4: Add a New Atom
 
-7.6 → Documentation
+Place inside /components/ui/atoms/.
 
-File: components/ui/README.md.
+Keep it stateless & reusable (e.g., Input, Button).
 
-Goal: Explain structure, usage, and naming conventions.
+Style with styled-components.
 
-Commit:
+## 📝 Best Practices
 
-docs(ui): add documentation for UI components structure
+```bash
+Keep responsibilities clear:
+Page = routing + data fetching.
+Section = layout composition.
+Molecule = functional component.
+Atom = minimal building block.
+Use foundation utilities (Container, Grid) for consistency.
+Always type props with TypeScript.
+Keep domain-specific components in their folder (e.g., gallery/).
+Update documentation (UI_COMPONENTS.md) when adding major components.
+```
 
-7.x → Backlog
+## 🚀 Summary
 
-Future Components:
-
-TestimonialCard
-
-FAQ
-
-ContactForm
-
-Commit (future):
-
-feat(ui): add TestimonialCard/FAQ/ContactForm (backlog)
-
-🔄 Workflow
-
-Understand the UI pattern needed.
-
-Smart Questions: why this component? where reused? props?
-
-Implement with styled-components + theme tokens.
-
-Document in README.md.
-
-✅ Status
-
-7.1 Wrappers → ⏳ Todo
-
-7.2 Hero → ⏳ Todo
-
-7.3 ServiceCard → ⏳ Todo
-
-7.4 CarCard → ⏳ Todo
-
-7.5 GalleryGrid → ⏳ Todo
-
-7.6 Docs → ⏳ Todo
-
-7.x Backlog → 🔜 Future
-
-🧭 Notes
-
-Branch name:
-
-feature/ui-components-library
-
-Each commit corresponds to one Task ID (7.1 → 7.6).
-
-Final merge → main after review.
+```bash
+The UI system is modular, layered, and scalable.
+Every engineer can add new pages/sections/components by following the flow.
+This ensures consistency, reusability, and clarity across the project.
+```

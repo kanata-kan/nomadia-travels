@@ -3,7 +3,7 @@ import { getGallery } from "@/lib/api";
 import GallerySection from "@/components/ui/sections/GallerySection";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
-// Static Metadata (بما أن الصفحة ثابتة)
+// Static Metadata
 export const metadata = getMetadataStatic({
   title: "Gallery | Explore Kyrgyzstan",
   description: "Discover the beauty of Kyrgyzstan through curated images.",

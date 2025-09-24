@@ -1,3 +1,4 @@
+// components/ui/sections/GallerySection.tsx
 "use client";
 
 import { SectionWrapper } from "./SectionWrapper.styled";
@@ -20,7 +21,6 @@ export default function GallerySection({ items }: Props) {
           <strong>lakes</strong> and <strong>mountains</strong> to{" "}
           <strong>nomadic traditions</strong>.
         </Subtitle>
-
         <GalleryGrid items={items} min="260px" gap="lg" />
       </Container>
     </SectionWrapper>
