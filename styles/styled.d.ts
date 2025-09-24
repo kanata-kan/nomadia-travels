@@ -32,6 +32,10 @@ declare module "styled-components" {
       sm: string;
       md: string;
       lg: string;
+      xl: string;
+      "2xl": string;
+      "3xl": string;
+      full: string;
     };
     breakpoints: {
       sm: string;

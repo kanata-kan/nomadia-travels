@@ -178,6 +178,25 @@ _Result_: Production-ready **CarCard component** → reusable, typed, styled, li
 
 ---
 
+**Task 7.5 — GalleryGrid Component**
+
+- Built `GalleryGrid` under `components/ui/gallery/`.
+- Typed with `GalleryItem` interface from `types/`.
+- Contains:
+  - `Tile` → interactive card with overlay.
+  - Optimized `next/image` for responsive images.
+  - `Caption` with `Title` + `Sub` text.
+  - Lightbox integration (`onClick` → open viewer).
+- Styled with `styled-components`:
+  - Responsive grid using `minmax()` & `gap` tokens.
+  - Overlay with fade-in hover effect.
+  - Consistent typography from `atoms`.
+- Connected to `gallery.json` via `getGallery()` in `GallerySection`.
+
+_Result_: Production-ready **GalleryGrid component** → reusable, typed, styled, interactive with lightbox support.
+
+---
+
 ## 🧭 Notes for Future Engineers
 
 - Every task is documented both in **code** and in **docs/**.

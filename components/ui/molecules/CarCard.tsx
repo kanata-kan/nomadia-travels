@@ -17,9 +17,17 @@ import {
   ActionWrapper,
 } from "./CarCard.styled";
 
-type Props = { car: Car };
+type Props = {
+  car: Car;
+  ctaPath?: string; // 👈 path مخصص
+  ctaLabel?: string; // 👈 label مخصص
+};
 
-export default function CarCard({ car }: Props) {
+export default function CarCard({
+  car,
+  ctaPath = `/cars/${car.id}`, // default
+  ctaLabel = "View Details", // default
+}: Props) {
   return (
     <Card>
       <ImageWrapper>
@@ -47,10 +55,10 @@ export default function CarCard({ car }: Props) {
       </Specs>
 
       <ActionWrapper>
-        <Link href={`/cars/${car.id}`} passHref>
+        <Link href={ctaPath} passHref>
           <Button variant="primary">
             <FaCarSide style={{ marginRight: "8px" }} />
-            View Details
+            {ctaLabel}
           </Button>
         </Link>
       </ActionWrapper>
