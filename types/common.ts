@@ -1,9 +1,9 @@
 export interface Metadata {
-  title: string;
-  description: string;
+  title: string | null;
+  description: string | null;
   path: string;
-  image: string;
-  alt: string;
+  image: string | null;
+  alt: string | null;
 }
 
 export interface ContentBlock {

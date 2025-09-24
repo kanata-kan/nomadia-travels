@@ -6,6 +6,8 @@ import {
   AboutPage,
   ContactPage,
   HomePage,
+  Activity,
+  OurStoryPage,
 } from "@/types";
 
 import {
@@ -16,6 +18,8 @@ import {
   validateContactPage,
   validateHomePage,
   validateService,
+  validateActivity,
+  validateOurStoryPage,
 } from "./validators";
 import { Service } from "@/types/Service";
 
@@ -96,4 +100,20 @@ export async function getHome(options?: FetchOptions): Promise<HomePage> {
 export async function getServices(options?: FetchOptions): Promise<Service[]> {
   const data = await fetchAPI<Service[]>("services", options);
   return data.map(validateService);
+}
+
+export async function getActivities(
+  options?: FetchOptions,
+): Promise<Activity[]> {
+  const data = await fetchAPI<Activity[]>("activities", options);
+  return data.filter(validateActivity);
+}
+
+export async function getOurStory(
+  options?: FetchOptions,
+): Promise<OurStoryPage> {
+  const data = await fetchAPI<OurStoryPage>("our-story", options);
+  if (!validateOurStoryPage(data))
+    throw new Error("Invalid our-story.json data");
+  return data;
 }

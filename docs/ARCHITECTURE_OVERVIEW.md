@@ -83,13 +83,3 @@ It’s designed for onboarding: helping new engineers quickly understand where t
 - **Onboarding clarity:** Any engineer can locate theme, metadata, or UI components quickly.
 
 ---
-
-## 🗂️ Future Steps (Placeholder)
-
-1. **Task 2.2 — Navbar Setup** // TODO: Fill in explanation after completion
-2. **Task 2.3 — Footer Setup** // TODO
-3. **Task 2.4 — Metadata Refactor** // TODO
-4. **Task 2.5 — Global Error & Loading UI** // TODO
-5. **Task 2.6 — i18n EN/FR Setup** // TODO
-
----

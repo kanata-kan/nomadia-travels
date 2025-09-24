@@ -28,7 +28,7 @@ export default async function CarDetailsPage({ params }: CarDetailsPageProps) {
 
       <Image
         src={car.coverImage}
-        alt={car.metadata.alt}
+        alt={car.name}
         width={700}
         height={400}
         style={{ objectFit: "cover", borderRadius: "8px" }}

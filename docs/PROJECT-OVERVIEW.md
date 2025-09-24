@@ -25,12 +25,13 @@ Global tourism website that is **elegant**, **easy to use**, and **scalable**.
 
 ## 📐 Scope (V1 MVP)
 
-- **Pages**: Home, Travel packs, Cars, Activities, Gallery, About, Contact
-- **Features**:
-  - Next.js + styled-components
-  - JSON via API Routes
-  - EN/FR support
-  - Vercel + ISR deployment
+**Pages**: Home, Travel packs, Cars, Activities, Gallery, About, Contact  
+**Features**:
+
+- Next.js + styled-components
+- JSON via API Routes
+- EN/FR support
+- Vercel + ISR deployment
 
 ---
 

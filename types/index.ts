@@ -5,3 +5,5 @@ export * from "./travelPack";
 export * from "./about";
 export * from "./contact";
 export * from "./home";
+export * from "./activity";
+export * from "./ourStory";

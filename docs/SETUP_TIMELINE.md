@@ -65,10 +65,10 @@ It helps new engineers understand what’s already done and what’s next.
 **Task 5.1 – Define JSON Schemas**
 
 - Designed JSON structures for all content resources:
-  - `cars.json`, `gallery.json`, `travel-packs.json`, `about.json`, `contact.json`, `home.json`.
+  - `cars.json`, `travel-packs.json`, `activities.json`, `gallery.json`, `our-story.json`, `about.json`, `contact.json`, `home.json`.
 - Organized under `data/content/`.
-- Metadata handled separately (lib/metadata).
-- Result: Consistent, client-friendly schemas (clear separation static/dynamic).
+- Metadata handled separately (via `metadata` field).
+- Result: Consistent, client-friendly schemas with clear separation between **content** and **SEO metadata**.
 
 ---
 
@@ -77,18 +77,38 @@ It helps new engineers understand what’s already done and what’s next.
 - Created API Routes for each resource under `/app/api/{resource}`.
 - Standardized response contract: `{ status, data }` or `{ status, message }`.
 - Built generic `fetchAPI<T>()` in `lib/api.ts`.
-- Implemented wrappers: `getCars`, `getGallery`, `getTravelPacks`, `getAbout`, `getContact`, `getHome`.
-- Tested caching strategies (SSG, ISR, SSR) with demo pages under `/app/tests/{resource}`.
+- Implemented wrappers:
+  - `getCars`
+  - `getTravelPacks`
+  - `getActivities`
+  - `getGallery`
+  - `getOurStory`
+  - `getAbout`
+  - `getContact`
+  - `getHome`
+- Tested caching strategies (SSG, ISR, SSR) with demo pages under `/app/tests/{resource}`:
+  - Cars → ISR (1m)
+  - Travel Packs → ISR (12h)
+  - Activities, Gallery, About, Contact → SSG
+  - Home, Our Story → SSR
 - Result: Scalable data layer with clean, reusable API interface.
 
 ---
 
 **Task 5.3 – Validation & Type Safety**
 
-- Defined TypeScript interfaces under `types/` (Car, GalleryItem, TravelPack, AboutPage, ContactPage, HomePage).
-- Added `lib/validators.ts` with validation functions (`validateCar`, `validateGallery`, ...).
+- Defined TypeScript interfaces under `types/` (Car, TravelPack, Activity, GalleryItem, StoryPage, AboutPage, ContactPage, HomePage).
+- Added `lib/validators.ts` with validation functions:
+  - `validateCar`
+  - `validateTravelPack`
+  - `validateActivity`
+  - `validateGalleryItem`
+  - `validateStoryPage`
+  - `validateAboutPage`
+  - `validateContactPage`
+  - `validateHomePage`
 - Connected validators to API wrappers (ensuring type safety).
-- Flow: JSON → API → fetchAPI<T> → Types → Validators → Pages.
+- Flow: **JSON → API → fetchAPI<T> → Types → Validators → Pages**.
 - Result: Strong type safety + validation before data reaches UI.
 
 ---

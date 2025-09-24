@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaBus } from "react-icons/fa"; // تقدر تبدلها بـ FaHiking ولا FaPlaneArrival...
+import { FaCarSide } from "react-icons/fa";
 import { Button } from "../atoms/Button";
 import { Car } from "@/types";
 
@@ -25,7 +25,7 @@ export default function CarCard({ car }: Props) {
       <ImageWrapper>
         <Image
           src={car.coverImage}
-          alt={car.metadata.alt}
+          alt={car.name}
           width={400}
           height={250}
           style={{ objectFit: "cover" }}
@@ -34,18 +34,22 @@ export default function CarCard({ car }: Props) {
 
       <Title>{car.name}</Title>
       <Description>{car.description}</Description>
-      <Price>{car.price}</Price>
+
+      {/* price اختياري */}
+      {car.price && <Price>{car.price}</Price>}
 
       <Specs>
         <SpecItem>{car.seats} seats</SpecItem>
         <SpecItem>{car.transmission}</SpecItem>
+        <SpecItem>{car.drive}</SpecItem>
+        <SpecItem>{car.luggage} luggage</SpecItem>
         <SpecItem>{car.fuel}</SpecItem>
       </Specs>
 
       <ActionWrapper>
         <Link href={`/cars/${car.id}`} passHref>
           <Button variant="primary">
-            <FaBus style={{ marginRight: "8px" }} />
+            <FaCarSide style={{ marginRight: "8px" }} />
             View Details
           </Button>
         </Link>

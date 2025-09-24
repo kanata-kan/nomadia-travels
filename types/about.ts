@@ -12,6 +12,6 @@ export interface AboutPage {
   id: string;
   heading: string;
   content: ContentBlock[];
-  team: TeamMember[];
+  team?: TeamMember[];
   metadata: Metadata;
 }

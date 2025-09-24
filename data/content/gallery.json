@@ -1,41 +1,54 @@
 [
   {
     "id": "gallery-1",
-    "title": "Mountain Adventures",
-    "description": "Discover the breathtaking mountains of Kyrgyzstan with guided tours.",
-    "coverImage": "/images/gallery/mountains-cover.jpg",
-    "images": [
-      "/images/gallery/mountains-1.jpg",
-      "/images/gallery/mountains-2.jpg",
-      "/images/gallery/mountains-3.jpg"
-    ],
-    "category": "Nature",
-
+    "title": "Issyk-Kul Lake",
+    "image": "/images/gallery/issyk-kul.jpg",
+    "caption": "Blue Paradise",
     "metadata": {
-      "title": "Mountain Adventures | Explore Kyrgyzstan",
-      "description": "Stunning gallery showcasing Kyrgyzstan's mountain landscapes.",
+      "title": "Issyk-Kul Lake | Gallery",
+      "description": "Breathtaking view of Issyk-Kul Lake in Kyrgyzstan.",
       "path": "/gallery/gallery-1",
-      "image": "/images/gallery/mountains-og.png",
-      "alt": "Kyrgyzstan mountain landscapes"
+      "image": "/images/gallery/issyk-kul.jpg",
+      "alt": "Scenic view of Issyk-Kul Lake"
     }
   },
   {
     "id": "gallery-2",
-    "title": "Local Culture",
-    "description": "Experience Kyrgyz traditions, crafts, and cultural heritage.",
-    "coverImage": "/images/gallery/culture-cover.jpg",
-    "images": [
-      "/images/gallery/culture-1.jpg",
-      "/images/gallery/culture-2.jpg"
-    ],
-    "category": "Culture",
-
+    "title": "Eagle Hunter",
+    "image": "/images/gallery/eagle-hunter.jpg",
+    "caption": "Nomadic Tradition",
     "metadata": {
-      "title": "Local Culture | Explore Kyrgyzstan",
-      "description": "Gallery showcasing Kyrgyz traditions and cultural life.",
+      "title": "Eagle Hunter | Gallery",
+      "description": "Traditional eagle hunting experience in Kyrgyzstan.",
       "path": "/gallery/gallery-2",
-      "image": "/images/gallery/culture-og.png",
-      "alt": "Traditional Kyrgyz cultural activities"
+      "image": "/images/gallery/eagle-hunter.jpg",
+      "alt": "Kyrgyz eagle hunter with his eagle"
+    }
+  },
+  {
+    "id": "gallery-3",
+    "title": "Song-Kul Yurt",
+    "image": "/images/gallery/song-kul-yurt.jpg",
+    "caption": "Nomad Life",
+    "metadata": {
+      "title": "Song-Kul Yurt | Gallery",
+      "description": "Authentic yurt experience at Song-Kul Lake.",
+      "path": "/gallery/gallery-3",
+      "image": "/images/gallery/song-kul-yurt.jpg",
+      "alt": "Yurt on the plains of Song-Kul Lake"
+    }
+  },
+  {
+    "id": "gallery-4",
+    "title": "Shaar Waterfall",
+    "image": "/images/gallery/shaar-waterfall.jpg",
+    "caption": "Nature’s Power",
+    "metadata": {
+      "title": "Shaar Waterfall | Gallery",
+      "description": "One of the highest waterfalls in Central Asia.",
+      "path": "/gallery/gallery-4",
+      "image": "/images/gallery/shaar-waterfall.jpg",
+      "alt": "Shaar waterfall in Kyrgyzstan"
     }
   }
 ]

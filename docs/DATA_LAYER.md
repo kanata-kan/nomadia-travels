@@ -17,114 +17,140 @@ It helps any engineer quickly understand the **flow, architecture, and contracts
 ## 2. Folder Structure
 
 ```yaml
-data/content/ → Raw JSON (cars, gallery, travel-packs, about, contact, home)
-app/api/\* → API Routes wrapping JSON (standard responses)
-lib/api.ts → fetchAPI<T>() + wrappers (getCars, getHome…)
-types/ → TypeScript interfaces (Car, TravelPack, …)
+data/content/ → Raw JSON
+(cars, travel-packs, activities, gallery, our-story, about, contact, home)
+app/api/* → API Routes wrapping JSON (standard responses)
+
+lib/api.ts → fetchAPI<T>() + wrappers (getCars, getActivities, getTravelPacks…)
+types/ → TypeScript interfaces
+
+(Car, TravelPack, Activity, GalleryItem, StoryPage, AboutPage, ContactPage…)
 lib/validators.ts → Validation logic (check required fields, metadata…)
+
 tests/ → Validation tests (valid/invalid cases)
 ```
 
----
-
 ## 3. Tasks Breakdown
 
-### **5.1 — JSON Schemas**
+5.1 — JSON Schemas
 
-```yaml
-- Defined schemas for all resources:
-  - `cars.json`, `gallery.json`, `travel-packs.json`, `about.json`, `contact.json`, `home.json`
-- Rule: JSON contains **content only**, SEO metadata handled separately.
-- Example (car):
+```ts
+//Defined schemas for all resources:
 
+cars.json
+travel-packs.json
+activities.json
+gallery.json
+our-story.json
+about.json
+contact.json
+services.json
+home.json
+Rule: JSON contains content only, SEO metadata handled separately.
+```
 
+## Example (activity):
+
+```json
 {
-  "id": "car-1",
-  "name": "Luxury SUV",
-  "description": "Comfortable SUV for mountain trips",
-  "coverImage": "/images/cars/suv.jpg",
-  "images": ["/images/cars/s1.jpg", "/images/cars/s2.jpg"],
-  "price": "80$/day",
-  "seats": 5,
-  "transmission": "Automatic",
-  "fuel": "Petrol"
+  "id": "activity-1",
+  "name": "Beshbarmak Cooking",
+  "description": "Learn to cook the national dish with locals.",
+  "coverImage": "/images/activities/beshbarmak.jpg",
+  "duration": "2h",
+  "metadata": {
+    "title": "Beshbarmak Cooking | Activities",
+    "description": "Hands-on workshop to cook Beshbarmak in Kyrgyzstan.",
+    "path": "/activities/activity-1",
+    "image": "/images/activities/beshbarmak.jpg",
+    "alt": "Tourist cooking Beshbarmak with locals"
+  }
 }
 ```
 
-### 5.2 — API Wrapper & Fetch
+## 5.2 — API Wrapper & Fetch
 
 Created API routes in /app/api/{resource}/route.ts returning:
 
 ```json
-{ "status": "success", "data": [...] }
+  { "status": "success", "data": [...] }
 ```
 
 ```ts
 Built fetchAPI<T>() inside lib/api.ts:
+```
 
 Supports SSR, SSG, ISR via options { cache, revalidate }.
-
 Added wrappers:
 
-getCars(), getGallery(), getTravelPacks(), getAbout(), getContact(), getHome().
+```ts
+getCars();
+//-----------
+getTravelPacks();
+//-----------
+getActivities();
+//-----------
+getGallery();
+//-----------
+getOurStory();
+//-----------
+getAbout();
+//-----------
+getContact();
+//-----------
+getHome();
+```
 
 Tested caching strategies:
 
+```ts
 Cars → ISR (1m)
 
 Travel Packs → ISR (12h)
 
-Gallery, About, Contact → SSG
-
-Home → SSR
+//Activities, Gallery, About, Contact → SSG
+//Home, Our Story → SSR
 ```
 
-5.3 — Validation & Type Safety
+## 5.3 — Validation & Type Safety
 
-Added types/ for each schema (Car, GalleryItem, …).
-
+```bash
+Added types/ for each schema (Car, TravelPack, Activity, GalleryItem, StoryPage…).
 Added validators.ts:
-
 Checks required fields (id, title, path, …).
-
-Ensures arrays not empty (images, features).
-
+Ensures arrays not empty (images, features, …).
 Confirms metadata exists (title, description, image, alt).
-
 Connected validators with wrappers inside lib/api.ts.
-
 Built tests (tests/data-validation.test.ts) for valid/invalid cases.
-
-4. Data Flow
-
-```css
- flowchart TD
- A[data/content/*.json] --> B[API Routes (/api/*)]
- B --> C[lib/api.ts<br/>fetchAPI<T>() + wrappers]
- C --> D[types/<br/>interfaces]
- C --> E[lib/validators.ts<br/>validate*()]
- D --> F[Pages (app/*)]
- E --> F[Pages (app/*)]
 ```
 
-Example Flow: getCars()
+## 4. Data Flow
+
+```bash
+flowchart TD
+  A[data/content/*.json] --> B[API Routes (/api/*)]
+  B --> C[lib/api.ts<br/>fetchAPI<T>() + wrappers]
+  C --> D[types/<br/>interfaces]
+  C --> E[lib/validators.ts<br/>validate*()]
+  D --> F[Pages (app/*)]
+  E --> F[Pages (app/*)]
+
+  Example Flow: getCars()
 
 fetchAPI<Car[]>("cars") → fetch JSON.
 Run validateCar() on each item.
 Return safe Car[] to the UI.
+```
 
-5. Engineering Wins
-   Consistency → unified response format.
+### 5. Engineering Wins
 
+Consistency → unified response format.
 Type Safety → TypeScript enforces schema.
 Validation → catch invalid data before UI.
 Scalability → swap JSON → CMS/DB with minimal changes.
 Clarity → any engineer can understand the flow in < 5 minutes.
 
-6. Status
-   ✅ Completed: Tasks 5.1 → 5.3
-   🔜 Next step: Integrate with real backend (Strapi / MongoDB).
+## 6. Status
 
-```
-
-```
+✅ Completed: Tasks 5.1 → 5.3
+🔜 Next step: Integrate with real backend (Strapi / MongoDB).
