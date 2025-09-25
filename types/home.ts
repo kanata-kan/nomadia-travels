@@ -15,6 +15,8 @@ export interface Hero {
   heroImage: string;
   ctaText: string;
   ctaLink: string;
+  align?: "center" | "left" | "right";
+  overlay?: "dark" | "light" | "auto";
 }
 
 export interface HomePage {

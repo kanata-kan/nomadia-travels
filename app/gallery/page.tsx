@@ -1,15 +1,19 @@
 // app/gallery/page.tsx
-export const dynamic = "force-static";
-
 import { getGallery } from "@/lib/api";
+import GallerySection from "@/components/ui/sections/GallerySection";
+import { getMetadataStatic } from "@/lib/metadata/static";
+
+// Static Metadata
+export const metadata = getMetadataStatic({
+  title: "Gallery | Explore Kyrgyzstan",
+  description: "Discover the beauty of Kyrgyzstan through curated images.",
+  path: "/gallery",
+  image: "/og-gallery.png",
+});
+
+export const revalidate = 43200;
 
 export default async function GalleryPage() {
-  const gallery = await getGallery({ cache: "force-cache" });
-  return (
-    <ul>
-      {gallery.map((item: any) => (
-        <li key={item.id}>{item.title}</li>
-      ))}
-    </ul>
-  );
+  const items = await getGallery({ revalidate: 43200 });
+  return <GallerySection items={items} />;
 }

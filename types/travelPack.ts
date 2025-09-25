@@ -5,9 +5,10 @@ export interface TravelPack {
   name: string;
   description: string;
   coverImage: string;
-  images: string[];
-  price: string;
-  duration: string;
   features: string[];
+  ctaLabel: string;
+  duration?: string | null;
+  price?: string | null;
+  images?: string[]; // ✅ رجعناها optional
   metadata: Metadata;
 }

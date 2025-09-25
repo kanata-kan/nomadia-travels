@@ -1,5 +1,5 @@
 import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
-import Footer from "@/components/ui/Footer/Footer";
+import Footer from "@/components/ui/sections/Footer/Footer";
 import Navbar from "@/components/ui/Navbar";
 import { ThemeProviderCustom } from "@/hooks/useThemeToggle";
 import { baseMetadata } from "@/lib/metadata/base";

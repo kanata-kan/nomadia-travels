@@ -1,0 +1,53 @@
+[
+  {
+    "id": "activity-1",
+    "name": "Beshbarmak Cooking Class",
+    "description": "Learn how to prepare Beshbarmak, the national Kyrgyz dish, in a cozy guest house setting.",
+    "coverImage": "/images/activities/beshbarmak.jpg",
+    "duration": "1.5 hours",
+    "location": "Naryn Oblast Historical Museum / Guest House",
+    "groupSize": "4+ participants (or 1 on request)",
+    "price": "12€/person",
+    "metadata": {
+      "title": "Beshbarmak Cooking Class",
+      "description": "Discover Kyrgyz cuisine by learning how to cook Beshbarmak with locals.",
+      "path": "/activities/activity-1",
+      "image": "/images/activities/beshbarmak.jpg",
+      "alt": "Cooking class preparing Beshbarmak in Kyrgyzstan"
+    }
+  },
+  {
+    "id": "activity-2",
+    "name": "Eagle Hunting Show",
+    "description": "Experience the ancient art of eagle hunting, a proud tradition of nomadic culture.",
+    "coverImage": "/images/activities/eagle-hunting.jpg",
+    "duration": "1.5 hours",
+    "location": "Alysh village, near Salkyn Tor mountain",
+    "groupSize": "2+ participants",
+    "price": "45€/person",
+    "metadata": {
+      "title": "Eagle Hunting Show",
+      "description": "Watch a traditional eagle hunting demonstration in the Kyrgyz mountains.",
+      "path": "/activities/activity-2",
+      "image": "/images/activities/eagle-hunting.jpg",
+      "alt": "Nomad eagle hunter with eagle on arm in Kyrgyzstan"
+    }
+  },
+  {
+    "id": "activity-3",
+    "name": "Shaar Waterfall Horse Trek",
+    "description": "Ride through mountain trails to Kyrgyzstan's tallest waterfall on horseback.",
+    "coverImage": "/images/activities/shaar-waterfall.jpg",
+    "duration": "Full day",
+    "location": "Shaar Waterfall trail (Naryn Region)",
+    "groupSize": "2–6 participants",
+    "price": "90€/person",
+    "metadata": {
+      "title": "Shaar Waterfall Horse Trek",
+      "description": "Full-day horse trek to Shaar Waterfall, the highest waterfall in Kyrgyzstan.",
+      "path": "/activities/activity-3",
+      "image": "/images/activities/shaar-waterfall.jpg",
+      "alt": "Horse trek to Shaar Waterfall in Kyrgyzstan"
+    }
+  }
+]

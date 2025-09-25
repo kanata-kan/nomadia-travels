@@ -9,7 +9,10 @@ declare module "styled-components" {
       accent: string;
       background: string;
       surface: string;
+      surfaceAlt: string;
+
       danger: string;
+      heroText: string;
       text: {
         primary: string;
         secondary: string;
@@ -29,6 +32,39 @@ declare module "styled-components" {
       sm: string;
       md: string;
       lg: string;
+      xl: string;
+      "2xl": string;
+      "3xl": string;
+      full: string;
+    };
+    breakpoints: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      "2xl": string;
+    };
+    layout: {
+      container: {
+        padding: {
+          mobile: string;
+          md: string;
+          lg: string;
+        };
+        maxWidth: {
+          md: string;
+          lg: string;
+          xl: string;
+          "2xl": string;
+        };
+      };
+      section: {
+        spacing: {
+          tight: { mobile: string; md: string; lg: string };
+          default: { mobile: string; md: string; lg: string };
+          loose: { mobile: string; md: string; lg: string };
+        };
+      };
     };
   }
 }
