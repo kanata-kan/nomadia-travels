@@ -3,7 +3,7 @@ export const revalidate = 60; // ISR كل دقيقة
 import { getCars } from "@/lib/api";
 
 export default async function CarsPage() {
-  const cars = await getCars({ revalidate: 60 });
+  const cars = await getCars({ revalidate: 1000 });
 
   return (
     <ul>

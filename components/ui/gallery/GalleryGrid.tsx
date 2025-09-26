@@ -1,3 +1,4 @@
+// File: components/ui/gallery/GalleryGrid.tsx
 "use client";
 
 import { useState } from "react";

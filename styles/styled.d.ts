@@ -65,6 +65,13 @@ declare module "styled-components" {
           loose: { mobile: string; md: string; lg: string };
         };
       };
+      nav: {
+        height: {
+          sm: string;
+          md: string;
+          lg: string;
+        };
+      };
     };
   }
 }

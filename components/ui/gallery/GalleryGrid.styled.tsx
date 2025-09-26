@@ -1,3 +1,4 @@
+// components/ui/gallery/GalleryGrid.styled.tsx
 "use client";
 import styled from "styled-components";
 

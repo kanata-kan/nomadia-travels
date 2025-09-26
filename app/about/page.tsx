@@ -1,19 +1,23 @@
-export const revalidate = 3600;
-
+// app/about/page.tsx
+// This is the About page of the website.
+// app/about/page.tsx
+import AboutSection from "@/components/ui/skeleton/AboutSection";
 import { getAbout } from "@/lib/api";
+import { getMetadataStatic } from "@/lib/metadata/static";
+
+// ✅ Static Metadata
+export const metadata = getMetadataStatic({
+  title: "Our Story | Explore Kyrgyzstan",
+  description:
+    "Learn how Explore Kyrgyzstan by Rent & Ride began and why we are passionate about authentic travel.",
+  path: "/about",
+  image: "/images/about-og.png",
+});
+
+export const revalidate = 3600;
 
 export default async function AboutPage() {
   const about = await getAbout({ revalidate: 3600 });
 
-  return (
-    <main style={{ padding: "2rem" }}>
-      <h1>{about.heading}</h1>
-      {about.content.map((block, i) => {
-        if (block.type === "paragraph") return <p key={i}>{block.text}</p>;
-        if (block.type === "heading")
-          return <blockquote key={i}>{block.text}</blockquote>;
-        return null;
-      })}
-    </main>
-  );
+  return <AboutSection about={about} />;
 }
