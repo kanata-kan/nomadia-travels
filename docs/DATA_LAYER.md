@@ -18,13 +18,13 @@ It helps any engineer quickly understand the **flow, architecture, and contracts
 
 ```yaml
 data/content/ → Raw JSON
-(cars, travel-packs, activities, gallery, our-story, about, contact, home)
+(cars, travel-packs, activities, gallery, our-story, contact, home)
 app/api/* → API Routes wrapping JSON (standard responses)
 
 lib/api.ts → fetchAPI<T>() + wrappers (getCars, getActivities, getTravelPacks…)
 types/ → TypeScript interfaces
 
-(Car, TravelPack, Activity, GalleryItem, StoryPage, AboutPage, ContactPage…)
+(Car, TravelPack, Activity, GalleryItem, StoryPage, ContactPage…)
 lib/validators.ts → Validation logic (check required fields, metadata…)
 
 tests/ → Validation tests (valid/invalid cases)
@@ -42,7 +42,6 @@ travel-packs.json
 activities.json
 gallery.json
 our-story.json
-about.json
 contact.json
 services.json
 home.json
@@ -94,8 +93,6 @@ getGallery();
 //-----------
 getOurStory();
 //-----------
-getAbout();
-//-----------
 getContact();
 //-----------
 getHome();
@@ -108,7 +105,7 @@ Cars → ISR (1m)
 
 Travel Packs → ISR (12h)
 
-//Activities, Gallery, About, Contact → SSG
+//Activities, Gallery, Contact → SSG
 //Home, Our Story → SSR
 ```
 

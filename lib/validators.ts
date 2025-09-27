@@ -3,7 +3,6 @@ import {
   Car,
   GalleryItem,
   TravelPack,
-  AboutPage,
   ContactPage,
   HomePage,
   Activity,
@@ -38,8 +37,10 @@ export function validateCar(car: Car): boolean {
       "drive",
       "luggage",
       "fuel",
+      "currency", // Added for new structure
+      "unit", // Added for new structure
     ]) &&
-    (car.price === undefined || typeof car.price === "string") &&
+    typeof car.price === "number" && // Ensure price is a number
     (car.images === undefined ||
       (Array.isArray(car.images) && car.images.length >= 2)) &&
     validateMetadata(car.metadata)
@@ -71,19 +72,6 @@ export function validateTravelPack(pack: TravelPack): boolean {
     Array.isArray(pack.features) &&
     pack.features.length > 0 &&
     validateMetadata(pack.metadata)
-  );
-}
-
-// ---- About ---- //
-export function validateAboutPage(page: AboutPage): boolean {
-  return !!(
-    hasValues(page, ["id", "heading"]) &&
-    Array.isArray(page.content) &&
-    Array.isArray(page.team) &&
-    page.team.every((member) =>
-      hasValues(member, ["id", "name", "role", "bio", "image"]),
-    ) &&
-    validateMetadata(page.metadata)
   );
 }
 

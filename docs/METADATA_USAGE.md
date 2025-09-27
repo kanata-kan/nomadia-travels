@@ -15,22 +15,22 @@ It is designed to help any engineer quickly understand **where to place metadata
 
 ## 2. Static Pages Example
 
-For pages with **fixed content** (About, Contact, Gallery, etc.), use `getMetadataStatic`.
+For pages with **fixed content** (Contact, Gallery, etc.), use `getMetadataStatic`.
 
 ```ts
-// app/about/page.tsx
+// app/contact/page.tsx
 import { getMetadataStatic } from "@/lib/metadata";
 
 export const metadata = getMetadataStatic({
-  title: "About Us",
+  title: "Contact Us",
   description:
-    "Learn more about Nomadia Travels and our mission to promote Kyrgyzstan tourism.",
-  path: "/about",
-  image: "/og-about.png",
+    "Get in touch with Nomadia Travels for inquiries and bookings.",
+  path: "/contact",
+  image: "/og-contact.png",
 });
 
-export default function AboutPage() {
-  return <h1>About Nomadia Travels</h1>;
+export default function ContactPage() {
+  return <h1>Contact Nomadia Travels</h1>;
 }
 ```
 
@@ -76,7 +76,7 @@ Always include:
 title → Unique & clear.
 description → Short, < 160 characters.
 image → Open Graph image (1200x630).
-path → Relative path of the page (/about, /cars/:id, etc.).
+path → Relative path of the page (/contact, /cars/:id, etc.).
 
 ## 5. SEO Best Practices
 

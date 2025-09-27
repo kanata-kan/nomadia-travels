@@ -6,7 +6,9 @@ export interface Car {
   description: string;
   coverImage: string;
   images?: string[]; // optional for now
-  price?: string | null; // optional in MVP
+  price: number; // updated to number
+  currency: string; // added for currency
+  unit: string; // added for unit (e.g., day, week)
   seats: number;
   transmission: string;
   drive: string; // e.g., "4x4", "AWD", "2WD"

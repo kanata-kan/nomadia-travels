@@ -1,5 +1,5 @@
-// app/tests/home/page.tsx
-export const dynamic = "force-dynamic"; // Explicit SSR
+// app/page.tsx
+export const dynamic = "force-dynamic"; // this page will always be server-side rendered
 
 import HeroSection from "@/components/ui/molecules/Hero";
 import CarsSection from "@/components/ui/sections/CarsSection";
@@ -14,7 +14,7 @@ export default async function HomePage() {
     <main>
       <HeroSection {...home.hero} />
       <ServicesSectionServer />
-      <CarsSection cars={cars.slice(0, 3)} />
+      <CarsSection cars={cars.slice(0, 3)} context="home" />
     </main>
   );
 }

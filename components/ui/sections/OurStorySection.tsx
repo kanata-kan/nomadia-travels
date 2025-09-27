@@ -2,8 +2,8 @@
 
 import { Container } from "../foundation/Container.styled";
 import { Heading, Text } from "../atoms";
-import { AboutPage } from "@/types";
-import { SectionWrapperImage } from "../sections/SectionWrapper.styled";
+import { OurStoryPage } from "@/types";
+import { SectionWrapperImage } from "./SectionWrapper.styled";
 
 type Block = {
   type: string;
@@ -11,18 +11,18 @@ type Block = {
 };
 
 type Props = {
-  about: AboutPage;
+  ourStory: OurStoryPage;
 };
 
-export default function AboutSection({ about }: Props) {
+export default function OurStorySection({ ourStory }: Props) {
   return (
     <SectionWrapperImage
       $variant="loose"
-      $bgImage="/images/about/heroAbout.png"
+      $bgImage="/images/our-story/our-story-bg.png"
     >
       <Container>
-        <Heading>{about.heading}</Heading>
-        {about.content.map((block, i) => {
+        <Heading>{ourStory.heading}</Heading>
+        {ourStory.content.map((block, i) => {
           if (block.type === "paragraph")
             return <Text key={i}>{block.text}</Text>;
           if (block.type === "heading")

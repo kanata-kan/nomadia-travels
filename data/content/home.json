@@ -30,13 +30,6 @@
       "limit": 6,
       "linkText": "View Full Gallery",
       "link": "/gallery"
-    },
-    {
-      "id": "about-preview",
-      "heading": "Who We Are",
-      "description": "Get to know more about Nomadia Travels and our mission.",
-      "linkText": "Learn More",
-      "link": "/about"
     }
   ],
 

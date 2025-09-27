@@ -8,7 +8,8 @@ export const Card = styled.div`
   border-radius: ${({ theme }) => theme.radii.lg};
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
+  min-height: 420px;
 
   &:hover {
     transform: translateY(-6px);
@@ -46,6 +47,7 @@ export const Description = styled.p`
   color: ${({ theme }) => theme.colors.text.secondary};
   margin: 0 ${({ theme }) => theme.spacing.md};
   min-height: 45px;
+  flex-grow: 1;
 `;
 
 export const Price = styled.p`

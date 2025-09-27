@@ -1,48 +1,35 @@
-import { getCars } from "@/lib/api";
-import Image from "next/image";
+// app/cars/[id]/page.tsx
+import { notFound } from "next/navigation";
+import { getCarById } from "@/lib/api";
+import CarDetailsSection from "@/components/ui/sections/CarDetailsSection";
+import { getMetadataDynamic } from "@/lib/metadata/dynamic";
 
-type CarDetailsPageProps = {
-  params: Promise<{ id: string }>; // ✅ mark as Promise
-};
+type Props = { params: Promise<{ id: string }> };
 
-// ✅ Generate static params for SSG
-export async function generateStaticParams() {
-  const cars = await getCars();
-  return cars.map((car) => ({
-    id: car.id,
-  }));
-}
-
-export default async function CarDetailsPage({ params }: CarDetailsPageProps) {
-  // ✅ unwrap params
+export default async function CarDetailsPage({ params }: Props) {
   const { id } = await params;
 
-  const cars = await getCars();
-  const car = cars.find((c) => c.id === id);
+  const car = await getCarById(id);
+  if (!car) return notFound();
 
-  if (!car) return <h1>Car not found</h1>;
+  return <CarDetailsSection car={car} />;
+}
 
-  return (
-    <main style={{ maxWidth: "800px", margin: "0 auto", padding: "2rem" }}>
-      <h1>{car.name}</h1>
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  // ⬅️ حتى هنا خاص await
+  const { id } = await params;
 
-      <Image
-        src={car.coverImage}
-        alt={car.name}
-        width={700}
-        height={400}
-        style={{ objectFit: "cover", borderRadius: "8px" }}
-        priority
-      />
+  const car = await getCarById(id);
+  if (!car) return {};
 
-      <p style={{ marginTop: "1rem" }}>{car.description}</p>
-      <p style={{ fontWeight: "600", color: "orange" }}>{car.price}</p>
-
-      <ul style={{ marginTop: "1rem", paddingLeft: "1.2rem" }}>
-        <li>{car.seats} seats</li>
-        <li>{car.transmission}</li>
-        <li>{car.fuel}</li>
-      </ul>
-    </main>
-  );
+  return getMetadataDynamic({
+    name: car.name,
+    description: car.description,
+    image: car.coverImage,
+    path: `/cars/${id}`,
+  });
 }

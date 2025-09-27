@@ -54,14 +54,6 @@ export default function Footer() {
         </BrandCol>
 
         {/* Links */}
-        <LinksCol>
-          <h4>Company</h4>
-          {footerLinks.company.map((l) => (
-            <Link key={l.href} href={l.href}>
-              {l.label}
-            </Link>
-          ))}
-        </LinksCol>
 
         <LinksCol>
           <h4>Support</h4>

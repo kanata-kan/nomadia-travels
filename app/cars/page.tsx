@@ -1,17 +1,17 @@
 // app/cars/page.tsx
-export const revalidate = 60; // ISR كل دقيقة
-import { getCars } from "@/lib/api";
+import CarsList from "./CarsList";
+import { getMetadataStatic } from "@/lib/metadata/static";
 
-export default async function CarsPage() {
-  const cars = await getCars({ revalidate: 1000 });
+export const metadata = getMetadataStatic({
+  title: "All Cars",
+  description: "Browse all available cars for your Kyrgyzstan adventure.",
+  path: "/cars",
+});
 
+export default function CarsPage() {
   return (
-    <ul>
-      {cars.map((c: any) => (
-        <li key={c.id}>
-          {c.name} — {c.price}
-        </li>
-      ))}
-    </ul>
+    <main>
+      <CarsList />
+    </main>
   );
 }

@@ -3,7 +3,6 @@ import {
   Car,
   GalleryItem,
   TravelPack,
-  AboutPage,
   ContactPage,
   HomePage,
   Activity,
@@ -14,7 +13,6 @@ import {
   validateCar,
   validateGalleryItem,
   validateTravelPack,
-  validateAboutPage,
   validateContactPage,
   validateHomePage,
   validateService,
@@ -62,7 +60,12 @@ export async function fetchAPI<T>(
 // ---- Wrappers with Validation ---- //
 export async function getCars(options?: FetchOptions): Promise<Car[]> {
   const data = await fetchAPI<Car[]>("cars", options);
-  return data.filter(validateCar);
+  return data
+    .map((car) => ({
+      ...car,
+      price: Number(car.price), // Ensure price is a number
+    }))
+    .filter(validateCar);
 }
 
 export async function getGallery(
@@ -77,12 +80,6 @@ export async function getTravelPacks(
 ): Promise<TravelPack[]> {
   const data = await fetchAPI<TravelPack[]>("travel-packs", options);
   return data.filter(validateTravelPack);
-}
-
-export async function getAbout(options?: FetchOptions): Promise<AboutPage> {
-  const data = await fetchAPI<AboutPage>("about", options);
-  if (!validateAboutPage(data)) throw new Error("Invalid about.json data");
-  return data;
 }
 
 export async function getContact(options?: FetchOptions): Promise<ContactPage> {
@@ -116,4 +113,12 @@ export async function getOurStory(
   if (!validateOurStoryPage(data))
     throw new Error("Invalid our-story.json data");
   return data;
+}
+
+export async function getCarById(
+  id: string,
+  options?: FetchOptions,
+): Promise<Car | null> {
+  const cars = await getCars(options);
+  return cars.find((car) => car.id === id) || null;
 }
