@@ -140,3 +140,11 @@ export async function getGalleryItemById(
   const galleryItems = await getGallery(options);
   return galleryItems.find((item) => item.id === id) || null;
 }
+
+export async function getActivityById(
+  id: string,
+  options?: FetchOptions,
+): Promise<Activity | null> {
+  const activities = await getActivities(options);
+  return activities.find((activity) => activity.id === id) || null;
+}

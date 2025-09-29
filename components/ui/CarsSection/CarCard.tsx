@@ -7,7 +7,7 @@ import { FaCarSide } from "react-icons/fa";
 import { Button } from "../atoms/Button";
 import { Car } from "@/types";
 import {
-  Card,
+  StyledCard,
   ImageWrapper,
   Title,
   Description,
@@ -15,6 +15,7 @@ import {
   Specs,
   SpecItem,
   ActionWrapper,
+  ButtonWrapper,
 } from "./CarCard.styled";
 
 type Props = {
@@ -46,7 +47,7 @@ export default function CarCard({
   );
 
   return (
-    <Card>
+    <StyledCard>
       {imageHref ? (
         <Link href={imageHref} aria-label={`View cars`}>
           {ImageBlock}
@@ -82,6 +83,6 @@ export default function CarCard({
           </Link>
         </ActionWrapper>
       )}
-    </Card>
+    </StyledCard>
   );
 }

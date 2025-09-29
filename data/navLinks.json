@@ -4,5 +4,6 @@
   { "label": "Cars", "href": "/cars" },
   { "label": "Gallery", "href": "/gallery" },
   { "label": "Our Story", "href": "/our-story" },
+  { "label": "activities", "href": "/activities" },
   { "label": "Contact", "href": "/contact" }
 ]

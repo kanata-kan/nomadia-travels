@@ -24,14 +24,14 @@ export const Card = styled.div`
 export const IconWrapper = styled.div`
   font-size: 2.5rem;
   margin-bottom: ${({ theme }) => theme.spacing.md};
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.accent};
 `;
 
 export const Title = styled.h3`
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: ${({ theme }) => theme.spacing.sm};
-  color: ${({ theme }) => theme.colors.heroText};
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Description = styled.p`

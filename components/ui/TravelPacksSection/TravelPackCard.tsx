@@ -29,7 +29,7 @@ export default function TravelPackCard({
           alt={pack.name}
           width={300} // Replace with appropriate width
           height={200} // Replace with appropriate height
-          layout="responsive" // Adjust layout as needed
+          style={{ objectFit: "cover" }} // Adjust styling as needed
         />
       </ImageWrapper>
       <Content>

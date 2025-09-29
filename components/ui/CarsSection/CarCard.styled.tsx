@@ -1,19 +1,32 @@
 "use client";
 import styled from "styled-components";
+import { Card } from "../foundation/Card.styled";
+import { darken } from "@/lib/colorUtils";
 
-export const Card = styled.div`
+export const StyledCard = styled(Card)`
+  position: relative;
   display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.colors.surface};
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border: none;
   border-radius: ${({ theme }) => theme.radii.lg};
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: all 0.3s ease;
-  min-height: 420px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  height: 600px;
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px ${({ theme }) => darken("rgba(0, 0, 0, 0.1)", 0.1)};
+  }
+
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 0 6px 15px ${({ theme }) => darken("rgba(0, 0, 0, 0.1)", 0.2)};
   }
 `;
 
@@ -39,7 +52,7 @@ export const Title = styled.h3`
   font-size: 1.3rem;
   font-weight: 700;
   margin: ${({ theme }) => theme.spacing.md};
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const Description = styled.p`
@@ -71,7 +84,7 @@ export const SpecItem = styled.li`
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
   border-radius: ${({ theme }) => theme.radii.sm};
   font-size: 0.85rem;
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.accent};
   border: 1px solid ${({ theme }) => theme.colors.divider};
 `;
 
@@ -80,4 +93,16 @@ export const ActionWrapper = styled.div`
   margin-top: auto;
   display: flex;
   justify-content: center;
+`;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+
+  a {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
 `;
