@@ -1,11 +1,11 @@
 // components/ui/sections/GallerySection.tsx
 "use client";
 
-import { SectionWrapper } from "./SectionWrapper.styled";
 import { Container } from "../foundation/Container.styled";
 import { Title, Subtitle } from "../atoms";
-import GalleryGrid from "../gallery/GalleryGrid";
 import { GalleryItem } from "@/types";
+import { SectionWrapper } from "../foundation/SectionWrapper.styled";
+import GalleryGrid from "./GalleryGrid";
 
 type Props = {
   items: GalleryItem[];

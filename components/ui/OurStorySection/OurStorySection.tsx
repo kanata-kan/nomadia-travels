@@ -3,7 +3,7 @@
 import { Container } from "../foundation/Container.styled";
 import { Heading, Text } from "../atoms";
 import { OurStoryPage } from "@/types";
-import { SectionWrapperImage } from "./SectionWrapper.styled";
+import { SectionWrapperImage } from "../foundation/SectionWrapper.styled";
 
 type Block = {
   type: string;

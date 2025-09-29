@@ -151,3 +151,7 @@ Clarity → any engineer can understand the flow in < 5 minutes.
 
 ✅ Completed: Tasks 5.1 → 5.3
 🔜 Next step: Integrate with real backend (Strapi / MongoDB).
+
+---
+
+# Updated to include the latest data flow and validation logic for new features like Travel Packs and Gallery

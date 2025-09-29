@@ -5,7 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Grid, Tile, Caption, Title, Sub, Overlay } from "./GalleryGrid.styled";
 import { GalleryItem } from "@/types";
-import Lightbox from "./Lightbox";
+import Lightbox from "../molecules/Lightbox";
 
 type Props = {
   items: GalleryItem[];

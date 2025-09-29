@@ -92,3 +92,7 @@ Client components consume props.theme.
 ```
 
 ✅ With this schema, any engineer can build new UI components following project-wide design rules, without digging into internal theme files.
+
+---
+
+# Updated to include new tokens and their usage in the project

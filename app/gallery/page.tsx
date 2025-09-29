@@ -1,6 +1,6 @@
 // app/gallery/page.tsx
+import GallerySection from "@/components/ui/GallerySection/GallerySection";
 import { getGallery } from "@/lib/api";
-import GallerySection from "@/components/ui/sections/GallerySection";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
 // Static Metadata

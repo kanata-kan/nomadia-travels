@@ -1,6 +1,6 @@
 // 📂 app/gallery/loading.tsx
-import { SectionWrapper } from "@/components/ui/sections/SectionWrapper.styled";
 import { Container } from "@/components/ui/foundation/Container.styled";
+import { SectionWrapper } from "@/components/ui/foundation/SectionWrapper.styled";
 import { Skeleton } from "@/components/ui/skeleton/Skeleton";
 
 export default function Loading() {

@@ -5,11 +5,13 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
       primary: string;
+      primaryHover: string; // Added hover state for primary
       secondary: string;
       accent: string;
       background: string;
       surface: string;
       surfaceAlt: string;
+      overlay?: string;
 
       danger: string;
       heroText: string;

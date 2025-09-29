@@ -1,6 +1,6 @@
 export const dynamic = "force-static";
 
-import OurStorySection from "@/components/ui/sections/OurStorySection";
+import OurStorySection from "@/components/ui/OurStorySection/OurStorySection";
 import { getOurStory } from "@/lib/api";
 import { getMetadataStatic } from "@/lib/metadata/static";
 

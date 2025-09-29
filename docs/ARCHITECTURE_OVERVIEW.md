@@ -83,3 +83,23 @@ It’s designed for onboarding: helping new engineers quickly understand where t
 - **Onboarding clarity:** Any engineer can locate theme, metadata, or UI components quickly.
 
 ---
+
+## ✈️ New Features
+
+### 1. `travel-packs/`
+
+- **Role:** Manage and display travel packs.
+- **Contains:**
+  - `TravelPackCard.tsx` → Component to display individual travel pack.
+  - `TravelPackList.tsx` → Component to list all travel packs.
+- **Philosophy:** Modular components for displaying travel-related information.
+
+### 2. `gallery/`
+
+- **Role:** Showcase images and videos.
+- **Contains:**
+  - `Gallery.tsx` → Main gallery component.
+  - `GalleryItem.tsx` → Individual item in the gallery.
+- **Philosophy:** Dedicated space for media, separate from other content.
+
+---

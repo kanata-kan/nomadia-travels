@@ -57,22 +57,27 @@ export function validateGalleryItem(item: GalleryItem): boolean {
 
 // ---- Travel Packs ---- //
 export function validateTravelPack(pack: TravelPack): boolean {
-  return !!(
+  const isValid = !!(
     hasValues(pack, [
       "id",
       "name",
       "description",
       "coverImage",
-      "price",
-      "duration",
+      "ctaLabel",
+      "metadata",
     ]) &&
-    // images: optional في الـMVP، إذا كاينة خاص تكون Array وبها 2+
-    (pack.images === undefined ||
-      (Array.isArray(pack.images) && pack.images.length >= 2)) &&
+    // Ensure features is a non-empty array
     Array.isArray(pack.features) &&
     pack.features.length > 0 &&
+    // Validate metadata
     validateMetadata(pack.metadata)
   );
+
+  if (!isValid) {
+    console.warn("Invalid TravelPack:", pack);
+  }
+
+  return isValid;
 }
 
 // ---- Contact ---- //

@@ -9,6 +9,7 @@
 // =========================================
 
 import styled, { keyframes, css } from "styled-components";
+import { darken } from "polished";
 
 // ---------- Helpers ----------
 /** Safe getter with fallback to avoid undefined theme tokens */
@@ -87,12 +88,15 @@ export const StatusBtn = styled.button<{ fullWidth?: boolean }>`
       width: 100%;
     `}
 
-  /* Subtle hover/active states without hard-coding colors */
   &:hover {
-    filter: brightness(0.98);
+    background: ${(p) =>
+      darken(0.02, token(p.theme?.colors?.surface, "#F9FAFB"))};
   }
+
   &:active {
-    filter: brightness(0.96);
+    background: ${(p) =>
+      darken(0.04, token(p.theme?.colors?.surface, "#F9FAFB"))};
+    transform: scale(0.98);
   }
 `;
 
@@ -141,7 +145,12 @@ export const LinkLike = styled.a`
   cursor: pointer;
 
   &:hover {
-    opacity: 0.9;
+    color: ${(p) => darken(0.1, token(p.theme?.colors?.primary, "#F97316"))};
+  }
+
+  &:active {
+    color: ${(p) => darken(0.2, token(p.theme?.colors?.primary, "#F97316"))};
+    transform: scale(0.95);
   }
 `;
 

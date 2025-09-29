@@ -79,7 +79,9 @@ export async function getTravelPacks(
   options?: FetchOptions,
 ): Promise<TravelPack[]> {
   const data = await fetchAPI<TravelPack[]>("travel-packs", options);
-  return data.filter(validateTravelPack);
+  const validPacks = data.filter(validateTravelPack);
+
+  return validPacks;
 }
 
 export async function getContact(options?: FetchOptions): Promise<ContactPage> {
@@ -121,4 +123,20 @@ export async function getCarById(
 ): Promise<Car | null> {
   const cars = await getCars(options);
   return cars.find((car) => car.id === id) || null;
+}
+
+export async function getTravelPackById(
+  id: string,
+  options?: FetchOptions,
+): Promise<TravelPack | null> {
+  const travelPacks = await getTravelPacks(options);
+  return travelPacks.find((pack) => pack.id === id) || null;
+}
+
+export async function getGalleryItemById(
+  id: string,
+  options?: FetchOptions,
+): Promise<GalleryItem | null> {
+  const galleryItems = await getGallery(options);
+  return galleryItems.find((item) => item.id === id) || null;
 }

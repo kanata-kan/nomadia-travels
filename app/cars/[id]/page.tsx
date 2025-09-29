@@ -1,8 +1,8 @@
 // app/cars/[id]/page.tsx
 import { notFound } from "next/navigation";
 import { getCarById } from "@/lib/api";
-import CarDetailsSection from "@/components/ui/sections/CarDetailsSection";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
+import CarDetailsSection from "@/components/ui/CarsSection/CarDetailsSection";
 
 type Props = { params: Promise<{ id: string }> };
 

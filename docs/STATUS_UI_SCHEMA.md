@@ -11,6 +11,7 @@ app/
   loading.tsx      → <Spinner/>         (server)
   error.tsx        → <ErrorState/>      (client)
   not-found.tsx    → <NotFoundState/>   (server)
+  maintenance.tsx  → <MaintenanceState/> (client)
 
 components/ui/status/  (all are "use client")
   status.styles.ts   → theme tokens → UI
@@ -18,6 +19,7 @@ components/ui/status/  (all are "use client")
   Spinner.tsx        → aria-busy loader
   ErrorState.tsx     → message + Try again (reset)
   NotFoundState.tsx  → Go Home link
+  MaintenanceState.tsx→ maintenance message
   index.ts           → barrel exports
 ```
 
@@ -26,6 +28,7 @@ components/ui/status/  (all are "use client")
 - **loading.tsx**: Suspense fallback; no fetching.
 - **error.tsx**: Global Error Boundary; calls `reset()`.
 - **not-found.tsx**: Global 404 (triggered via `notFound()`).
+- **maintenance.tsx**: Global maintenance mode message.
 - **status.styles.ts**: styled-components bound to theme tokens.
 - **StatusLayout**: unified shell (title/desc/actions).
 
@@ -65,6 +68,11 @@ export default function GlobalError({ error, reset }:{error:Error;reset:()=>void
 // app/not-found.tsx
 import { NotFoundState } from "@/components/ui/status";
 export default function NotFound(){ return <NotFoundState/> }
+
+// app/maintenance.tsx
+"use client";
+import { MaintenanceState } from "@/components/ui/status";
+export default function Maintenance(){ return <MaintenanceState/> }
 ```
 
 ## 7) Testing (3 quick checks)
@@ -72,6 +80,7 @@ export default function NotFound(){ return <NotFoundState/> }
 1. **Loading**: add `await new Promise(r=>setTimeout(r,1500))` in a page → spinner shows then hides.
 2. **Error**: `if (sp.fail==='1') throw new Error()` and visit `?fail=1` → Error page + **Try again**.
 3. **404**: open `/xyz` or call `notFound()` in a loader → Not-Found page.
+4. **Maintenance**: toggle maintenance mode → shows maintenance message.
 
 ## 8) Pitfalls (avoid)
 
@@ -94,6 +103,7 @@ If you want a **tiny ASCII diagram** at the top of the file, add:
 app/loading  → <Spinner>
 app/error    → <ErrorState reset()>
 app/not-found→ <NotFoundState>
-        ▲               ▲               ▲
+app/maintenance→ <MaintenanceState>
+        ▲               ▲               ▲               ▲
         └── components/ui/status (client, theme-aware)
 ```

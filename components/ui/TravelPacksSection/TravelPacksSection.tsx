@@ -1,30 +1,30 @@
-// components/ui/sections/CarsSection.tsx
+// components/ui/sections/TravelPacksSection.tsx
 "use client";
 
 import Link from "next/link";
-import { SectionWrapper } from "./SectionWrapper.styled";
-import { Container } from "../foundation/Container.styled";
-import { Grid } from "../foundation/Grid.styled";
-import CarCard from "../molecules/CarCard";
-import { Car } from "@/types";
-import { Subtitle, Title } from "../atoms";
+import { Container } from "@/components/ui/foundation/Container.styled";
+import { Grid } from "@/components/ui/foundation/Grid.styled";
+import { TravelPack } from "@/types";
+import { Subtitle, Title } from "@/components/ui/atoms";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/styles/tokens/breakpoints";
+import { SectionWrapper } from "../foundation/SectionWrapper.styled";
+import TravelPackCard from "./TravelPackCard";
 
 type Props = {
-  cars: Car[];
+  packs: TravelPack[];
   context?: "home" | "page";
 };
 
-export default function CarsSection({ cars, context = "home" }: Props) {
+export default function TravelPacksSection({ packs, context = "home" }: Props) {
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg})`);
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.md})`);
 
-  let visibleCars = cars;
+  let visiblePacks = packs;
   if (context === "home") {
-    visibleCars = cars.slice(0, 1);
-    if (isTablet) visibleCars = cars.slice(0, 2);
-    if (isDesktop) visibleCars = cars.slice(0, 3);
+    visiblePacks = packs.slice(0, 1);
+    if (isTablet) visiblePacks = packs.slice(0, 2);
+    if (isDesktop) visiblePacks = packs.slice(0, 3);
   }
 
   const isHome = context === "home";
@@ -43,17 +43,16 @@ export default function CarsSection({ cars, context = "home" }: Props) {
           }}
         >
           <div>
-            <Title>Available Cars</Title>
+            <Title>Explore Travel Packs</Title>
             <Subtitle>
-              Choose from our fleet of cars for your
-              <strong> Kyrgyzstan </strong> adventure.
+              Discover curated travel experiences for your next adventure.
             </Subtitle>
           </div>
 
           {isHome && (
             <Link
-              href="/cars"
-              aria-label="View all cars"
+              href="/travel-packs"
+              aria-label="View all travel packs"
               style={{ fontWeight: 600, fontSize: "0.95rem" }}
             >
               View all →
@@ -62,13 +61,13 @@ export default function CarsSection({ cars, context = "home" }: Props) {
         </div>
 
         <Grid $gap="lg" $align="stretch">
-          {visibleCars.map((car) => (
-            <CarCard
-              key={car.id}
-              car={car}
-              imageHref={isHome ? "/cars" : undefined}
+          {visiblePacks.map((pack) => (
+            <TravelPackCard
+              key={pack.id}
+              pack={pack}
+              imageHref={pack.coverImage}
               ctaVisible={!isHome}
-              ctaPath={`/cars/${car.id}`}
+              ctaPath={`/travel-packs/${pack.id}`}
               ctaLabel="View Details"
             />
           ))}

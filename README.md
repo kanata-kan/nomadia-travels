@@ -31,6 +31,15 @@ This repo is part of the **Nomadia Travels** ecosystem.
 - [🗄️ Data Layer](./docs/DATA_LAYER.md)  
    JSON Schemas, API Wrappers, Types & Validators — Epic 5 summary.
 
+- [🚗 Cars Documentation](./docs/CARS.md)  
+  Overview of the Cars feature, including CarsPage, CarDetailsPage, and CarsSection.
+
+- [🧳 Travel Packs Documentation](./docs/TRAVEL_PACKS.md)  
+  Details about the Travel Packs feature, including data structure, components, and pages.
+
+- [🖼️ UI Components](./docs/UI_COMPONENTS.md)  
+  Explanation of the UI architecture, atomic design principles, and component hierarchy.
+
 ---
 
 ## 🚀 Current Phase

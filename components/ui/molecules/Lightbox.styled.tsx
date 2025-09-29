@@ -4,7 +4,8 @@ import styled from "styled-components";
 export const LightboxWrapper = styled.div`
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.88);
+  background: ${({ theme }) =>
+    theme.colors.overlay}; /* Replaced rgba with token */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,13 +49,14 @@ export const InfoPanel = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.surface}; /* Updated to surface */
   color: ${({ theme }) => theme.colors.text.primary};
 
   h3 {
     margin-bottom: ${({ theme }) => theme.spacing.sm};
     font-size: 1.25rem;
     font-weight: bold;
+    color: ${({ theme }) => theme.colors.secondary}; /* Updated to secondary */
   }
 
   p {

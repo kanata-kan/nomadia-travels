@@ -1,103 +1,44 @@
 // app/gallery/[id]/page.tsx
-import { getGallery } from "@/lib/api";
+import { notFound } from "next/navigation";
+import { getGalleryItemById } from "@/lib/api";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
-import { Metadata } from "next";
-import Image from "next/image";
-import { SectionWrapper } from "@/components/ui/sections/SectionWrapper.styled";
-import { Container } from "@/components/ui/foundation/Container.styled";
-import { Title, Subtitle } from "@/components/ui/atoms";
-import { Button } from "@/components/ui/atoms/Button";
-import Link from "next/link";
+import GalleryDetailsSection from "@/components/ui/GallerySection/GalleryDetailsSection";
 
-type PageProps = {
-  params: Promise<{ id: string }>; // 👈 important
-};
+type Props = { params: Promise<{ id: string }> };
 
-// ✅ Dynamic Metadata
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { id } = await params; // 👈 await params
-  const items = await getGallery();
-  const item = items.find((g) => g.id === id);
+export default async function GalleryDetailsPage({ params }: Props) {
+  const { id } = await params;
 
-  if (!item) {
-    return {
-      title: "Gallery Item Not Found | Explore Kyrgyzstan",
-      description: "The requested gallery item could not be found.",
-    };
-  }
+  const galleryItem = await getGalleryItemById(id);
 
-  return getMetadataDynamic({
-    name: item.title,
-    description: item.metadata.description ?? "",
-    image: item.metadata.image ?? "",
-    path: `/gallery/${item.id}`,
-  });
-}
-
-// ✅ Static Paths
-export async function generateStaticParams() {
-  const items = await getGallery();
-  return items.map((it) => ({ id: it.id }));
-}
-
-// ✅ Page UI
-export default async function GalleryDetailPage({ params }: PageProps) {
-  const { id } = await params; // 👈 await params
-  const items = await getGallery();
-  const item = items.find((g) => g.id === id);
-
-  if (!item) {
-    return (
-      <SectionWrapper $variant="default" $bg="background">
-        <Container>
-          <Title>Item Not Found</Title>
-          <Subtitle>The requested gallery item does not exist.</Subtitle>
-          <Link href="/gallery">
-            <Button variant="primary">← Back to Gallery</Button>
-          </Link>
-        </Container>
-      </SectionWrapper>
-    );
-  }
+  if (!galleryItem) return notFound();
 
   return (
-    <SectionWrapper $variant="loose" $bg="background">
-      <Container>
-        <Title>{item.title}</Title>
-        <Subtitle>{item.caption}</Subtitle>
-
-        <div style={{ margin: "2rem 0" }}>
-          <Image
-            src={item.image}
-            alt={item.metadata.alt ?? item.title}
-            width={1200}
-            height={700}
-            style={{
-              width: "100%",
-              height: "auto",
-              borderRadius: "12px",
-              objectFit: "cover",
-            }}
-            priority
-          />
-        </div>
-
-        <p
-          style={{
-            marginBottom: "2rem",
-            fontSize: "1.1rem",
-            lineHeight: "1.6",
-          }}
-        >
-          {item.metadata.description}
-        </p>
-
-        <Link href="/gallery">
-          <Button variant="primary">← Back to Gallery</Button>
-        </Link>
-      </Container>
-    </SectionWrapper>
+    <GalleryDetailsSection
+      galleryItem={{
+        title: galleryItem.metadata.title || "Untitled", // Updated from 'name' to 'title'
+        description: galleryItem.metadata.description || "", // Fallback for null
+        coverImage: galleryItem.metadata.image || "", // Fallback for null
+        images: galleryItem.images,
+      }}
+    />
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  const galleryItem = await getGalleryItemById(id);
+  if (!galleryItem) return {};
+
+  return getMetadataDynamic({
+    name: galleryItem.metadata.title || "Untitled", // Corrected to use `name`
+    description: galleryItem.metadata.description || "", // Fallback for null
+    image: galleryItem.metadata.image || "", // Fallback for null
+    path: `/gallery/${id}`,
+  });
 }

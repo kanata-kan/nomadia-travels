@@ -3,6 +3,7 @@
 
 import styled from "styled-components";
 import { useThemeToggle } from "@/hooks/useThemeToggle";
+import { darken } from "@/lib/colorUtils"; // Import darken utility
 
 const IconButton = styled.button`
   display: flex;
@@ -19,9 +20,15 @@ const IconButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) =>
+      darken(theme.colors.background, 10)}; /* Darkens the background */
     color: ${({ theme }) => theme.colors.text.inverse};
-    transform: rotate(8deg) scale(1.05);
+    transform: scale(1.05); /* Subtle scaling effect */
+  }
+
+  &:active {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    transform: scale(0.98); /* Slightly reduces size on click */
   }
 `;
 

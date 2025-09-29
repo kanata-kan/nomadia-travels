@@ -162,3 +162,19 @@ app/
 ## Summary
 
 The `Cars` feature is a critical part of the Nomadia Travels application, providing users with an intuitive and visually appealing way to explore available cars. By leveraging reusable components and dynamic metadata, the implementation ensures scalability and maintainability.
+
+---
+
+## Cars Feature
+
+The `Cars` feature in the Nomadia Travels application is designed to provide users with a seamless experience in browsing and renting cars. It includes dynamic metadata generation for SEO optimization and reusable components for efficient development and maintenance.
+
+### Dynamic Metadata
+
+Dynamic metadata is used in the `CarDetailsPage` to provide search engines with specific information about each car. This includes the car's name, description, image, and a unique path. The metadata is generated based on the car's details fetched from the server.
+
+### Reusable Components
+
+The `Cars` feature utilizes reusable components such as `CarsSection`, `CarCard`, `CarGallery`, and `CarSpecs`. These components are designed to be flexible and reusable across different parts of the application, promoting consistency and reducing development time.
+
+---

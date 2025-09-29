@@ -1,12 +1,12 @@
 // components/ui/sections/ServicesSection.client.tsx
 "use client";
 
-import { SectionWrapper } from "./SectionWrapper.styled";
-import { Container } from "../foundation/Container.styled";
-import { Grid } from "../foundation/Grid.styled";
+import { Container } from "@/components/ui/foundation/Container.styled";
+import { Grid } from "@/components/ui/foundation/Grid.styled";
 import { Service } from "@/types/Service";
-import ServiceCard from "../molecules/ServiceCard";
-import { Subtitle, Title } from "../atoms";
+import { Subtitle, Title } from "@/components/ui/atoms";
+import { SectionWrapper } from "../foundation/SectionWrapper.styled";
+import ServiceCard from "./ServiceCard";
 
 type Props = { services: Service[] };
 

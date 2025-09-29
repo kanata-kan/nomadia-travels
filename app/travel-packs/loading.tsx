@@ -22,7 +22,7 @@ export default function Loading() {
             marginTop: "2rem",
           }}
         >
-          {Array.from({ length: 6 }).map((_, i) => (
+          {Array.from({ length: 3 }).map((_, i) => (
             <Skeleton key={i} w="100%" h="200px" r="12px" />
           ))}
         </div>
