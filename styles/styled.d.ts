@@ -75,5 +75,11 @@ declare module "styled-components" {
         };
       };
     };
+    shadows: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    };
   }
 }

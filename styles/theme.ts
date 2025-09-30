@@ -11,6 +11,12 @@ export const lightTheme = {
   radii,
   breakpoints,
   layout,
+  shadows: {
+    sm: "0px 1px 2px rgba(0, 0, 0, 0.05)",
+    md: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+    lg: "0px 10px 15px rgba(0, 0, 0, 0.15)",
+    xl: "0px 20px 25px rgba(0, 0, 0, 0.2)",
+  },
 };
 
 export const darkTheme = {
@@ -19,4 +25,10 @@ export const darkTheme = {
   radii,
   breakpoints,
   layout,
+  shadows: {
+    sm: "0px 1px 2px rgba(0, 0, 0, 0.2)",
+    md: "0px 4px 6px rgba(0, 0, 0, 0.3)",
+    lg: "0px 10px 15px rgba(0, 0, 0, 0.4)",
+    xl: "0px 20px 25px rgba(0, 0, 0, 0.5)",
+  },
 };

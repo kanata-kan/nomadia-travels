@@ -43,6 +43,9 @@ This repo is part of the **Nomadia Travels** ecosystem.
 - [🖼️ UI Components](./docs/UI_COMPONENTS.md)  
   Explanation of the UI architecture, atomic design principles, and component hierarchy.
 
+- [📞 Contact Page Documentation](./docs/CONTACT.md)  
+  Details about the Contact Page, including components, data handling, and metadata.
+
 ---
 
 ## 🚀 Current Phase
