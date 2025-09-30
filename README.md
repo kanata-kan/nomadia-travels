@@ -38,13 +38,10 @@ This repo is part of the **Nomadia Travels** ecosystem.
   Details about the Travel Packs feature, including data structure, components, and pages.
 
 - [🎭 Activities Documentation](./docs/ACTIVITIES.md)  
-  Overview of the Activities feature, including data structure, components, and pages.
+  Details about the Activities Page, including components, data handling, and metadata.
 
-- [🖼️ UI Components](./docs/UI_COMPONENTS.md)  
-  Explanation of the UI architecture, atomic design principles, and component hierarchy.
-
-- [📞 Contact Page Documentation](./docs/CONTACT.md)  
-  Details about the Contact Page, including components, data handling, and metadata.
+- [🖼️ Gallery Documentation](./docs/GALLERY.md)  
+  Details about the Gallery Page, including components, data handling, and metadata.
 
 ---
 
