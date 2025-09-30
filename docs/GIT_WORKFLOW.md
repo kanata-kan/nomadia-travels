@@ -86,4 +86,68 @@ Commits: "feat: add login form" / "fix: handle API error"
 
 Every finished feature → PR → Merge → Pull.
 
-✅ Following this workflow keeps the project organized, scalable, and team-friendly.
+---
+
+# 🌟 Branching Strategies for New Features and Components
+
+When starting work on a new feature or component, it's essential to follow a consistent branching strategy. This ensures clarity in the development process and makes collaboration more manageable.
+
+## 🔸 Feature Branches
+
+Feature branches are used to develop new features for the upcoming or a distant future release. They are typically branched off from the `develop` branch and merged back into `develop` when the feature is complete.
+
+**Naming Convention:**
+
+Use the prefix `feature/` followed by a short description of the feature.
+
+Example:
+
+```bash
+git checkout -b feature/user-authentication
+```
+
+## 🔸 Bugfix Branches
+
+Bugfix branches are meant for fixing bugs in the code. Like feature branches, they are also branched off from `develop` and merged back once the fix is complete.
+
+**Naming Convention:**
+
+Use the prefix `bugfix/` followed by a short description of the bug.
+
+Example:
+
+```bash
+git checkout -b bugfix/login-error
+```
+
+## 🔸 Hotfix Branches
+
+Hotfix branches are used to quickly patch production releases. They are branched directly from `main` and, once the fix is complete, merged back into both `main` and `develop`.
+
+**Naming Convention:**
+
+Use the prefix `hotfix/` followed by a short description of the fix.
+
+Example:
+
+```bash
+git checkout -b hotfix/crash-on-login
+```
+
+## 🔸 Release Branches
+
+Release branches are used to prepare for a new production release. They allow for last-minute fixes and preparing release notes. Once ready, they are merged into `main` and tagged with a release number.
+
+**Naming Convention:**
+
+Use the prefix `release/` followed by the release version.
+
+Example:
+
+```bash
+git checkout -b release/1.0.0
+```
+
+---
+
+By following these branching strategies, we can ensure a smooth and efficient workflow, making it easier to manage features, fixes, and releases.

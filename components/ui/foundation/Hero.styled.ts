@@ -25,14 +25,12 @@ export const HeroContainer = styled.section<{
     content: "";
     position: absolute;
     inset: 0;
-    background: ${({ $overlay, theme }) =>
+    background: ${({ $overlay }) =>
       $overlay === "dark"
-        ? "rgba(0,0,0,0.45)"
+        ? "linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.2))"
         : $overlay === "light"
-          ? "rgba(255,255,255,0.25)"
-          : theme.colors.background === "#FFFFFF"
-            ? "rgba(0,0,0,0.35)" // auto في light
-            : "rgba(255,255,255,0.15)"}; // auto في dark
+          ? "linear-gradient(to top, rgba(255,255,255,0.4), rgba(255,255,255,0.1))"
+          : "linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15))"};
   }
 
   > * {
@@ -64,6 +62,8 @@ export const HeroTitle = styled.h1`
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
   color: ${({ theme }) => theme.colors.heroText};
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); // وضوح أقوى فوق الصور
+  margin: 0;
 `;
 
 // Subtitle
@@ -71,6 +71,9 @@ export const HeroSubtitle = styled.p`
   font-size: clamp(1rem, 2vw, 1.5rem);
   color: ${({ theme }) => theme.colors.heroText};
   max-width: 700px;
+  line-height: 1.6;
+  margin: 0 auto;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5); // خفيف، يخلي النص يبان واضح
 `;
 
 // CTA Internal CTA (Next.js Link)

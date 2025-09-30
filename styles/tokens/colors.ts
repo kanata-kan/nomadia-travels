@@ -2,47 +2,50 @@
 
 // Light theme
 export const lightColors = {
-  primary: "#F97316", // main CTA (orange)
-  secondary: "#16A34A", // secondary accent (green)
-  accent: "#2563EB", // extra accent (blue)
+  primary: "#F97316", // CTA
+  primaryHover: "#EA580C", // Hover state for primary
+  secondary: "#3B82F6", // headings/links/icons
+  accent: "#10B981", // badges/bullets
 
-  background: "#FDFDFD", // base background
-  surface: "#FFFFFF", // cards / panels
+  background: "#FAFAFA",
+  surface: "#FFFFFF",
+  surfaceAlt: "#F3F4F6",
 
-  surfaceAlt: "#F3F4F6", // section bg
-
-  danger: "#DC2626", // errors
-  heroText: "#FFFFFF", // text on hero
+  danger: "#DC2626",
+  heroText: "#FFFFFF",
 
   text: {
-    primary: "#111827", // main text
-    secondary: "#374151", // subtitles
-    muted: "#6B7280", // less important
-    inverse: "#F9FAFB", // light text on dark
+    primary: "#111827",
+    secondary: "#374151",
+    muted: "#6B7280",
+    inverse: "#F9FAFB",
   },
 
-  divider: "#E5E7EB", // borders
+  divider: "#E5E7EB",
+  overlay: "rgba(0, 0, 0, 0.88)", // Added for modal backgrounds
 };
 
 // Dark theme
 export const darkColors = {
-  primary: "#FB923C", // CTA orange for dark
-  secondary: "#22C55E", // green
-  accent: "#3B82F6", // blue
+  primary: "#FB923C", // CTA
+  primaryHover: "#F97316", // Hover state for primary
+  secondary: "#60A5FA", // headings/links/icons
+  accent: "#34D399", // badges/bullets
 
-  background: "#0F172A", // base bg
-  surface: "#1E293B", // panels
-  surfaceAlt: "#334155", // section bg
+  background: "#0F172A",
+  surface: "#1E293B",
+  surfaceAlt: "#334155",
 
-  danger: "#F87171", // errors
-  heroText: "#FFFFFF", // text on hero
+  danger: "#F87171",
+  heroText: "#FFFFFF",
 
   text: {
-    primary: "#F9FAFB", // main text
-    secondary: "#E5E7EB", // subtitles
-    muted: "#9CA3AF", // less important
-    inverse: "#111827", // dark text on light
+    primary: "#F9FAFB",
+    secondary: "#E5E7EB",
+    muted: "#9CA3AF",
+    inverse: "#111827",
   },
 
-  divider: "#374151", // borders
+  divider: "#374151",
+  overlay: "rgba(0, 0, 0, 0.88)", // Added for modal backgrounds
 };

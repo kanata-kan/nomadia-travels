@@ -1,3 +1,4 @@
+// types/contact.ts
 import { Metadata, ContentBlock } from "./common";
 
 export interface SocialLink {
@@ -8,24 +9,28 @@ export interface SocialLink {
 export interface FormField {
   name: string;
   label: string;
-  type: string;
+  type: "text" | "email" | "textarea";
   required?: boolean;
+}
+
+export interface ContactInfo {
+  email: string;
+  phone: string;
+  address: string;
+  mapLink: string;
+}
+
+export interface ContactForm {
+  fields: FormField[];
+  submitText: string;
 }
 
 export interface ContactPage {
   id: string;
   heading: string;
   content: ContentBlock[];
-  form?: {
-    fields: FormField[];
-    submitText: string;
-  };
-  info: {
-    email: string;
-    phone: string;
-    address: string;
-    mapLink: string;
-  };
+  form?: ContactForm;
+  info: ContactInfo;
   socials: SocialLink[];
   metadata: Metadata;
 }

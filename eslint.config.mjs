@@ -24,6 +24,7 @@ const eslintConfig = [
       "*.config.ts",
       "*.log",
       "desktop.ini",
+      "next-env.d.ts",
     ],
     settings: {
       "import/resolver": {
@@ -36,7 +37,6 @@ const eslintConfig = [
       // DOM props
       "react/no-unknown-property": ["warn", { ignore: ["^\\$.*"] }],
 
-      // ⚠️ TypeScript rules (كاملة Dev-friendly)
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",

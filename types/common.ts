@@ -8,6 +8,6 @@ export interface Metadata {
 
 export interface ContentBlock {
   type: "paragraph" | "heading" | "image" | string;
-  text?: string;
+  text: string; // Made text non-optional to ensure compatibility
   src?: string;
 }

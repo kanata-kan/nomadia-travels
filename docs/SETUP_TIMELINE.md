@@ -62,6 +62,19 @@ It helps new engineers understand what’s already done and what’s next.
 
 ---
 
+---
+
+### Task 4.1 — About Page (Quick Reference)
+
+- **Route:** `app/about/page.tsx` (ISR: 1h).
+- **Data:** `data/content/about.json` → heading + content blocks + metadata.
+- **UI:** `components/ui/sections/About/AboutSection.tsx`.
+- **Hero:** background `/images/about/heroAbout.avif` + dark overlay.
+- **SEO:** integrated with `metadata.ts` (title, description, og:image).
+- **Result:** Static, SEO-ready About Page with clean JSON-driven content.
+
+---
+
 **Task 5.1 – Define JSON Schemas**
 
 - Designed JSON structures for all content resources:

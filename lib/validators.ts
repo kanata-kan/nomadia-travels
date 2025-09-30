@@ -3,7 +3,6 @@ import {
   Car,
   GalleryItem,
   TravelPack,
-  AboutPage,
   ContactPage,
   HomePage,
   Activity,
@@ -38,8 +37,10 @@ export function validateCar(car: Car): boolean {
       "drive",
       "luggage",
       "fuel",
+      "currency", // Added for new structure
+      "unit", // Added for new structure
     ]) &&
-    (car.price === undefined || typeof car.price === "string") &&
+    typeof car.price === "number" && // Ensure price is a number
     (car.images === undefined ||
       (Array.isArray(car.images) && car.images.length >= 2)) &&
     validateMetadata(car.metadata)
@@ -56,35 +57,27 @@ export function validateGalleryItem(item: GalleryItem): boolean {
 
 // ---- Travel Packs ---- //
 export function validateTravelPack(pack: TravelPack): boolean {
-  return !!(
+  const isValid = !!(
     hasValues(pack, [
       "id",
       "name",
       "description",
       "coverImage",
-      "price",
-      "duration",
+      "ctaLabel",
+      "metadata",
     ]) &&
-    // images: optional في الـMVP، إذا كاينة خاص تكون Array وبها 2+
-    (pack.images === undefined ||
-      (Array.isArray(pack.images) && pack.images.length >= 2)) &&
+    // Ensure features is a non-empty array
     Array.isArray(pack.features) &&
     pack.features.length > 0 &&
+    // Validate metadata
     validateMetadata(pack.metadata)
   );
-}
 
-// ---- About ---- //
-export function validateAboutPage(page: AboutPage): boolean {
-  return !!(
-    hasValues(page, ["id", "heading"]) &&
-    Array.isArray(page.content) &&
-    Array.isArray(page.team) &&
-    page.team.every((member) =>
-      hasValues(member, ["id", "name", "role", "bio", "image"]),
-    ) &&
-    validateMetadata(page.metadata)
-  );
+  if (!isValid) {
+    console.warn("Invalid TravelPack:", pack);
+  }
+
+  return isValid;
 }
 
 // ---- Contact ---- //

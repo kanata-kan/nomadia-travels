@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import styled from "styled-components";
+import { darken } from "@/lib/colorUtils"; // Moved darken to a shared utility file
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,9 +25,20 @@ const LangButton = styled.button<{ $active?: boolean }>`
   transition: all 0.3s ease;
 
   &:hover {
-    background: ${({ theme, $active }) =>
-      $active ? theme.colors.primary : theme.colors.secondary};
-    color: ${({ theme }) => theme.colors.text.inverse};
+    background: ${({ $active, theme }) =>
+      $active
+        ? darken(theme.colors.primary, 0.1)
+        : darken(theme.colors.background, 0.1)};
+    color: ${({ $active, theme }) =>
+      $active ? theme.colors.text.inverse : theme.colors.text.primary};
+  }
+
+  &:active {
+    background: ${({ $active, theme }) =>
+      $active
+        ? darken(theme.colors.primary, 0.2)
+        : darken(theme.colors.background, 0.2)};
+    transform: scale(0.95);
   }
 `;
 

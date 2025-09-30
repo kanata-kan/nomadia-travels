@@ -20,7 +20,7 @@
     "id": "activity-2",
     "name": "Eagle Hunting Show",
     "description": "Experience the ancient art of eagle hunting, a proud tradition of nomadic culture.",
-    "coverImage": "/images/activities/eagle-hunting.jpg",
+    "coverImage": "/images/activities/eagle-hunting.webp",
     "duration": "1.5 hours",
     "location": "Alysh village, near Salkyn Tor mountain",
     "groupSize": "2+ participants",
@@ -29,7 +29,7 @@
       "title": "Eagle Hunting Show",
       "description": "Watch a traditional eagle hunting demonstration in the Kyrgyz mountains.",
       "path": "/activities/activity-2",
-      "image": "/images/activities/eagle-hunting.jpg",
+      "image": "/images/activities/eagle-hunting.webp",
       "alt": "Nomad eagle hunter with eagle on arm in Kyrgyzstan"
     }
   },
@@ -37,7 +37,7 @@
     "id": "activity-3",
     "name": "Shaar Waterfall Horse Trek",
     "description": "Ride through mountain trails to Kyrgyzstan's tallest waterfall on horseback.",
-    "coverImage": "/images/activities/shaar-waterfall.jpg",
+    "coverImage": "/images/activities/shaar-waterfall.webp",
     "duration": "Full day",
     "location": "Shaar Waterfall trail (Naryn Region)",
     "groupSize": "2–6 participants",
@@ -46,7 +46,7 @@
       "title": "Shaar Waterfall Horse Trek",
       "description": "Full-day horse trek to Shaar Waterfall, the highest waterfall in Kyrgyzstan.",
       "path": "/activities/activity-3",
-      "image": "/images/activities/shaar-waterfall.jpg",
+      "image": "/images/activities/shaar-waterfall.webp",
       "alt": "Horse trek to Shaar Waterfall in Kyrgyzstan"
     }
   }

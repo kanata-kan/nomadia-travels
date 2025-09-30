@@ -15,22 +15,22 @@ It is designed to help any engineer quickly understand **where to place metadata
 
 ## 2. Static Pages Example
 
-For pages with **fixed content** (About, Contact, Gallery, etc.), use `getMetadataStatic`.
+For pages with **fixed content** (Contact, Gallery, etc.), use `getMetadataStatic`.
 
 ```ts
-// app/about/page.tsx
+// app/contact/page.tsx
 import { getMetadataStatic } from "@/lib/metadata";
 
 export const metadata = getMetadataStatic({
-  title: "About Us",
+  title: "Contact Us",
   description:
-    "Learn more about Nomadia Travels and our mission to promote Kyrgyzstan tourism.",
-  path: "/about",
-  image: "/og-about.png",
+    "Get in touch with Nomadia Travels for inquiries and bookings.",
+  path: "/contact",
+  image: "/og-contact.png",
 });
 
-export default function AboutPage() {
-  return <h1>About Nomadia Travels</h1>;
+export default function ContactPage() {
+  return <h1>Contact Nomadia Travels</h1>;
 }
 ```
 
@@ -68,6 +68,70 @@ export default function CarDetailsPage({ params }: Props) {
 }
 ```
 
+For dynamic metadata in Travel Packs:
+
+```ts
+// app/travel-packs/[id]/page.tsx
+import { getMetadataDynamic } from "@/lib/metadata";
+import travelPacks from "@/data/travel-packs.json";
+
+type Props = { params: { id: string } };
+
+export async function generateMetadata({ params }: Props) {
+  const pack = travelPacks.find((p) => p.id === params.id);
+
+  if (!pack) {
+    return {
+      title: "Travel Pack Not Found",
+      description: "The requested travel pack could not be found.",
+    };
+  }
+
+  return getMetadataDynamic({
+    name: pack.name,
+    description: pack.description,
+    image: pack.image,
+    path: `/travel-packs/${pack.id}`,
+  });
+}
+
+export default function TravelPackDetailsPage({ params }: Props) {
+  return <h1>Travel Pack: {params.id}</h1>;
+}
+```
+
+For dynamic metadata in Gallery pages:
+
+```ts
+// app/gallery/[id]/page.tsx
+import { getMetadataDynamic } from "@/lib/metadata";
+import galleryItems from "@/data/gallery.json";
+
+type Props = { params: { id: string } };
+
+export async function generateMetadata({ params }: Props) {
+  const item = galleryItems.find((i) => i.id === params.id);
+
+  if (!item) {
+    return {
+      title: "Gallery Item Not Found",
+      description: "The requested gallery item could not be found.",
+    };
+  }
+
+  return getMetadataDynamic({
+    name: item.title,
+    description: item.description,
+    image: item.image,
+    path: `/gallery/${item.id}`,
+  });
+}
+
+export default function GalleryItemPage({ params }: Props) {
+  return <h1>Gallery Item: {params.id}</h1>;
+}
+```
+
 ## 4. Key Notes
 
 Static Pages → Use getMetadataStatic when the page content will never change.
@@ -76,7 +140,7 @@ Always include:
 title → Unique & clear.
 description → Short, < 160 characters.
 image → Open Graph image (1200x630).
-path → Relative path of the page (/about, /cars/:id, etc.).
+path → Relative path of the page (/contact, /cars/:id, etc.).
 
 ## 5. SEO Best Practices
 

@@ -3,7 +3,7 @@
   "hero": {
     "title": "Explore Kyrgyzstan with Nomadia Travels",
     "subtitle": "Discover mountains, culture, and adventures like never before.",
-    "heroImage": "/images/home/hero.jpg",
+    "heroImage": "/images/home/hero-home.webp",
     "ctaText": "Start Your Journey",
     "ctaLink": "/travel-packs"
   },
@@ -30,13 +30,6 @@
       "limit": 6,
       "linkText": "View Full Gallery",
       "link": "/gallery"
-    },
-    {
-      "id": "about-preview",
-      "heading": "Who We Are",
-      "description": "Get to know more about Nomadia Travels and our mission.",
-      "linkText": "Learn More",
-      "link": "/about"
     }
   ],
 

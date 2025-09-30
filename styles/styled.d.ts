@@ -5,11 +5,13 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
       primary: string;
+      primaryHover: string; // Added hover state for primary
       secondary: string;
       accent: string;
       background: string;
       surface: string;
       surfaceAlt: string;
+      overlay?: string;
 
       danger: string;
       heroText: string;
@@ -65,6 +67,19 @@ declare module "styled-components" {
           loose: { mobile: string; md: string; lg: string };
         };
       };
+      nav: {
+        height: {
+          sm: string;
+          md: string;
+          lg: string;
+        };
+      };
+    };
+    shadows: {
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
     };
   }
 }

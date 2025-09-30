@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
+import { darken } from "polished"; // Import darken from polished
 
 // ====== Animations ======
 const fadeSlideIn = keyframes`
@@ -26,7 +27,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.text.muted};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.accent}; /* Updated to accent for subtle borders */
 `;
 
 export const Brand = styled.div`
@@ -49,11 +50,16 @@ export const Links = styled.div`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.colors.text.primary};
+    color: ${({ theme }) => theme.colors.secondary};
     transition: color 0.2s ease;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.primary};
+      color: ${({ theme }) => darken(0.1, theme.colors.primary)};
+    }
+
+    &:active {
+      color: ${({ theme }) => darken(0.2, theme.colors.primary)};
+      transform: scale(0.95);
     }
   }
 `;
@@ -90,7 +96,8 @@ export const DrawerHeader = styled.div`
   padding: 1rem;
   font-weight: bold;
   font-size: 1.2rem;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) =>
+    theme.colors.secondary}; /* Updated to secondary for headings */
 `;
 
 // ====== Drawer Section ======
@@ -113,8 +120,13 @@ export const DrawerLink = styled(Link)`
     (style as any)?.["--i"] ? `${(style as any)["--i"] * 0.05}s` : "0s"};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => darken(0.1, theme.colors.primary)};
     transform: translateX(4px);
+  }
+
+  &:active {
+    color: ${({ theme }) => darken(0.2, theme.colors.primary)};
+    transform: translateX(2px);
   }
 `;
 
@@ -124,5 +136,5 @@ export const DrawerFooter = styled.div`
   font-size: 0.85rem;
   color: ${({ theme }) => theme.colors.text.muted};
   text-align: center;
-  border-top: 1px solid ${({ theme }) => theme.colors.text.muted};
+  border-top: 1px solid ${({ theme }) => theme.colors.accent}; /* Updated to accent for subtle borders */
 `;

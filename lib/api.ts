@@ -3,7 +3,6 @@ import {
   Car,
   GalleryItem,
   TravelPack,
-  AboutPage,
   ContactPage,
   HomePage,
   Activity,
@@ -14,7 +13,6 @@ import {
   validateCar,
   validateGalleryItem,
   validateTravelPack,
-  validateAboutPage,
   validateContactPage,
   validateHomePage,
   validateService,
@@ -62,7 +60,12 @@ export async function fetchAPI<T>(
 // ---- Wrappers with Validation ---- //
 export async function getCars(options?: FetchOptions): Promise<Car[]> {
   const data = await fetchAPI<Car[]>("cars", options);
-  return data.filter(validateCar);
+  return data
+    .map((car) => ({
+      ...car,
+      price: Number(car.price), // Ensure price is a number
+    }))
+    .filter(validateCar);
 }
 
 export async function getGallery(
@@ -76,13 +79,9 @@ export async function getTravelPacks(
   options?: FetchOptions,
 ): Promise<TravelPack[]> {
   const data = await fetchAPI<TravelPack[]>("travel-packs", options);
-  return data.filter(validateTravelPack);
-}
+  const validPacks = data.filter(validateTravelPack);
 
-export async function getAbout(options?: FetchOptions): Promise<AboutPage> {
-  const data = await fetchAPI<AboutPage>("about", options);
-  if (!validateAboutPage(data)) throw new Error("Invalid about.json data");
-  return data;
+  return validPacks;
 }
 
 export async function getContact(options?: FetchOptions): Promise<ContactPage> {
@@ -116,4 +115,36 @@ export async function getOurStory(
   if (!validateOurStoryPage(data))
     throw new Error("Invalid our-story.json data");
   return data;
+}
+
+export async function getCarById(
+  id: string,
+  options?: FetchOptions,
+): Promise<Car | null> {
+  const cars = await getCars(options);
+  return cars.find((car) => car.id === id) || null;
+}
+
+export async function getTravelPackById(
+  id: string,
+  options?: FetchOptions,
+): Promise<TravelPack | null> {
+  const travelPacks = await getTravelPacks(options);
+  return travelPacks.find((pack) => pack.id === id) || null;
+}
+
+export async function getGalleryItemById(
+  id: string,
+  options?: FetchOptions,
+): Promise<GalleryItem | null> {
+  const galleryItems = await getGallery(options);
+  return galleryItems.find((item) => item.id === id) || null;
+}
+
+export async function getActivityById(
+  id: string,
+  options?: FetchOptions,
+): Promise<Activity | null> {
+  const activities = await getActivities(options);
+  return activities.find((activity) => activity.id === id) || null;
 }
