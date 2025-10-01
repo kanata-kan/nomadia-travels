@@ -1,4 +1,13 @@
-//   lib/api.ts
+// lib/api.ts
+import cars from "@/data/content/cars.json";
+import gallery from "@/data/content/gallery.json";
+import travelPacks from "@/data/content/travel-packs.json";
+import contactJson from "@/data/content/contact.json";
+import home from "@/data/content/home.json";
+import services from "@/data/content/services.json";
+import activities from "@/data/content/activities.json";
+import ourStory from "@/data/content/our-story.json";
+
 import {
   Car,
   GalleryItem,
@@ -21,131 +30,96 @@ import {
 } from "./validators";
 import { Service } from "@/types/Service";
 
-type FetchOptions = {
-  cache?: RequestCache;
-  revalidate?: number;
-  headers?: Record<string, string>;
-};
-
-export async function fetchAPI<T>(
-  endpoint: string,
-  options: FetchOptions = {},
-): Promise<T> {
-  try {
-    const { cache, revalidate, headers } = options;
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-    const url = new URL(`/api/${endpoint}`, baseUrl);
-
-    const res = await fetch(url.toString(), {
-      cache: cache ?? "force-cache",
-      next: revalidate ? { revalidate } : undefined,
-      headers,
-    });
-
-    if (!res.ok) {
-      throw new Error(`Failed to fetch ${endpoint} (status: ${res.status})`);
-    }
-
-    const json = await res.json();
-    if (json.status !== "success") {
-      throw new Error(json.message || "Unknown error");
-    }
-
-    return json.data as T;
-  } catch (error) {
-    console.error(`❌ Error in fetchAPI(${endpoint}):`, error);
-    throw error;
-  }
-}
-
-// ---- Wrappers with Validation ---- //
-export async function getCars(options?: FetchOptions): Promise<Car[]> {
-  const data = await fetchAPI<Car[]>("cars", options);
-  return data
+// -----------------------------
+// 🚗 Cars
+// -----------------------------
+export async function getCars(): Promise<Car[]> {
+  return (cars as Car[])
     .map((car) => ({
       ...car,
-      price: Number(car.price), // Ensure price is a number
+      price: Number(car.price),
     }))
     .filter(validateCar);
 }
 
-export async function getGallery(
-  options?: FetchOptions,
-): Promise<GalleryItem[]> {
-  const data = await fetchAPI<GalleryItem[]>("gallery", options);
-  return data.filter(validateGalleryItem);
+export async function getCarById(id: string): Promise<Car | null> {
+  const all = await getCars();
+  return all.find((c) => c.id === id) || null;
 }
 
-export async function getTravelPacks(
-  options?: FetchOptions,
-): Promise<TravelPack[]> {
-  const data = await fetchAPI<TravelPack[]>("travel-packs", options);
-  const validPacks = data.filter(validateTravelPack);
-
-  return validPacks;
-}
-
-export async function getContact(options?: FetchOptions): Promise<ContactPage> {
-  const data = await fetchAPI<ContactPage>("contact", options);
-  if (!validateContactPage(data)) throw new Error("Invalid contact.json data");
-  return data;
-}
-
-export async function getHome(options?: FetchOptions): Promise<HomePage> {
-  const data = await fetchAPI<HomePage>("home", options);
-  if (!validateHomePage(data)) throw new Error("Invalid home.json data");
-  return data;
-}
-
-export async function getServices(options?: FetchOptions): Promise<Service[]> {
-  const data = await fetchAPI<Service[]>("services", options);
-  return data.map(validateService);
-}
-
-export async function getActivities(
-  options?: FetchOptions,
-): Promise<Activity[]> {
-  const data = await fetchAPI<Activity[]>("activities", options);
-  return data.filter(validateActivity);
-}
-
-export async function getOurStory(
-  options?: FetchOptions,
-): Promise<OurStoryPage> {
-  const data = await fetchAPI<OurStoryPage>("our-story", options);
-  if (!validateOurStoryPage(data))
-    throw new Error("Invalid our-story.json data");
-  return data;
-}
-
-export async function getCarById(
-  id: string,
-  options?: FetchOptions,
-): Promise<Car | null> {
-  const cars = await getCars(options);
-  return cars.find((car) => car.id === id) || null;
-}
-
-export async function getTravelPackById(
-  id: string,
-  options?: FetchOptions,
-): Promise<TravelPack | null> {
-  const travelPacks = await getTravelPacks(options);
-  return travelPacks.find((pack) => pack.id === id) || null;
+// -----------------------------
+// 🖼️ Gallery
+// -----------------------------
+export async function getGallery(): Promise<GalleryItem[]> {
+  return (gallery as GalleryItem[]).filter(validateGalleryItem);
 }
 
 export async function getGalleryItemById(
   id: string,
-  options?: FetchOptions,
 ): Promise<GalleryItem | null> {
-  const galleryItems = await getGallery(options);
-  return galleryItems.find((item) => item.id === id) || null;
+  const all = await getGallery();
+  return all.find((g) => g.id === id) || null;
 }
 
-export async function getActivityById(
+// -----------------------------
+// 🎒 Travel Packs
+// -----------------------------
+export async function getTravelPacks(): Promise<TravelPack[]> {
+  return (travelPacks as TravelPack[]).filter(validateTravelPack);
+}
+
+export async function getTravelPackById(
   id: string,
-  options?: FetchOptions,
-): Promise<Activity | null> {
-  const activities = await getActivities(options);
-  return activities.find((activity) => activity.id === id) || null;
+): Promise<TravelPack | null> {
+  const all = await getTravelPacks();
+  return all.find((p) => p.id === id) || null;
+}
+
+// -----------------------------
+// 📞 Contact
+// -----------------------------
+export async function getContact(): Promise<ContactPage> {
+  // Explicit cast to ContactPage
+  const contact = contactJson as ContactPage;
+
+  if (!validateContactPage(contact)) {
+    throw new Error("Invalid contact.json data");
+  }
+
+  return contact;
+}
+// -----------------------------
+// 🏠 Home
+// -----------------------------
+export async function getHome(): Promise<HomePage> {
+  if (!validateHomePage(home)) throw new Error("Invalid home.json data");
+  return home as HomePage;
+}
+
+// -----------------------------
+// 🛎️ Services
+// -----------------------------
+export async function getServices(): Promise<Service[]> {
+  return (services as Service[]).map(validateService);
+}
+
+// -----------------------------
+// 🎯 Activities
+// -----------------------------
+export async function getActivities(): Promise<Activity[]> {
+  return (activities as Activity[]).filter(validateActivity);
+}
+
+export async function getActivityById(id: string): Promise<Activity | null> {
+  const all = await getActivities();
+  return all.find((a) => a.id === id) || null;
+}
+
+// -----------------------------
+// 📖 Our Story
+// -----------------------------
+export async function getOurStory(): Promise<OurStoryPage> {
+  if (!validateOurStoryPage(ourStory))
+    throw new Error("Invalid our-story.json data");
+  return ourStory as OurStoryPage;
 }

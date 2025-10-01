@@ -1,4 +1,4 @@
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 import OurStorySection from "@/components/ui/OurStorySection/OurStorySection";
 import { getOurStory } from "@/lib/api";
@@ -11,7 +11,7 @@ export const metadata = getMetadataStatic({
 });
 
 export default async function OurStoryPage() {
-  const story = await getOurStory({ cache: "force-cache" });
+  const story = await getOurStory();
 
   return <OurStorySection ourStory={story} />;
 }
