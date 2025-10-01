@@ -11,9 +11,9 @@ export const metadata = getMetadataStatic({
   image: "/og-gallery.png",
 });
 
-export const revalidate = 43200;
+export const dynamic = "force-dynamic";
 
 export default async function GalleryPage() {
-  const items = await getGallery({ revalidate: 43200 });
+  const items = await getGallery();
   return <GallerySection items={items} />;
 }
