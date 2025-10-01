@@ -1,4 +1,4 @@
-// lib/api.ts
+//   lib/api.ts
 import {
   Car,
   GalleryItem,
@@ -33,7 +33,8 @@ export async function fetchAPI<T>(
 ): Promise<T> {
   try {
     const { cache, revalidate, headers } = options;
-    const url = new URL(`/api/${endpoint}`, process.env.NEXT_PUBLIC_BASE_URL);
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const url = new URL(`/api/${endpoint}`, baseUrl);
 
     const res = await fetch(url.toString(), {
       cache: cache ?? "force-cache",
