@@ -1,4 +1,4 @@
-// app/cars/CarsList.tsx
+// app/cars/ CarsList.tsx
 import CarsSection from "@/components/ui/CarsSection/CarsSection";
 import { getCars } from "@/lib/api";
 export const dynamic = "force-dynamic";

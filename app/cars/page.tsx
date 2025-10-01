@@ -1,4 +1,4 @@
-// app/cars/page.tsx
+// app/cars/ page.tsx
 import CarsList from "./CarsList";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
