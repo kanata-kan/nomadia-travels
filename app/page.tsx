@@ -10,10 +10,10 @@ import TravelPacksSection from "@/components/ui/TravelPacksSection/TravelPacksSe
 import { getActivities, getCars, getHome, getTravelPacks } from "@/lib/api";
 //import cars from "@/data/content/cars.json";
 export default async function HomePage() {
-  const home = await getHome({ cache: "no-store" });
-  const cars = await getCars({ cache: "no-store" });
-  const packs = await getTravelPacks({ cache: "no-store" });
-  const activities = await getActivities({ revalidate: 60 }); // Revalidate every 60 seconds
+  const home = await getHome();
+  const cars = await getCars();
+  const packs = await getTravelPacks();
+  const activities = await getActivities(); // Revalidate every 60 seconds
 
   return (
     <main>

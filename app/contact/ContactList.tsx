@@ -1,8 +1,9 @@
 import ContactSection from "@/components/ui/ContactSection/ContactSection";
 import { getContact } from "@/lib/api";
+export const dynamic = "force-dynamic";
 
 export default async function ContactList() {
-  const contact = await getContact({ revalidate: 60 }); // Revalidate every 60 seconds
+  const contact = await getContact();
 
   const fixedContact = {
     ...contact,
