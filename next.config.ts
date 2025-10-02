@@ -1,12 +1,10 @@
-// next.config.js
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   compiler: {
-    styledComponents: {
-      displayName: true,
-      ssr: true, // SSR مفعلة ← كتحل FOUC
-    },
+    styledComponents: true, 
   },
 };
 
 export default nextConfig;
+
 
