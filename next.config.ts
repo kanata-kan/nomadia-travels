@@ -1,8 +1,11 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compiler: {
-    styledComponents: true, // هادي وحدها كافية
+    styledComponents: {
+      displayName: true,
+      ssr: true,
+    },
   },
 };
-
 export default nextConfig;
