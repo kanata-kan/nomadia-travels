@@ -1,9 +1,8 @@
-// components/ui/Navbar/LanguageSwitcher.tsx
 "use client";
 
-import { useState } from "react";
+import { usePathname, useRouter } from "@/i18n/navigation"; // جاي من createNavigation
 import styled from "styled-components";
-import { darken } from "@/lib/colorUtils"; // Moved darken to a shared utility file
+import { darken } from "@/lib/colorUtils";
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +20,7 @@ const LangButton = styled.button<{ $active?: boolean }>`
   border: none;
   cursor: pointer;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: ${({ $active }) => ($active ? 600 : 400)};
   transition: all 0.3s ease;
 
   &:hover {
@@ -29,36 +28,35 @@ const LangButton = styled.button<{ $active?: boolean }>`
       $active
         ? darken(theme.colors.primary, 0.1)
         : darken(theme.colors.background, 0.1)};
-    color: ${({ $active, theme }) =>
-      $active ? theme.colors.text.inverse : theme.colors.text.primary};
   }
 
   &:active {
-    background: ${({ $active, theme }) =>
-      $active
-        ? darken(theme.colors.primary, 0.2)
-        : darken(theme.colors.background, 0.2)};
     transform: scale(0.95);
   }
 `;
 
 export default function LanguageSwitcher() {
-  const [lang, setLang] = useState("en");
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const currentLang = pathname?.split("/")[1] === "fr" ? "fr" : "en";
+
+  const switchLang = (lang: "en" | "fr") => {
+    if (!pathname) return;
+    router.replace(pathname, { locale: lang }); // ✅ ما بقاوش كيتراكبو /en/fr
+  };
 
   return (
     <Wrapper>
       <LangButton
-        $active={lang === "en"}
-        onClick={() => setLang("en")}
-        aria-label="Switch to English"
+        $active={currentLang === "en"}
+        onClick={() => switchLang("en")}
       >
         EN
       </LangButton>
-
       <LangButton
-        $active={lang === "fr"}
-        onClick={() => setLang("fr")}
-        aria-label="Passer au Français"
+        $active={currentLang === "fr"}
+        onClick={() => switchLang("fr")}
       >
         FR
       </LangButton>

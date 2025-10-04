@@ -5,6 +5,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/atoms/Button";
 import { FaArrowLeft, FaCarSide } from "react-icons/fa";
 
+import { Car } from "@/types";
+import CarSpecs from "./CarSpecs";
+import CarGallery from "./CarGallery";
 import {
   Main,
   Layout,
@@ -14,11 +17,7 @@ import {
   DescriptionSection,
   CTASection,
   BackLink,
-} from "@/app/cars/[id]/styledComponents";
-
-import { Car } from "@/types";
-import CarSpecs from "./CarSpecs";
-import CarGallery from "./CarGallery";
+} from "@/app/[locale]/cars/[id]/styledComponents";
 
 type Props = { car: Car };
 
