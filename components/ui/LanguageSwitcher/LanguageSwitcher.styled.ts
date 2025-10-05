@@ -1,17 +1,14 @@
-"use client";
-
-import { usePathname, useRouter } from "@/i18n/navigation"; // جاي من createNavigation
 import styled from "styled-components";
 import { darken } from "@/lib/colorUtils";
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   border: 1px solid ${({ theme }) => theme.colors.text.muted};
   border-radius: ${({ theme }) => theme.radii.sm};
   overflow: hidden;
 `;
 
-const LangButton = styled.button<{ $active?: boolean }>`
+export const LangButton = styled.button<{ $active?: boolean }>`
   padding: ${({ theme }) => theme.spacing.xs} ${({ theme }) => theme.spacing.sm};
   background: ${({ $active, theme }) =>
     $active ? theme.colors.primary : theme.colors.background};
@@ -34,32 +31,3 @@ const LangButton = styled.button<{ $active?: boolean }>`
     transform: scale(0.95);
   }
 `;
-
-export default function LanguageSwitcher() {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  const currentLang = pathname?.split("/")[1] === "fr" ? "fr" : "en";
-
-  const switchLang = (lang: "en" | "fr") => {
-    if (!pathname) return;
-    router.replace(pathname, { locale: lang }); // ✅ ما بقاوش كيتراكبو /en/fr
-  };
-
-  return (
-    <Wrapper>
-      <LangButton
-        $active={currentLang === "en"}
-        onClick={() => switchLang("en")}
-      >
-        EN
-      </LangButton>
-      <LangButton
-        $active={currentLang === "fr"}
-        onClick={() => switchLang("fr")}
-      >
-        FR
-      </LangButton>
-    </Wrapper>
-  );
-}

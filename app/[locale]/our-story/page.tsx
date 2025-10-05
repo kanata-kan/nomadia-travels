@@ -4,14 +4,31 @@ import OurStorySection from "@/components/ui/OurStorySection/OurStorySection";
 import { getOurStory } from "@/lib/api";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
-export const metadata = getMetadataStatic({
-  title: "Our Story",
-  description: "Learn about the journey and mission of Nomadia Travels.",
-  path: "/our-story",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
-export default async function OurStoryPage() {
-  const story = await getOurStory();
+  return getMetadataStatic({
+    title: locale === "fr" ? "Notre Histoire" : "Our Story",
+    description:
+      locale === "fr"
+        ? "Découvrez le parcours et la mission de Nomadia Travels."
+        : "Learn about the journey and mission of Nomadia Travels.",
+    path: `/${locale}/our-story`,
+    image: "/images/our-story-og.png",
+  });
+}
 
-  return <OurStorySection ourStory={story} />;
+export default async function OurStoryPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const story = await getOurStory(locale);
+
+  return <OurStorySection ourStory={story} locale={locale} />;
 }

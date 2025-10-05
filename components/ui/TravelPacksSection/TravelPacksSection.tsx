@@ -1,7 +1,7 @@
-// components/ui/sections/TravelPacksSection.tsx
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/foundation/Container.styled";
 import { Grid } from "@/components/ui/foundation/Grid.styled";
 import { TravelPack } from "@/types";
@@ -14,9 +14,15 @@ import TravelPackCard from "./TravelPackCard";
 type Props = {
   packs: TravelPack[];
   context?: "home" | "page";
+  locale: string;
 };
 
-export default function TravelPacksSection({ packs, context = "home" }: Props) {
+export default function TravelPacksSection({
+  packs,
+  context = "home",
+  locale,
+}: Props) {
+  const t = useTranslations("travelPacks");
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg})`);
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.md})`);
 
@@ -43,19 +49,21 @@ export default function TravelPacksSection({ packs, context = "home" }: Props) {
           }}
         >
           <div>
-            <Title>Explore Travel Packs</Title>
+            <Title>{t("title")}</Title>
             <Subtitle>
-              Discover curated travel experiences for your next adventure.
+              {t.rich("subtitle", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </Subtitle>
           </div>
 
           {isHome && (
             <Link
-              href="/travel-packs"
-              aria-label="View all travel packs"
+              href={`/${locale}/travel-packs`}
+              aria-label={t("viewAll")}
               style={{ fontWeight: 600, fontSize: "0.95rem" }}
             >
-              View all →
+              {t("viewAll")} →
             </Link>
           )}
         </div>
@@ -67,8 +75,8 @@ export default function TravelPacksSection({ packs, context = "home" }: Props) {
               pack={pack}
               imageHref={pack.coverImage}
               ctaVisible={!isHome}
-              ctaPath={`/travel-packs/${pack.id}`}
-              ctaLabel="View Details"
+              ctaPath={`/${locale}/travel-packs/${pack.id}`}
+              ctaLabel={t("cta")}
             />
           ))}
         </Grid>

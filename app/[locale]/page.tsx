@@ -1,28 +1,34 @@
-// app/page.tsx
-export const dynamic = "force-dynamic"; // this page will always be server-side rendered
+export const dynamic = "force-dynamic";
 
 import ActivitiesSection from "@/components/ui/ActivitiesSection/ActivitiesSection";
 import CarsSection from "@/components/ui/CarsSection/CarsSection";
 import HeroSection from "@/components/ui/molecules/Hero";
 import ServicesSectionServer from "@/components/ui/ServicesSection/ServicesSection.server";
 import TravelPacksSection from "@/components/ui/TravelPacksSection/TravelPacksSection";
-import WelcomeMessage from "@/components/ui/WelcomeMessage";
-
 import { getActivities, getCars, getHome, getTravelPacks } from "@/lib/api";
-//import cars from "@/data/content/cars.json";
-export default async function HomePage() {
-  const home = await getHome();
-  const cars = await getCars();
-  const packs = await getTravelPacks();
-  const activities = await getActivities(); // Revalidate every 60 seconds
+
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  const home = await getHome(locale);
+  const cars = await getCars(locale);
+  const packs = await getTravelPacks(locale);
+  const activities = await getActivities(locale);
 
   return (
     <main>
-      <WelcomeMessage />
       <HeroSection {...home.hero} />
-      <ServicesSectionServer />
+      <ServicesSectionServer locale={locale} />
       <CarsSection cars={cars.slice(0, 3)} context="home" />
-      <TravelPacksSection packs={packs.slice(0, 3)} context="home" />
+      <TravelPacksSection
+        packs={packs.slice(0, 3)}
+        context="home"
+        locale={locale}
+      />
       <ActivitiesSection activities={activities} context="home" />
     </main>
   );

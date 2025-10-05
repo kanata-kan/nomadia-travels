@@ -1,6 +1,6 @@
-// components/ui/sections/GallerySection.tsx
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Container } from "../foundation/Container.styled";
 import { Title, Subtitle } from "../atoms";
 import { GalleryItem } from "@/types";
@@ -12,14 +12,16 @@ type Props = {
 };
 
 export default function GallerySection({ items }: Props) {
+  const t = useTranslations("gallery");
+
   return (
     <SectionWrapper $variant="loose" $bg="surfaceAlt">
       <Container>
-        <Title>Travel Gallery</Title>
+        <Title>{t("title")}</Title>
         <Subtitle>
-          A curated collection showcasing Kyrgyzstan’s beauty — from{" "}
-          <strong>lakes</strong> and <strong>mountains</strong> to{" "}
-          <strong>nomadic traditions</strong>.
+          {t.rich("subtitle", {
+            strong: (chunks) => <strong>{chunks}</strong>,
+          })}
         </Subtitle>
         <GalleryGrid items={items} min="260px" gap="lg" />
       </Container>

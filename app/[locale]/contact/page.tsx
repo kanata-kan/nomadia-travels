@@ -1,15 +1,19 @@
-export const dynamic = "force-static";
-
-import ContactList from "./ContactList";
+// app/[locale]/contact/page.tsx
 import { getMetadataStatic } from "@/lib/metadata/static";
-import contactData from "@/data/content/contact.json";
+import contactData from "@/data/content/en/contact.json"; // fallback
+import ContactList from "./ContactList";
 
 export const metadata = getMetadataStatic(contactData.metadata);
+export const dynamic = "force-dynamic";
 
-export default function ContactPage() {
+export default function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   return (
     <main>
-      <ContactList />
+      <ContactList params={params} />
     </main>
   );
 }

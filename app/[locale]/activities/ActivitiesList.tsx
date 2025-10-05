@@ -1,9 +1,16 @@
-// app/activities/ActivitiesList.tsx
+// app/[locale]/activities/ActivitiesList.tsx
 import ActivitiesSection from "@/components/ui/ActivitiesSection/ActivitiesSection";
 import { getActivities } from "@/lib/api";
+
 export const dynamic = "force-dynamic";
 
-export default async function ActivitiesList() {
-  const activities = await getActivities();
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function ActivitiesList({ params }: Props) {
+  const { locale } = await params;
+
+  const activities = await getActivities(locale);
   return <ActivitiesSection activities={activities} context="page" />;
 }

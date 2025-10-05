@@ -1,8 +1,8 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/images/Logo.png";
-import footerLinks from "@/data/footerLinks.json";
 import { useFooter } from "./useFooter";
 import { SOCIALS } from "./footer.data";
 import {
@@ -14,14 +14,28 @@ import {
   SocialRow,
   BottomRow,
 } from "./Footer.styled";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const { email, setEmail, status, submitting, handleSubmit } = useFooter();
+  const [footerLinks, setFooterLinks] = useState<
+    Record<string, { href: string; label: string }[]>
+  >({});
+  const pathname = usePathname();
+  const locale = pathname?.split("/")[1] === "fr" ? "fr" : "en";
+
+  // ✅ Load localized footer links dynamically
+  useEffect(() => {
+    import(`@/data/content/${locale}/footerLinks.json`)
+      .then((mod) => setFooterLinks(mod.default))
+      .catch((err) => console.error("❌ Footer JSON load failed:", err));
+  }, [locale]);
 
   return (
     <FooterWrap>
       <FooterGrid>
-        {/* Brand */}
+        {/* === Brand Section === */}
         <BrandCol>
           <div className="logo">
             <Image
@@ -36,7 +50,9 @@ export default function Footer() {
           </div>
           <div className="brand-title">Nomadia Travels</div>
           <div className="brand-sub">
-            Curated trips and local guides across Kyrgyzstan.
+            {locale === "fr"
+              ? "Voyages sur mesure et guides locaux au Kirghizistan."
+              : "Curated trips and local guides across Kyrgyzstan."}
           </div>
 
           <SocialRow>
@@ -53,38 +69,60 @@ export default function Footer() {
           </SocialRow>
         </BrandCol>
 
-        {/* Links */}
+        {/* === Footer Links === */}
         {Object.entries(footerLinks).map(([sectionKey, section]) => (
           <LinksCol key={sectionKey}>
             <h4>{sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)}</h4>
-            {section.map((link: { href: string; label: string }) => (
-              <Link key={link.href} href={link.href}>
+            {section.map((link) => (
+              <Link key={link.href} href={`/${locale}${link.href}`}>
                 {link.label}
               </Link>
             ))}
           </LinksCol>
         ))}
 
-        {/* Newsletter */}
+        {/* === Newsletter Section === */}
         <Newsletter onSubmit={handleSubmit}>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={submitting}
-            placeholder="Enter your email"
+            placeholder={
+              locale === "fr" ? "Entrez votre email" : "Enter your email"
+            }
           />
           <button type="submit" disabled={submitting}>
-            {submitting ? "Joining…" : "Join"}
+            {submitting
+              ? locale === "fr"
+                ? "Inscription…"
+                : "Joining…"
+              : locale === "fr"
+                ? "Rejoindre"
+                : "Join"}
           </button>
-          {status === "ok" && <div className="note success">Subscribed!</div>}
-          {status === "err" && <div className="note error">Invalid email</div>}
+
+          {status === "ok" && (
+            <div className="note success">
+              {locale === "fr" ? "Inscrit !" : "Subscribed!"}
+            </div>
+          )}
+          {status === "err" && (
+            <div className="note error">
+              {locale === "fr" ? "Email invalide" : "Invalid email"}
+            </div>
+          )}
         </Newsletter>
       </FooterGrid>
 
+      {/* === Bottom Row === */}
       <BottomRow>
         <div>© {new Date().getFullYear()} Nomadia Travels</div>
-        <div>Built with Next.js + styled-components</div>
+        <div>
+          {locale === "fr"
+            ? "Construit avec Next.js + styled-components"
+            : "Built with Next.js + styled-components"}
+        </div>
       </BottomRow>
     </FooterWrap>
   );

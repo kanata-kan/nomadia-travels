@@ -1,9 +1,12 @@
+// app/[locale]/contact/ContactList.tsx
 import ContactSection from "@/components/ui/ContactSection/ContactSection";
 import { getContact } from "@/lib/api";
-export const dynamic = "force-dynamic";
 
-export default async function ContactList() {
-  const contact = await getContact();
+type Props = { params: Promise<{ locale: string }> };
+
+export default async function ContactList({ params }: Props) {
+  const { locale } = await params;
+  const contact = await getContact(locale);
 
   const fixedContact = {
     ...contact,
@@ -14,9 +17,8 @@ export default async function ContactList() {
             name: field.name,
             label: field.label,
             type: field.type,
-            required: field.required === undefined ? false : field.required,
+            required: field.required ?? false,
           })),
-          submitText: contact.form.submitText,
         }
       : undefined,
   };

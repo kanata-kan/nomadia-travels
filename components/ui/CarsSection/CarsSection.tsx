@@ -1,4 +1,3 @@
-// components/ui/sections/CarsSection.tsx
 "use client";
 
 import Link from "next/link";
@@ -10,6 +9,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { breakpoints } from "@/styles/tokens/breakpoints";
 import { SectionWrapper } from "../foundation/SectionWrapper.styled";
 import CarCard from "./CarCard";
+import { useTranslations } from "next-intl";
 
 type Props = {
   cars: Car[];
@@ -19,6 +19,7 @@ type Props = {
 export default function CarsSection({ cars, context = "home" }: Props) {
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg})`);
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.md})`);
+  const t = useTranslations("carsSection"); // 🔑
 
   let visibleCars = cars;
   if (context === "home") {
@@ -43,20 +44,17 @@ export default function CarsSection({ cars, context = "home" }: Props) {
           }}
         >
           <div>
-            <Title>Available Cars</Title>
-            <Subtitle>
-              Choose from our fleet of cars for your
-              <strong> Kyrgyzstan </strong> adventure.
-            </Subtitle>
+            <Title>{t("title")}</Title>
+            <Subtitle>{t("subtitle", { country: "Kyrgyzstan" })}</Subtitle>
           </div>
 
           {isHome && (
             <Link
               href="/cars"
-              aria-label="View all cars"
+              aria-label={t("viewAll")}
               style={{ fontWeight: 600, fontSize: "0.95rem" }}
             >
-              View all →
+              {t("viewAll")}
             </Link>
           )}
         </div>
@@ -69,7 +67,7 @@ export default function CarsSection({ cars, context = "home" }: Props) {
               imageHref={isHome ? "/cars" : undefined}
               ctaVisible={!isHome}
               ctaPath={`/cars/${car.id}`}
-              ctaLabel="View Details"
+              ctaLabel={t("ctaLabel")}
             />
           ))}
         </Grid>

@@ -1,32 +1,19 @@
+import { getMetadataStatic } from "@/lib/metadata/static";
+import PrivacySection from "@/components/ui/PrivacySection/PrivacySection";
+
+export const metadata = getMetadataStatic({
+  title: "Privacy Policy | Nomadia Travels",
+  description:
+    "Learn how Nomadia Travels collects, uses, and protects your personal information.",
+  path: "/privacy",
+});
+
+export const dynamic = "force-dynamic";
+
 export default function PrivacyPage() {
   return (
-    <main style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <h1>Privacy Policy</h1>
-      <p>Last updated: {new Date().toLocaleDateString()}</p>
-
-      <section>
-        <h2>1. Information We Collect</h2>
-        <p>
-          We collect personal information you provide directly, such as your
-          email when subscribing to our newsletter or booking a trip.
-        </p>
-      </section>
-
-      <section>
-        <h2>2. How We Use Your Information</h2>
-        <p>
-          We use the collected data to provide and improve our services, send
-          updates, and ensure booking safety.
-        </p>
-      </section>
-
-      <section>
-        <h2>3. Data Protection</h2>
-        <p>
-          Your data is stored securely and not shared with third parties except
-          as required by law.
-        </p>
-      </section>
+    <main>
+      <PrivacySection />
     </main>
   );
 }

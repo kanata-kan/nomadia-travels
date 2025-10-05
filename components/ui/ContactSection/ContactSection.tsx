@@ -1,5 +1,5 @@
 "use client";
-
+import { useTranslations } from "next-intl";
 import { ContactPage } from "@/types/contact";
 import {
   Section,
@@ -19,19 +19,18 @@ interface Props {
 }
 
 export default function ContactSection({ data }: Props) {
+  const t = useTranslations("contact");
+
   return (
     <Section>
-      {/* Title */}
       <Title>{data.heading}</Title>
 
-      {/* Content */}
       {data.content.map((block, i) => (
         <ContentBlock key={i}>{block.text}</ContentBlock>
       ))}
 
-      {/* Contact Info */}
       <InfoSection>
-        <h2>📌 Contact Information</h2>
+        <h2>{t("info.title")}</h2>
         <InfoItem>
           📧 <a href={`mailto:${data.info.email}`}>{data.info.email}</a>
         </InfoItem>
@@ -42,14 +41,13 @@ export default function ContactSection({ data }: Props) {
         <InfoItem>
           🌍{" "}
           <a href={data.info.mapLink} target="_blank" rel="noopener noreferrer">
-            View on Map
+            {t("info.mapLink")}
           </a>
         </InfoItem>
       </InfoSection>
 
-      {/* Socials */}
       <SocialSection>
-        <h2>🌐 Follow Us</h2>
+        <h2>{t("socials.title")}</h2>
         <SocialList>
           {data.socials.map((social, i) => (
             <li key={i}>
@@ -61,10 +59,9 @@ export default function ContactSection({ data }: Props) {
         </SocialList>
       </SocialSection>
 
-      {/* Contact Form */}
       {data.form && (
         <FormSection>
-          <h2>💬 Send us a Message</h2>
+          <h2>{t("form.title")}</h2>
           <form>
             {data.form.fields.map((field, i) => (
               <FormField key={i}>

@@ -6,5 +6,4 @@ export const routing = defineRouting({
   defaultLocale: "en",
 });
 
-// اختياري: نوع مضبوط للّغات
 export type Locale = (typeof routing.locales)[number];

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Overlay,
   Drawer,
@@ -9,12 +9,24 @@ import {
   DrawerLink,
   DrawerFooter,
 } from "./Navbar.styled";
-import ThemeToggleButton from "./ThemeToggleButton";
-import LanguageSwitcher from "./LanguageSwitcher";
-import navLinks from "@/data/navLinks.json";
+import ThemeToggleButton from "../TimeSwitcher/ThemeToggleButton";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import { usePathname } from "next/navigation";
 
 export default function NavbarResponsive() {
   const [open, setOpen] = useState(false);
+  const [navLinks, setNavLinks] = useState<{ label: string; href: string }[]>(
+    [],
+  );
+
+  const pathname = usePathname();
+  const locale = pathname?.split("/")[1] === "fr" ? "fr" : "en"; // ✅ تحديد اللغة حسب المسار
+
+  useEffect(() => {
+    import(`@/data/content/${locale}/navLinks.json`)
+      .then((mod) => setNavLinks(mod.default))
+      .catch((err) => console.error("❌ Navbar JSON load failed:", err));
+  }, [locale]);
 
   const handleClose = () => setOpen(false);
 
@@ -28,20 +40,20 @@ export default function NavbarResponsive() {
           border: "none",
           fontSize: "1.5rem",
           cursor: "pointer",
-          marginLeft: "auto", // يجعل الزر على اليمين
+          marginLeft: "auto",
           padding: "0.5rem 1rem",
         }}
       >
         ☰
       </button>
 
-      {/* === Overlay خلفية سوداء نصف شفافة لما يفتح المينيو === */}
+      {/* === Overlay (black transparent background) === */}
       <Overlay $open={open} onClick={handleClose} />
 
-      {/* === Drawer القائمة المنسدلة === */}
+      {/* === Drawer === */}
       <Drawer $open={open}>
         <div>
-          {/* Header داخل Drawer */}
+          {/* Header */}
           <DrawerHeader>
             <span>EXPLORE KYRGYZSTAN</span>
             <button
@@ -57,12 +69,12 @@ export default function NavbarResponsive() {
             </button>
           </DrawerHeader>
 
-          {/* Links داخل Drawer */}
+          {/* Links */}
           <DrawerSection>
             {navLinks.map((link, i) => (
               <DrawerLink
                 key={link.href}
-                href={link.href}
+                href={`/${locale}${link.href}`} // ✅ يدعم /en أو /fr
                 onClick={handleClose}
                 style={{ "--i": i } as React.CSSProperties}
               >
@@ -72,7 +84,7 @@ export default function NavbarResponsive() {
           </DrawerSection>
         </div>
 
-        {/* Footer داخل Drawer */}
+        {/* Footer */}
         <DrawerFooter>
           <ThemeToggleButton />
           <LanguageSwitcher />

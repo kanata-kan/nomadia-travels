@@ -16,14 +16,12 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>; // Next.js 15: params is async
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { children } = props;
+  const { locale } = await props.params; // ✅ safer destructuring
 
   setRequestLocale(locale);
 

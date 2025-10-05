@@ -1,4 +1,4 @@
-// app/cars/ page.tsx
+// app/[locale]/cars/page.tsx
 import CarsList from "./CarsList";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
@@ -8,10 +8,16 @@ export const metadata = getMetadataStatic({
   path: "/cars",
 });
 
-export default function CarsPage() {
+export default async function CarsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
   return (
     <main>
-      <CarsList />
+      <CarsList locale={locale} />
     </main>
   );
 }

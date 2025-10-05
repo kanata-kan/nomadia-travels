@@ -63,7 +63,6 @@ export const SectionWrapperImage = styled.section<Props>`
     z-index: 1;
   }
 
-  /* ✅ خلي النص يبان فوق overlay */
   > * {
     position: relative;
     z-index: 2;

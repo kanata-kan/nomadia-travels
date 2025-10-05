@@ -1,7 +1,10 @@
-// app/activities/page.tsx
-
+// app/[locale]/activities/page.tsx
 import { getMetadataStatic } from "@/lib/metadata/static";
 import ActivitiesList from "./ActivitiesList";
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
 export const metadata = getMetadataStatic({
   title: "All Activities",
@@ -9,10 +12,10 @@ export const metadata = getMetadataStatic({
   path: "/activities",
 });
 
-export default function ActivitiesPage() {
+export default async function ActivitiesPage({ params }: Props) {
   return (
     <main>
-      <ActivitiesList />
+      <ActivitiesList params={params} />
     </main>
   );
 }

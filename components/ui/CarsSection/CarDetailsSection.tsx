@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/atoms/Button";
 import { FaArrowLeft, FaCarSide } from "react-icons/fa";
+import { useTranslations } from "next-intl"; // ⬅️ جديد
 
 import { Car } from "@/types";
 import CarSpecs from "./CarSpecs";
@@ -22,17 +23,17 @@ import {
 type Props = { car: Car };
 
 export default function CarDetailsSection({ car }: Props) {
+  const t = useTranslations("carDetails"); // ⬅️ scope
+
   return (
     <Main>
       <Layout>
-        {/* Left Content */}
         <LeftCol>
           <h1>{car.name}</h1>
           <p>
             {car.price} {car.currency} / {car.unit}
           </p>
 
-          {/* Specs */}
           <CarSpecs
             specs={{
               seats: car.seats,
@@ -43,28 +44,24 @@ export default function CarDetailsSection({ car }: Props) {
             }}
           />
 
-          {/* Description */}
           <DescriptionSection>
-            <h2>About this car</h2>
+            <h2>{t("about")}</h2> {/* ⬅️ ترجمة */}
             <p>{car.description}</p>
           </DescriptionSection>
 
-          {/* CTA */}
           <CTASection>
             <Button variant="primary">
-              <FaCarSide style={{ marginRight: "8px" }} /> Book this Car
+              <FaCarSide style={{ marginRight: "8px" }} /> {t("book")}
             </Button>
           </CTASection>
 
-          {/* Back link */}
           <BackLink>
             <Link href="/cars">
-              <FaArrowLeft /> Back to Cars
+              <FaArrowLeft /> {t("back")}
             </Link>
           </BackLink>
         </LeftCol>
 
-        {/* Right Image */}
         <RightCol>
           <HeroImageWrapper>
             <Image
@@ -76,7 +73,6 @@ export default function CarDetailsSection({ car }: Props) {
             />
           </HeroImageWrapper>
 
-          {/* Gallery */}
           {car.images && car.images.length > 1 && (
             <CarGallery images={car.images} carName={car.name} />
           )}

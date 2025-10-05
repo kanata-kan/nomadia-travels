@@ -1,11 +1,9 @@
-// components/ui/Navbar/ThemeToggleButton.tsx
 "use client";
 
 import styled from "styled-components";
-import { useThemeToggle } from "@/hooks/useThemeToggle";
 import { darken } from "@/lib/colorUtils"; // Import darken utility
 
-const IconButton = styled.button`
+export const IconButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,13 +29,3 @@ const IconButton = styled.button`
     transform: scale(0.98); /* Slightly reduces size on click */
   }
 `;
-
-export default function ThemeToggleButton() {
-  const { isDark, toggleTheme } = useThemeToggle();
-
-  return (
-    <IconButton onClick={toggleTheme} aria-label="Toggle theme">
-      {isDark ? "☀️" : "🌙"}
-    </IconButton>
-  );
-}
