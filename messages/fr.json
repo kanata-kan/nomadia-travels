@@ -1,0 +1,101 @@
+{
+  "home": {
+    "welcome": "Bienvenue chez Nomadia Travels!"
+  },
+  "carsSection": {
+    "title": "Voitures disponibles",
+    "subtitle": "Choisissez parmi notre flotte de voitures pour votre aventure au {country}.",
+    "viewAll": "Voir toutes →",
+    "ctaLabel": "Voir les détails"
+  },
+  "carDetails": {
+    "about": "À propos de cette voiture",
+    "book": "Réserver cette voiture",
+    "back": "Retour aux voitures",
+    "viewAll": "Voir tout →"
+  },
+  "activities": {
+    "title": "Activités Disponibles",
+    "subtitle": "Choisissez parmi nos activités sélectionnées pour votre aventure au <strong>Kirghizistan</strong>.",
+    "viewAll": "Voir tout →",
+    "cta": "Voir les détails"
+  },
+  "contact": {
+    "info": {
+      "title": "📌 Informations de contact",
+      "mapLink": "Voir sur la carte"
+    },
+    "socials": {
+      "title": "🌐 Suivez-nous"
+    },
+    "form": {
+      "title": "💬 Envoyez-nous un message",
+      "submit": "Envoyer"
+    }
+  },
+  "gallery": {
+    "title": "Galerie de voyage",
+    "subtitle": "Une collection sélectionnée mettant en valeur la beauté du Kirghizistan — des <strong>lacs</strong> et des <strong>montagnes</strong> aux <strong>traditions nomades</strong>."
+  },
+  "galleryDetails": {
+    "moreImages": "Plus de photos de cette destination",
+    "backToGallery": "Retour à la galerie"
+  },
+  "ourStory": {
+    "heading": "Notre Histoire",
+    "closing": "Nous poursuivons ce voyage avec vous — un voyageur, une histoire à la fois."
+  },
+  "travelPacks": {
+    "title": "Découvrez nos forfaits de voyage",
+    "subtitle": "Explorez nos expériences de voyage soigneusement sélectionnées pour votre prochaine <strong>aventure</strong>.",
+    "viewAll": "Voir tout",
+    "cta": "Voir les détails"
+  },
+  "travelPackDetails": {
+    "featuresTitle": "Caractéristiques",
+    "durationTitle": "Durée",
+    "priceTitle": "Prix",
+    "ctaButton": "Réserver ce pack"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour :",
+    "section1": {
+      "title": "1. Informations que nous collectons",
+      "text": "Nous collectons les informations personnelles que vous fournissez directement, comme votre email lors de l'inscription à notre newsletter ou la réservation d'un voyage."
+    },
+    "section2": {
+      "title": "2. Comment nous utilisons vos informations",
+      "text": "Nous utilisons les données collectées pour fournir et améliorer nos services, envoyer des mises à jour et garantir la sécurité des réservations."
+    },
+    "section3": {
+      "title": "3. Protection des données",
+      "text": "Vos données sont stockées en toute sécurité et ne sont pas partagées avec des tiers, sauf si la loi l'exige."
+    }
+  },
+  "terms": {
+    "title": "Conditions d'utilisation",
+    "lastUpdated": "Dernière mise à jour :",
+    "section1": {
+      "title": "1. Introduction",
+      "text": "Ces conditions d'utilisation régissent votre utilisation du site Web et des services de Nomadia Travels. En accédant à notre plateforme, vous acceptez ces conditions."
+    },
+    "section2": {
+      "title": "2. Utilisation des services",
+      "text": "Vous ne pouvez utiliser nos services qu'en conformité avec les lois applicables. Tout usage abusif, y compris les réservations frauduleuses ou l'accès non autorisé, est strictement interdit."
+    },
+    "section3": {
+      "title": "3. Responsabilité",
+      "text": "Nomadia Travels n'est pas responsable des dommages indirects. Notre responsabilité est limitée dans la mesure maximale autorisée par la loi."
+    }
+  },
+  "activityDetails": {
+    "aboutTitle": "À propos de cette activité",
+    "duration": "Durée",
+    "location": "Emplacement",
+    "groupSize": "Taille du groupe",
+    "price": "Prix",
+    "bookNow": "Réserver cette activité",
+    "backToActivities": "Retour aux activités"
+  }
+}

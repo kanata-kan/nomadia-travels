@@ -1,10 +1,11 @@
-/** @type {import('next').NextConfig} */
+// next.config.ts
+import createNextIntlPlugin from "next-intl/plugin";
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts"); // ⬅️ مهم
+
 const nextConfig = {
   compiler: {
-    styledComponents: {
-      displayName: true,
-      ssr: true,
-    },
+    styledComponents: { displayName: true, ssr: true },
   },
 };
-export default nextConfig;
+
+export default withNextIntl(nextConfig);

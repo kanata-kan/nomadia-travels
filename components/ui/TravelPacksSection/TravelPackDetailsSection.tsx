@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl"; // ✅ لإدارة الترجمات
 import { TravelPack } from "@/types";
 import { Button } from "@/components/ui/atoms/Button";
 import {
@@ -15,15 +16,17 @@ import {
 type Props = { travelPack: TravelPack };
 
 export default function TravelPackDetailsSection({ travelPack }: Props) {
+  const t = useTranslations("travelPackDetails"); // ✅ نربط namespace خاص بالترجمات
+
   return (
     <Wrapper>
       <Content>
         <h1>{travelPack.name}</h1>
         <p>{travelPack.description}</p>
 
-        {/* Features */}
+        {/* === Features === */}
         <FeaturesSection>
-          <h2>Features</h2>
+          <h2>{t("featuresTitle")}</h2>
           <ul>
             {travelPack.features.map((feature, index) => (
               <li key={index}>
@@ -33,27 +36,29 @@ export default function TravelPackDetailsSection({ travelPack }: Props) {
           </ul>
         </FeaturesSection>
 
-        {/* Additional Details */}
+        {/* === Duration === */}
         {travelPack.duration && (
           <DetailsSection>
-            <h3>Duration</h3>
+            <h3>{t("durationTitle")}</h3>
             <p>{travelPack.duration}</p>
           </DetailsSection>
         )}
+
+        {/* === Price === */}
         {travelPack.price && (
           <DetailsSection>
-            <h3>Price</h3>
+            <h3>{t("priceTitle")}</h3>
             <p>{travelPack.price}</p>
           </DetailsSection>
         )}
 
-        {/* CTA */}
+        {/* === CTA === */}
         <CTAWrapper>
-          <Button>Book this Pack</Button>
+          <Button>{t("ctaButton")}</Button>
         </CTAWrapper>
       </Content>
 
-      {/* Hero Image */}
+      {/* === Hero Image === */}
       <HeroSection>
         <Image
           src={travelPack.coverImage}

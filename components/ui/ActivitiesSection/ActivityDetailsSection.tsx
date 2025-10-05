@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Activity } from "@/types";
 import { Button } from "../atoms/Button";
 import { FaArrowLeft, FaHiking } from "react-icons/fa";
@@ -18,9 +19,12 @@ import {
 
 interface Props {
   activity: Activity;
+  locale: string;
 }
 
-export default function ActivityDetailsSection({ activity }: Props) {
+export default function ActivityDetailsSection({ activity, locale }: Props) {
+  const t = useTranslations("activityDetails");
+
   return (
     <Wrapper>
       {/* Left Content */}
@@ -31,26 +35,34 @@ export default function ActivityDetailsSection({ activity }: Props) {
         </Header>
 
         <DetailsSection>
-          <h2>About this Activity</h2>
+          <h2>{t("aboutTitle")}</h2>
           <p>{activity.description}</p>
 
           <DetailsList>
-            <li>⏳ Duration: {activity.duration}</li>
-            <li>📍 Location: {activity.location}</li>
-            <li>👥 Group Size: {activity.groupSize}</li>
-            <li>💰 Price: {activity.price}</li>
+            <li>
+              ⏳ {t("duration")}: {activity.duration}
+            </li>
+            <li>
+              📍 {t("location")}: {activity.location}
+            </li>
+            <li>
+              👥 {t("groupSize")}: {activity.groupSize}
+            </li>
+            <li>
+              💰 {t("price")}: {activity.price}
+            </li>
           </DetailsList>
         </DetailsSection>
 
         <CTASection>
           <Button variant="primary">
-            <FaHiking style={{ marginRight: "8px" }} /> Book this Activity
+            <FaHiking style={{ marginRight: "8px" }} /> {t("bookNow")}
           </Button>
         </CTASection>
 
         <BackLink>
-          <Link href="/activities">
-            <FaArrowLeft /> Back to Activities
+          <Link href={`/${locale}/activities`}>
+            <FaArrowLeft /> {t("backToActivities")}
           </Link>
         </BackLink>
       </ContentCol>

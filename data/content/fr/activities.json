@@ -1,0 +1,53 @@
+[
+  {
+    "id": "activity-1",
+    "name": "Atelier de cuisine du Beshbarmak",
+    "description": "Apprenez à préparer le Beshbarmak, le plat national kirghize, dans une maison d’hôtes chaleureuse.",
+    "coverImage": "/images/activities/beshbarmak.jpg",
+    "duration": "1,5 heure",
+    "location": "Musée historique de la région de Naryn / Maison d’hôtes",
+    "groupSize": "4+ participants (ou 1 sur demande)",
+    "price": "12€/personne",
+    "metadata": {
+      "title": "Atelier de cuisine du Beshbarmak",
+      "description": "Découvrez la cuisine kirghize en apprenant à cuisiner le Beshbarmak avec les habitants.",
+      "path": "/activities/activity-1",
+      "image": "/images/activities/beshbarmak.jpg",
+      "alt": "Cours de cuisine préparant le Beshbarmak au Kirghizistan"
+    }
+  },
+  {
+    "id": "activity-2",
+    "name": "Spectacle de chasse à l’aigle",
+    "description": "Vivez l’art ancien de la chasse à l’aigle, une fière tradition de la culture nomade.",
+    "coverImage": "/images/activities/eagle-hunting.webp",
+    "duration": "1,5 heure",
+    "location": "Village d’Alysh, près de la montagne Salkyn Tor",
+    "groupSize": "2+ participants",
+    "price": "45€/personne",
+    "metadata": {
+      "title": "Spectacle de chasse à l’aigle",
+      "description": "Assistez à une démonstration traditionnelle de chasse à l’aigle dans les montagnes kirghizes.",
+      "path": "/activities/activity-2",
+      "image": "/images/activities/eagle-hunting.webp",
+      "alt": "Chasseur nomade tenant un aigle au Kirghizistan"
+    }
+  },
+  {
+    "id": "activity-3",
+    "name": "Randonnée à cheval vers la cascade Shaar",
+    "description": "Parcourez les sentiers de montagne à cheval jusqu’à la plus haute cascade du Kirghizistan.",
+    "coverImage": "/images/activities/shaar-waterfall.webp",
+    "duration": "Journée complète",
+    "location": "Sentier de la cascade Shaar (région de Naryn)",
+    "groupSize": "2–6 participants",
+    "price": "90€/personne",
+    "metadata": {
+      "title": "Randonnée à cheval vers la cascade Shaar",
+      "description": "Excursion équestre d’une journée vers la cascade Shaar, la plus haute du Kirghizistan.",
+      "path": "/activities/activity-3",
+      "image": "/images/activities/shaar-waterfall.webp",
+      "alt": "Randonnée à cheval vers la cascade Shaar au Kirghizistan"
+    }
+  }
+]

@@ -1,7 +1,7 @@
-// components/ui/sections/ActivitiesSection.tsx
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Container } from "../foundation/Container.styled";
 import { Grid } from "../foundation/Grid.styled";
 import { Activity } from "@/types";
@@ -20,6 +20,8 @@ export default function ActivitiesSection({
   activities,
   context = "home",
 }: Props) {
+  const t = useTranslations("activities");
+
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg})`);
   const isTablet = useMediaQuery(`(min-width: ${breakpoints.md})`);
 
@@ -46,20 +48,22 @@ export default function ActivitiesSection({
           }}
         >
           <div>
-            <Title>Available Activities</Title>
+            <Title>{t("title")}</Title>
             <Subtitle>
-              Choose from our curated activities for your
-              <strong> Kyrgyzstan </strong> adventure.
+              {t.rich("subtitle", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+                endStrong: () => null,
+              })}
             </Subtitle>
           </div>
 
           {isHome && (
             <Link
               href="/activities"
-              aria-label="View all activities"
+              aria-label={t("viewAll")}
               style={{ fontWeight: 600, fontSize: "0.95rem" }}
             >
-              View all →
+              {t("viewAll")}
             </Link>
           )}
         </div>
@@ -72,7 +76,7 @@ export default function ActivitiesSection({
               imageHref={activity.coverImage}
               ctaVisible={!isHome}
               ctaPath={`/activities/${activity.id}`}
-              ctaLabel="View Details"
+              ctaLabel={t("cta")}
             />
           ))}
         </Grid>

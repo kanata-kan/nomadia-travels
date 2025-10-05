@@ -1,0 +1,65 @@
+[
+  {
+    "id": "car-1",
+    "name": "Toyota Land Cruiser Prado",
+    "description": "SUV 4x4 fiable pour les aventures hors route et les sentiers de montagne, avec confort pour les longs trajets.",
+    "coverImage": "/images/cars/land-cruiser.jpg",
+    "price": 100,
+    "currency": "USD",
+    "unit": "jour",
+    "seats": 7,
+    "transmission": "Automatique",
+    "drive": "4x4",
+    "luggage": "Grande",
+    "fuel": "Diesel",
+    "metadata": {
+      "title": "Location Toyota Land Cruiser Prado",
+      "description": "SUV parfait pour les voyages hors route et en montagne au Kirghizistan.",
+      "path": "/cars/car-1",
+      "image": "/images/cars/land-cruiser.jpg",
+      "alt": "Toyota Land Cruiser Prado disponible à la location"
+    }
+  },
+  {
+    "id": "car-2",
+    "name": "Mitsubishi Pajero",
+    "description": "SUV spacieux et robuste, idéal pour les voyages en famille et les terrains variés.",
+    "coverImage": "/images/cars/pajero.jpg",
+    "price": 90,
+    "currency": "USD",
+    "unit": "jour",
+    "seats": 5,
+    "transmission": "Automatique",
+    "drive": "4x4",
+    "luggage": "Moyenne",
+    "fuel": "Essence",
+    "metadata": {
+      "title": "Location Mitsubishi Pajero",
+      "description": "SUV confortable pour les familles et petits groupes explorant le Kirghizistan.",
+      "path": "/cars/car-2",
+      "image": "/images/cars/pajero.jpg",
+      "alt": "Mitsubishi Pajero SUV disponible à la location"
+    }
+  },
+  {
+    "id": "car-3",
+    "name": "Hyundai Elantra",
+    "description": "Berline abordable, parfaite pour les visites en ville et les courts trajets sur routes pavées.",
+    "coverImage": "/images/cars/elantra.jpg",
+    "price": 50,
+    "currency": "USD",
+    "unit": "jour",
+    "seats": 4,
+    "transmission": "Manuelle",
+    "drive": "2RM",
+    "luggage": "Petite",
+    "fuel": "Essence",
+    "metadata": {
+      "title": "Location Hyundai Elantra",
+      "description": "Berline économique pour des trajets agréables dans les villes du Kirghizistan.",
+      "path": "/cars/car-3",
+      "image": "/images/cars/elantra.jpg",
+      "alt": "Hyundai Elantra berline disponible à la location"
+    }
+  }
+]
