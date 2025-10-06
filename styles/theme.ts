@@ -4,6 +4,7 @@ import { spacing } from "./tokens/spacing";
 import { radii } from "./tokens/radii";
 import { breakpoints } from "./tokens/breakpoints";
 import { layout } from "./tokens/layout";
+import { typography } from "./tokens/typography";
 
 export const lightTheme = {
   colors: lightColors,
@@ -11,6 +12,7 @@ export const lightTheme = {
   radii,
   breakpoints,
   layout,
+  typography,
   shadows: {
     sm: "0px 1px 2px rgba(0, 0, 0, 0.05)",
     md: "0px 4px 6px rgba(0, 0, 0, 0.1)",
@@ -25,6 +27,7 @@ export const darkTheme = {
   radii,
   breakpoints,
   layout,
+  typography,
   shadows: {
     sm: "0px 1px 2px rgba(0, 0, 0, 0.2)",
     md: "0px 4px 6px rgba(0, 0, 0, 0.3)",

@@ -5,7 +5,7 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
       primary: string;
-      primaryHover: string; // Added hover state for primary
+      primaryHover: string;
       secondary: string;
       accent: string;
       background: string;
@@ -23,6 +23,7 @@ declare module "styled-components" {
       };
       divider: string;
     };
+
     spacing: {
       xs: string;
       sm: string;
@@ -30,6 +31,7 @@ declare module "styled-components" {
       lg: string;
       xl: string;
     };
+
     radii: {
       sm: string;
       md: string;
@@ -39,6 +41,7 @@ declare module "styled-components" {
       "3xl": string;
       full: string;
     };
+
     breakpoints: {
       sm: string;
       md: string;
@@ -46,6 +49,7 @@ declare module "styled-components" {
       xl: string;
       "2xl": string;
     };
+
     layout: {
       container: {
         padding: {
@@ -75,11 +79,47 @@ declare module "styled-components" {
         };
       };
     };
+
     shadows: {
       sm: string;
       md: string;
       lg: string;
       xl: string;
     };
+
+    /** ✅ Typography tokens */
+    typography: {
+      fontFamily: {
+        base: string;
+        heading: string;
+      };
+      fontSizes: {
+        h1: string;
+        h2: string;
+        h3: string;
+        body: string;
+        caption: string;
+      };
+      fontWeights: {
+        bold: number;
+        semiBold: number;
+        medium: number;
+        regular: number;
+      };
+      lineHeights: {
+        tight: number;
+        normal: number;
+        relaxed: number;
+      };
+    };
+  }
+}
+
+// ✅ Optional JSX Fix (for polymorphic components)
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
   }
 }
