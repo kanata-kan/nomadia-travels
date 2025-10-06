@@ -27,6 +27,12 @@ export const GlobalStyle = createGlobalStyle`
     --line-height-tight: ${({ theme }) => theme.typography.lineHeights.tight};
     --line-height-normal: ${({ theme }) => theme.typography.lineHeights.normal};
     --line-height-relaxed: ${({ theme }) => theme.typography.lineHeights.relaxed};
+
+    /* Spacing tokens from theme */
+    --spacing-xs: ${({ theme }) => theme.spacing.xs};
+    --spacing-sm: ${({ theme }) => theme.spacing.sm};
+    --container-max-lg: ${({ theme }) => theme.layout.container.maxWidth.lg};
+    --section-spacing-default-md: ${({ theme }) => theme.layout.section.spacing.default.md};
   }
 
   /* 🧩 Modern Reset */

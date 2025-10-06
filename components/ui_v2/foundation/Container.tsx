@@ -1,12 +1,8 @@
-"use client";
+// components/ui_v2/foundation/Container.tsx
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  max-width: ${({ theme }) => theme.layout.container.maxWidth.xl};
+  padding-inline: ${({ theme }) => theme.layout.container.padding.md};
+  margin-inline: auto;
 `;
