@@ -1,136 +1,239 @@
-# 🧩 Kanata UI v2 — Layout System Overview
+# 🧱 Kanata UI v2 — Layout & Spacing System
 
-This document explains the **Spacing & Layout System** architecture used in **Nomadia Travels (UI v2)**.  
-It defines how vertical and horizontal rhythm is established across the interface.
+This document defines the **Layout Architecture** used in **Kanata UI v2**,  
+covering Container, Grid, and SectionWrapper — the core structure of all pages.
 
 ---
 
 ## 🎯 Purpose
 
-To create a **consistent, scalable visual rhythm** that connects spacing, containers, and grids to typography.  
-Every gap, margin, and padding in the project follows a unified logic to ensure predictable alignment and harmony.
+The Layout System provides a **consistent spatial rhythm** (both vertical & horizontal)  
+across all pages and components.
+
+It ensures:
+- Predictable spacing between sections.  
+- Flexible and responsive grids.  
+- Consistent container widths and paddings.  
+- Theme-aware layouts that adapt to light/dark mode.
 
 ---
 
-## ⚙️ Core Components
+## 🧩 Core Philosophy
 
-| Element               | Description                                                                        |
-| --------------------- | ---------------------------------------------------------------------------------- |
-| **Spacing Tokens**    | Define consistent gaps between elements (`--space-2`, `--space-4`, `--space-8`...) |
-| **Layout Containers** | Structural wrappers controlling max-width, horizontal padding, and centering       |
-| **Section Variants**  | Vertical spacing presets (`tight`, `default`, `loose`) used for top/bottom padding |
-| **Grid System**       | Controls multi-column layouts with defined `gap` and responsive breakpoints        |
-| **Alignment Rules**   | Define consistent horizontal & vertical alignment (flex/grid utilities)            |
+> “Typography gives voice.  
+> Layout gives breathing.” — Kanata Design Principle
+
+The Layout System controls **space**, not **content**.  
+Every pixel of margin or padding is derived from design tokens —  
+ensuring scalability and aesthetic harmony across breakpoints.
 
 ---
 
-## 🧱 File Structure
+## 🧱 Tokens Involved
 
-```bash
-styles/
-└── tokens/
-    ├── spacing.ts      → numeric spacing scale (base: 8px)
-    ├── layout.ts       → containers, grid, and section configs
-components/ui_v2/layout/
-├── Container.tsx       → fixed max-width & responsive padding
-├── SectionWrapper.tsx  → applies vertical spacing variants
-└── FullBleed.tsx       → edge-to-edge layouts
-docs/UI-V2/LAYOUT_SYSTEM.md
-```
+| Token Group | Used For | Example |
+|--------------|-----------|----------|
+| `layout.container` | Defines global container widths & padding | `maxWidth.xl = 1200px` |
+| `layout.section.spacing` | Vertical rhythm between sections | `default.md = 48px` |
+| `spacing` | Internal gaps between elements | `lg = 24px` |
+| `breakpoints` | Responsive control points | `md = 768px`, `xl = 1280px` |
+| `radii` | Corner smoothness for cards & wrappers | `lg = 12px` |
 
-## 🧮 Spacing Scale
+---
 
-Token REM PX Usage
+## 🧭 Components Overview
 
-```bash
---space-2	0.125rem	2px	minimal gaps (icons, borders)
---space-4	0.25rem	4px	compact UIs
---space-8	0.5rem	8px	base unit (core rhythm)
---space-12	0.75rem	12px	inline elements
---space-16	1rem	16px	component spacing
---space-24	1.5rem	24px	between sections
---space-32	2rem	32px	loose layouts
---space-64	4rem	64px	page-level separation
-```
+### 1️⃣ Container
 
-All spacing is rem-based and scales dynamically with typography.
+**Path:** `components/ui_v2/foundation/Container.tsx`
 
-## 🧩 Section Variants
+Responsible for defining the **maximum readable width**  
+and applying horizontal padding based on device size.
 
-```bash
-Defined inside layout.ts and applied via <SectionWrapper variant="tight" | "default" | "loose" />.
-Variant	Top / Bottom Padding	Use Case
-Tight	var(--space-24)	dense sections like cards or lists
-Default	var(--space-48)	general-purpose section
-Loose	var(--space-64)	large hero or end sections
-```
-
-## 🧠 Design Philosophy
-
-Maintain 8px-based modular scale.
-Ensure vertical rhythm aligns with typography line heights.
-Avoid arbitrary pixel values — always reference spacing tokens.
-Use containers to maintain consistent reading width and section wrappers for vertical flow.
-Favor CSS variables for live theming and scaling.
-
-## 🧩 Example Implementation
-
-```bash
-import SectionWrapper from "@/components/ui_v2/layout/SectionWrapper";
-```
 ```tsx
-export default function LayoutDemoPage() {
-return (
-<>
-<SectionWrapper variant="tight">
-<h2>Tight Section</h2>
+<Container>
+  <p>Content centered within the readable area.</p>
+</Container>
+```
+
+**Features**
+- Auto-adjusts padding via tokens.  
+- Fluid mode available via `fluid` prop.  
+- Centers content horizontally.
+
+---
+
+### 2️⃣ SectionWrapper
+
+**Path:** `components/ui_v2/foundation/SectionWrapper.tsx`
+
+Controls **vertical spacing (padding-block)** between sections  
+using `variant` presets: `tight`, `default`, or `loose`.
+
+```tsx
+<SectionWrapper variant="default">
+  <Container>
+    <h2>Default Section</h2>
+    <p>This section has balanced vertical rhythm.</p>
+  </Container>
 </SectionWrapper>
-
-      <SectionWrapper>
-        <h2>Default Section</h2>
-      </SectionWrapper>
-
-      <SectionWrapper variant="loose">
-        <h2>Loose Section</h2>
-      </SectionWrapper>
-    </>
-
-);
-}
 ```
-## 🧭 Integration With Theme
 
-All spacing tokens are exposed via CSS variables inside GlobalStyle:
+**Variants**
 
-```json
-:root {
---space-2: 0.125rem;
---space-4: 0.25rem;
---space-8: 0.5rem;
---space-16: 1rem;
---space-24: 1.5rem;
---space-32: 2rem;
---space-64: 4rem;
-}
+| Variant | Use Case | Vertical Spacing |
+|----------|-----------|------------------|
+| `tight` | small sub-sections (e.g., feature list) | 24–32px |
+| `default` | standard sections | 48–64px |
+| `loose` | large blocks like Hero or CTA | 72–96px |
+
+---
+
+### 3️⃣ Grid
+
+**Path:** `components/ui_v2/foundation/Grid.tsx`
+
+Handles **horizontal distribution** of elements  
+using responsive, token-based spacing and columns.
+
+```tsx
+<Grid columns={3} gap="lg">
+  <Card>Item 1</Card>
+  <Card>Item 2</Card>
+  <Card>Item 3</Card>
+</Grid>
 ```
-```ts
-// Then consumed via theme.spacing in styled-components:
 
-padding: ${({ theme }) => theme.spacing["space-32"]};
+**Props**
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `columns` | `number` | Fixed column count (optional). |
+| `gap` | `keyof spacing` | Gap between grid items. |
+| `align` | `"start" \| "center" \| "end"` | Vertical alignment. |
+| `justify` | `"start" \| "center" \| "end" \| "between"` | Horizontal alignment. |
+| `responsive` | `boolean` | Enables auto-fit layout. |
+
+**Logic**
+```css
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: theme.spacing.md;
 ```
-## 🧩 Future Extensions
 
-Responsive spacing (space-md, space-lg)
-Fluid layout scaling (clamp-based)
-Adaptive grids (auto-fit minmax)
-Content density modes (compact, comfortable)
+Responsive behavior:
+- Desktop → 3–4 columns.  
+- Tablet → 2 columns.  
+- Mobile → 1 column.
 
-## ✅ Checklist (Phase Completion)
+---
 
-Spacing tokens defined (spacing.ts)
-Layout tokens & variants defined (layout.ts)
-SectionWrapper, Container, FullBleed implemented
-CSS variables integrated in theme
-Layout demo page validated (/layout-demo)
-Documentation completed (LAYOUT_SYSTEM.md)
-End of Phase 2 — Spacing & Layout System ✅
+## 🧩 Architectural Relationship
+
+```
+Layout (page.tsx)
+│
+├── SectionWrapper (variant: tight | default | loose)
+│     │
+│     └── Container (max-width + padding)
+│           │
+│           └── Grid (columns + gap)
+│                 ├── Card
+│                 │     ├── Typography
+│                 │     └── Button
+│                 ├── Card
+│                 └── Card
+```
+
+**Vertical Rhythm →** controlled by `SectionWrapper`  
+**Horizontal Rhythm →** controlled by `Grid`  
+**Spatial Boundaries →** controlled by `Container`
+
+Together they form the **Kanata Layout Triad**.
+
+---
+
+## 🧠 Visual Rhythm Logic
+
+Each section breathes with its own rhythm:
+
+| Layout Layer | Direction | Token | Description |
+|---------------|------------|---------|-------------|
+| `SectionWrapper` | Vertical | `layout.section.spacing` | Controls top & bottom padding. |
+| `Grid` | Horizontal | `spacing` | Defines gaps between cards/items. |
+| `Container` | Both | `layout.container.padding` | Maintains edge consistency. |
+
+---
+
+## 💡 Example Integration
+
+```tsx
+<SectionWrapper variant="default">
+  <Container>
+    <h2>Our Top Destinations</h2>
+    <Grid columns={3} gap="lg">
+      <Card>
+        <h3>Adventure Tours</h3>
+        <p>Join our guided trips through the mountains.</p>
+        <Button variant="primary">Explore</Button>
+      </Card>
+      <Card>
+        <h3>Nomadic Life</h3>
+        <p>Stay with locals and learn their culture.</p>
+        <Button variant="secondary">Learn More</Button>
+      </Card>
+      <Card>
+        <h3>Yurt Experience</h3>
+        <p>Live the authentic Kyrgyz lifestyle.</p>
+        <Button variant="ghost">Discover</Button>
+      </Card>
+    </Grid>
+  </Container>
+</SectionWrapper>
+```
+
+---
+
+## 🧱 Dark / Light Adaptation
+
+Because every element inherits from the theme object,  
+the layout automatically adapts to color mode (light/dark)  
+without duplicating styles.
+
+| Mode | Example |
+|------|----------|
+| **Light** | White surface, soft shadows, black text. |
+| **Dark** | Navy surface, soft contrast, white text. |
+
+---
+
+## 🧩 Consistency Principles
+
+1. **Token-Driven:** All spacing and widths derive from `theme.layout` or `theme.spacing`.  
+2. **Responsive by Design:** No fixed pixel layouts — only scalable values.  
+3. **Composable:** Container + Grid + SectionWrapper can nest anywhere.  
+4. **Visual Rhythm:** Tight, Default, Loose = breathing system.  
+5. **Separation of Concerns:**  
+   - Container = boundaries  
+   - SectionWrapper = rhythm  
+   - Grid = alignment  
+
+---
+
+## ✅ Summary
+
+> The Layout System is the *spatial engine* of Kanata UI.  
+> It unifies structure, rhythm, and adaptability —  
+> providing a professional-grade foundation for any page or component.
+
+**Core Trio:**  
+🧱 `Container` → sets the frame  
+🧩 `Grid` → distributes the content  
+📐 `SectionWrapper` → maintains rhythm  
+
+Together, they define the **breathing architecture** of Kanata UI v2.
+
+---
+
+**Author:** Kanata Architect  
+**Phase:** `2.2 → Layout & Spacing System`  
+**Status:** ✅ Completed

@@ -1,28 +1,43 @@
-// app/[locale]/ui-v2/layout-demo/page.tsx
-"use client";
-
-import { Container } from "@/components/ui_v2/foundation/Container";
 import { SectionWrapper } from "@/components/ui_v2/foundation/SectionWrapper";
-import Typography from "@/components/ui_v2/foundation/Typography";
+import Container from "@/components/ui_v2/foundation/Container";
+import Grid from "@/components/ui_v2/foundation/Grid";
+import Card from "@/components/ui_v2/foundation/Card";
+import Button from "@/components/ui_v2/foundation/Button";
 
-export default function LayoutDemoPage() {
+export default function LayoutDemo() {
   return (
     <>
-      <SectionWrapper variant="tight">
+      <SectionWrapper $variant="tight">
         <Container>
-          <Typography variant="h2">Tight Section</Typography>
+          <h2>Tight Section</h2>
+          <p>Used for small content blocks or mini subsections.</p>
         </Container>
       </SectionWrapper>
 
-      <SectionWrapper variant="default">
+      <SectionWrapper $variant="default">
         <Container>
-          <Typography variant="h2">Default Section</Typography>
+          <h2>Default Section</h2>
+          <Grid columns={3} gap="lg">
+            <Card>
+              <h3>Card 1</h3>
+              <Button>Read More</Button>
+            </Card>
+            <Card>
+              <h3>Card 2</h3>
+              <Button>Learn More</Button>
+            </Card>
+            <Card>
+              <h3>Card 3</h3>
+              <Button>Explore</Button>
+            </Card>
+          </Grid>
         </Container>
       </SectionWrapper>
 
-      <SectionWrapper variant="loose">
+      <SectionWrapper $variant="loose">
         <Container>
-          <Typography variant="h2">Loose Section</Typography>
+          <h2>Loose Section</h2>
+          <p>Used for Hero or CTA areas.</p>
         </Container>
       </SectionWrapper>
     </>
