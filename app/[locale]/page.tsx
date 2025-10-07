@@ -1,11 +1,12 @@
 export const dynamic = "force-dynamic";
 
 import ActivitiesSection from "@/components/ui/ActivitiesSection/ActivitiesSection";
-import CarsSection from "@/components/ui/CarsSection/CarsSection";
 import HeroSection from "@/components/ui/molecules/Hero";
 import ServicesSectionServer from "@/components/ui/ServicesSection/ServicesSection.server";
 import TravelPacksSection from "@/components/ui/TravelPacksSection/TravelPacksSection";
-import { getActivities, getCars, getHome, getTravelPacks } from "@/lib/api";
+import { getActivities, getHome, getTravelPacks } from "@/lib/api";
+import CategorySection from "@/components/ui_v2/sections/CategorySection";
+import { getCars } from "@/lib/api/cars";
 
 export default async function HomePage({
   params,
@@ -16,20 +17,31 @@ export default async function HomePage({
 
   const home = await getHome(locale);
   const cars = await getCars(locale);
-  const packs = await getTravelPacks(locale);
+  const travelPacks = await getTravelPacks(locale);
   const activities = await getActivities(locale);
 
   return (
     <main>
       <HeroSection {...home.hero} />
       <ServicesSectionServer locale={locale} />
-      <CarsSection cars={cars.slice(0, 3)} context="home" />
-      <TravelPacksSection
-        packs={packs.slice(0, 3)}
-        context="home"
-        locale={locale}
+      <CategorySection
+        items={cars}
+        namespace="carsSection"
+        ctaBasePath="/cars"
+        variant="home"
       />
-      <ActivitiesSection activities={activities} context="home" />
+      <CategorySection
+        items={travelPacks}
+        namespace="travelPacks"
+        ctaBasePath="/travel-packs"
+        variant="home"
+      />
+      <CategorySection
+        items={activities}
+        namespace="activities"
+        ctaBasePath="/activities"
+        variant="home"
+      />
     </main>
   );
 }

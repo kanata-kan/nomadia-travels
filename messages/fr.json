@@ -6,13 +6,15 @@
     "title": "Voitures disponibles",
     "subtitle": "Choisissez parmi notre flotte de voitures pour votre aventure au {country}.",
     "viewAll": "Voir toutes →",
-    "ctaLabel": "Voir les détails"
+    "ctaLabel": "Voir les détails",
+    "viewDetails": "Voir les détails"
   },
   "carDetails": {
     "about": "À propos de cette voiture",
     "book": "Réserver cette voiture",
     "back": "Retour aux voitures",
-    "viewAll": "Voir tout →"
+    "viewAll": "Voir tout →",
+    "viewDetails": "Voir les détails"
   },
   "carGallery": {
     "title": "Galerie de {name}",
@@ -23,7 +25,8 @@
     "title": "Activités Disponibles",
     "subtitle": "Choisissez parmi nos activités sélectionnées pour votre aventure au <strong>Kirghizistan</strong>.",
     "viewAll": "Voir tout →",
-    "cta": "Voir les détails"
+    "cta": "Voir les détails",
+    "viewDetails": "Voir les détails"
   },
   "contact": {
     "info": {
@@ -53,8 +56,9 @@
   "travelPacks": {
     "title": "Découvrez nos forfaits de voyage",
     "subtitle": "Explorez nos expériences de voyage soigneusement sélectionnées pour votre prochaine <strong>aventure</strong>.",
-    "viewAll": "Voir tout",
-    "cta": "Voir les détails"
+    "viewAll": "Voir tout →",
+    "cta": "Voir les détails",
+    "viewDetails": "Voir les détails"
   },
   "travelPackDetails": {
     "featuresTitle": "Caractéristiques",

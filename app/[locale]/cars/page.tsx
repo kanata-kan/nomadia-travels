@@ -1,7 +1,7 @@
 // app/[locale]/cars/page.tsx
 import { getCars } from "@/lib/api/cars";
 import { getMetadataStatic } from "@/lib/metadata/static";
-import CarsSection from "@/components/ui_v2/sections/CarsSection";
+import CategorySection from "@/components/ui_v2/sections/CategorySection";
 
 type PageParams = {
   params: Promise<{ locale: string }>;
@@ -19,5 +19,12 @@ export default async function CarsPage({ params }: PageParams) {
 
   const cars = await getCars(locale);
 
-  return <CarsSection cars={cars} variant="page" />;
+  return (
+    <CategorySection
+      items={cars}
+      namespace="carsSection"
+      ctaBasePath="/cars"
+      variant="page"
+    />
+  );
 }

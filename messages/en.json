@@ -6,13 +6,15 @@
     "title": "Available Cars",
     "subtitle": "Choose from our fleet of cars for your {country} adventure.",
     "viewAll": "View all →",
-    "ctaLabel": "View Details"
+    "ctaLabel": "View Details",
+    "viewDetails": "View Details"
   },
   "carDetails": {
     "about": "About this car",
     "book": "Book this Car",
     "back": "Back to Cars",
-    "viewAll": "View all →"
+    "viewAll": "View all →",
+    "viewDetails": "View Details"
   },
   "carGallery": {
     "title": "Gallery of {name}",
@@ -23,7 +25,8 @@
     "title": "Available Activities",
     "subtitle": "Choose from our curated activities for your <strong>Kyrgyzstan</strong> adventure.",
     "viewAll": "View all →",
-    "cta": "View Details"
+    "cta": "View Details",
+    "viewDetails": "View Details"
   },
   "contact": {
     "info": {
@@ -53,8 +56,9 @@
   "travelPacks": {
     "title": "Explore Travel Packs",
     "subtitle": "Discover curated travel experiences for your next <strong>adventure</strong>.",
-    "viewAll": "View all",
-    "cta": "View Details"
+    "viewAll": "View all →",
+    "cta": "View Details",
+    "viewDetails": "View Details"
   },
   "travelPackDetails": {
     "featuresTitle": "Features",

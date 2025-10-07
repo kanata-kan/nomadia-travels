@@ -2,24 +2,42 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Car } from "@/types";
 import Card from "../foundation/Card";
 import Typography from "../foundation/Typography";
 import Button from "../foundation/Button";
-import { FaUsers, FaGasPump, FaCogs, FaSuitcase } from "react-icons/fa";
-import { useTranslations } from "next-intl";
-import { CardWrapper, SpecsGrid } from "./CarCard.styled";
+import { CardWrapper, SpecsGrid } from "./UniversalCard.styled";
 
-export default function CarCard({ car }: { car: Car }) {
-  const t = useTranslations("carsSection");
+type Spec = {
+  icon: React.ReactNode;
+  label: string;
+};
 
+type Props = {
+  image: string;
+  title: string;
+  description: string;
+  specs?: Spec[];
+  price?: string | number | null;
+  ctaLabel: string;
+  ctaLink: string;
+};
+
+export default function UniversalCard({
+  image,
+  title,
+  description,
+  specs,
+  price,
+  ctaLabel,
+  ctaLink,
+}: Props) {
   return (
     <Card interactive variant="outline">
       <CardWrapper>
         <div style={{ position: "relative", width: "100%", height: "230px" }}>
           <Image
-            src={car.coverImage}
-            alt={car.metadata?.alt || car.name}
+            src={image}
+            alt={title}
             fill
             sizes="(max-width: 768px) 100vw, 400px"
             style={{
@@ -33,7 +51,7 @@ export default function CarCard({ car }: { car: Car }) {
 
         <div style={{ flexGrow: 1, marginTop: "1rem" }}>
           <Typography as="h3" variant="h3" align="center" color="primary">
-            {car.name}
+            {title}
           </Typography>
 
           <Typography
@@ -42,44 +60,38 @@ export default function CarCard({ car }: { car: Car }) {
             align="center"
             className="text-clamp-2"
           >
-            {car.description}
+            {description}
           </Typography>
 
-          <SpecsGrid>
-            <div>
-              <FaUsers />
-              <span>{car.seats}</span>
-            </div>
-            <div>
-              <FaCogs />
-              <span>{car.transmission}</span>
-            </div>
-            <div>
-              <FaSuitcase />
-              <span>{car.luggage}</span>
-            </div>
-            <div>
-              <FaGasPump />
-              <span>{car.fuel}</span>
-            </div>
-          </SpecsGrid>
+          {specs && (
+            <SpecsGrid>
+              {specs.map((s, i) => (
+                <div key={i}>
+                  {s.icon}
+                  <span>{s.label}</span>
+                </div>
+              ))}
+            </SpecsGrid>
+          )}
 
-          <Typography
-            as="p"
-            variant="body"
-            align="center"
-            color="accent"
-            style={{
-              fontWeight: "bold",
-              letterSpacing: "0.3px",
-            }}
-          >
-            {car.price} {car.currency} / {car.unit}
-          </Typography>
+          {price && (
+            <Typography
+              as="p"
+              variant="body"
+              align="center"
+              color="accent"
+              style={{
+                fontWeight: "bold",
+                letterSpacing: "0.3px",
+              }}
+            >
+              {price}
+            </Typography>
+          )}
         </div>
 
         <Link
-          href={`/cars/${car.id}`}
+          href={ctaLink}
           style={{
             textDecoration: "none",
             marginTop: "1rem",
@@ -97,7 +109,7 @@ export default function CarCard({ car }: { car: Car }) {
               transition: "background 0.3s ease",
             }}
           >
-            {t("viewAll")}
+            {ctaLabel}
           </Button>
         </Link>
       </CardWrapper>
