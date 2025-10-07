@@ -19,6 +19,7 @@ export const lightColors = {
     secondary: "#374151", // Normal content
     muted: "#6B7280", // Low-contrast text
     inverse: "#F9FAFB", // Text on dark backgrounds
+    accent: "#10B981",
   },
 
   divider: "#E5E7EB", // Soft borders
@@ -44,6 +45,7 @@ export const darkColors = {
     secondary: "#E2E8F0", // Softer white for content
     muted: "#94A3B8", // Muted tone for captions
     inverse: "#111827", // Inverse for light-on-dark
+    accent: "#22C55E", // Brighter green for visibility
   },
 
   divider: "#475569",

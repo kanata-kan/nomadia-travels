@@ -14,6 +14,11 @@
     "back": "Back to Cars",
     "viewAll": "View all →"
   },
+  "carGallery": {
+    "title": "Gallery of {name}",
+    "empty": "No additional photos available for this car."
+  },
+
   "activities": {
     "title": "Available Activities",
     "subtitle": "Choose from our curated activities for your <strong>Kyrgyzstan</strong> adventure.",

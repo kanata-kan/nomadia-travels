@@ -1,5 +1,5 @@
+import Container from "@/components/ui_v2/foundation/Container";
 import Typography from "@/components/ui_v2/foundation/Typography";
-import { Container } from "@ui_v2/foundation/Container";
 
 export default function UITestPage() {
   return (

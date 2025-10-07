@@ -20,6 +20,7 @@ declare module "styled-components" {
         secondary: string;
         muted: string;
         inverse: string;
+        accent: string;
       };
       divider: string;
     };
@@ -112,6 +113,32 @@ declare module "styled-components" {
         relaxed: number;
       };
     };
+    isDark: boolean;
+    colors: {
+      primary: string;
+      surface: string;
+      surfaceAlt?: string;
+      text: {
+        primary: string;
+        secondary?: string;
+        muted?: string;
+        accent?: string;
+      };
+      accent?: string;
+      divider?: string;
+    };
+    radii: {
+      sm: string;
+      md: string;
+      lg: string;
+    };
+    spacing: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+    };
   }
 }
 
@@ -123,3 +150,5 @@ declare global {
     }
   }
 }
+
+import "styled-components";

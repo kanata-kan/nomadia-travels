@@ -41,7 +41,7 @@ export default function CarCard({
         width={400}
         height={250}
         style={{ objectFit: "cover" }}
-        priority={false}
+        priority={true}
       />
     </ImageWrapper>
   );

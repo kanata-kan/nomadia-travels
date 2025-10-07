@@ -1,16 +1,14 @@
-// app/[locale]/cars/[id]/page.tsx
 import { notFound } from "next/navigation";
-import { getCarById } from "@/lib/api";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
-import CarDetailsSection from "@/components/ui/CarsSection/CarDetailsSection";
+import { getCarById } from "@/lib/api/cars";
+import CarDetailsSection from "@/components/ui_v2/sections/CarDetailsSection";
 
-type Props = {
+type PageParams = {
   params: Promise<{ locale: string; id: string }>;
 };
 
-// 🧩 Page
-export default async function CarDetailsPage({ params }: Props) {
-  const { id, locale } = await params;
+export default async function CarDetailsPage({ params }: PageParams) {
+  const { locale, id } = await params;
 
   const car = await getCarById(id, locale);
   if (!car) return notFound();
@@ -19,12 +17,8 @@ export default async function CarDetailsPage({ params }: Props) {
 }
 
 // 🧠 Metadata
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string; id: string }>;
-}) {
-  const { id, locale } = await params;
+export async function generateMetadata({ params }: PageParams) {
+  const { locale, id } = await params;
 
   const car = await getCarById(id, locale);
   if (!car) return {};

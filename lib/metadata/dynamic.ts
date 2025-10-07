@@ -1,7 +1,6 @@
-// lib/metadata/dynamic.ts
 import { Metadata } from "next";
 import { baseMetadata } from "./base";
-import { siteConfig } from "@/lib/config";
+import { SITE } from "@/config/constants";
 
 export function getMetadataDynamic({
   name,
@@ -16,11 +15,11 @@ export function getMetadataDynamic({
 }): Metadata {
   return {
     ...baseMetadata,
-    title: `${name} | ${siteConfig.name}`,
+    title: `${name} | ${SITE.NAME}`,
     description,
     openGraph: {
       ...baseMetadata.openGraph,
-      url: `${siteConfig.url}${path}`,
+      url: `${SITE.URL}${path}`,
       images: [
         {
           url: image,
@@ -31,7 +30,10 @@ export function getMetadataDynamic({
       ],
     },
     twitter: {
-      ...baseMetadata.twitter,
+      card: "summary_large_image",
+      site: SITE.TWITTER,
+      title: `${name} | ${SITE.NAME}`,
+      description,
       images: [image],
     },
   };

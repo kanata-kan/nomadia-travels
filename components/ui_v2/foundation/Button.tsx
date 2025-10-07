@@ -12,6 +12,7 @@ interface ButtonProps {
   fullWidth?: boolean;
   onClick?: () => void;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 const StyledButton = styled.button.withConfig({

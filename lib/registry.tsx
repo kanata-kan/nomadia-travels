@@ -1,3 +1,4 @@
+// lib/registry.tsx
 "use client";
 
 import React, { useState } from "react";

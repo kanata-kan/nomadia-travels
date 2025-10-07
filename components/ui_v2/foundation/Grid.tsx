@@ -3,23 +3,18 @@
 import styled from "styled-components";
 import { ReactNode } from "react";
 
-/* --------------------------------------------
-   🧩 Props Interface
--------------------------------------------- */
 interface GridProps {
   children: ReactNode;
-  columns?: number; // عدد الأعمدة الثابتة (optional)
-  gap?: keyof typeof import("@/styles/tokens/spacing").spacing; // مثلاً sm, md, lg
-  align?: "start" | "center" | "end"; // المحاذاة العمودية
-  justify?: "start" | "center" | "end" | "between"; // المحاذاة الأفقية
-  responsive?: boolean; // هل تتجاوب تلقائيًا
+  columns?: number;
+  gap?: "sm" | "md" | "lg" | "xl";
+  align?: "start" | "center" | "end";
+  justify?: "start" | "center" | "end" | "between";
+  responsive?: boolean;
   className?: string;
 }
 
-/* --------------------------------------------
-   🧱 Styled Component
--------------------------------------------- */
 const StyledGrid = styled.div.withConfig({
+  // ✅ نحجب prop "responsive" باش متوصلش للـ DOM
   shouldForwardProp: (prop) =>
     !["columns", "gap", "align", "justify", "responsive"].includes(
       prop as string,
@@ -27,21 +22,8 @@ const StyledGrid = styled.div.withConfig({
 })<GridProps>`
   display: grid;
   width: 100%;
-  box-sizing: border-box;
-
-  /* 🧠 Dynamic Gap (from tokens) */
-  gap: ${({ gap, theme }) => theme.spacing[gap || "md"]};
-
-  /* 🧩 Grid Columns Logic */
-  grid-template-columns: ${({ columns, responsive }) =>
-    responsive
-      ? `repeat(auto-fit, minmax(280px, 1fr))`
-      : columns
-        ? `repeat(${columns}, 1fr)`
-        : `repeat(auto-fit, minmax(280px, 1fr))`};
-
-  /* ⚙️ Alignment Options */
-  align-items: ${({ align }) => align || "start"};
+  gap: ${({ theme, gap = "md" }) => theme.spacing[gap]};
+  align-items: ${({ align = "start" }) => align};
   justify-content: ${({ justify }) => {
     switch (justify) {
       case "center":
@@ -54,21 +36,14 @@ const StyledGrid = styled.div.withConfig({
         return "start";
     }
   }};
-
-  /* 📱 Responsive Enhancements */
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    grid-template-columns: ${({ responsive }) =>
-      responsive ? `repeat(auto-fit, minmax(220px, 1fr))` : `repeat(2, 1fr)`};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: ${({ columns, responsive }) =>
+    responsive
+      ? `repeat(auto-fit, minmax(280px, 1fr))`
+      : columns
+        ? `repeat(${columns}, 1fr)`
+        : `repeat(auto-fit, minmax(280px, 1fr))`};
 `;
 
-/* --------------------------------------------
-   ⚙️ React Component
--------------------------------------------- */
 export default function Grid({
   children,
   columns,
@@ -84,7 +59,7 @@ export default function Grid({
       gap={gap}
       align={align}
       justify={justify}
-      responsive={responsive}
+      responsive={responsive} // ✅ ماشي مشكل تبقى هنا، ما غتوصلش للـ DOM
       className={className}
     >
       {children}

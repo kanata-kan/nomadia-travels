@@ -104,4 +104,19 @@ export const GlobalStyle = createGlobalStyle`
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
+
+/* 🧩 Utility Classes */
+.mb-strong {
+  margin-bottom: 2rem !important;
+}
+
+/* ✂️ Clamp text to 2 lines (hide overflow) */
+.text-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* عدد الأسطر المسموح بها */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 `;

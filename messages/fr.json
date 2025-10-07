@@ -14,6 +14,11 @@
     "back": "Retour aux voitures",
     "viewAll": "Voir tout →"
   },
+  "carGallery": {
+    "title": "Galerie de {name}",
+    "empty": "Aucune photo supplémentaire disponible pour cette voiture."
+  },
+
   "activities": {
     "title": "Activités Disponibles",
     "subtitle": "Choisissez parmi nos activités sélectionnées pour votre aventure au <strong>Kirghizistan</strong>.",
