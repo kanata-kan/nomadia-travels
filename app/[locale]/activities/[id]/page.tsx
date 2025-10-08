@@ -1,11 +1,14 @@
+// app/[locale]/activities/[id]/page.tsx
 import { notFound } from "next/navigation";
-import { getActivityById } from "@/lib/api";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
-import ActivityDetailsSection from "@/components/ui/ActivitiesSection/ActivityDetailsSection";
+import { getActivityById } from "@/lib/api";
+import ActivityDetailsSection from "@/components/ui_v2/sections/ActivityDetailsSection";
 
-type Props = { params: Promise<{ locale: string; id: string }> };
+type PageParams = {
+  params: Promise<{ locale: string; id: string }>;
+};
 
-export default async function ActivityDetailsPage({ params }: Props) {
+export default async function ActivityDetailsPage({ params }: PageParams) {
   const { locale, id } = await params;
 
   const activity = await getActivityById(id, locale);
@@ -14,11 +17,8 @@ export default async function ActivityDetailsPage({ params }: Props) {
   return <ActivityDetailsSection activity={activity} locale={locale} />;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string; id: string }>;
-}) {
+// 🧠 Dynamic Metadata
+export async function generateMetadata({ params }: PageParams) {
   const { locale, id } = await params;
 
   const activity = await getActivityById(id, locale);

@@ -1,4 +1,3 @@
-// components/ui_v2/styled/
 import styled from "styled-components";
 import { darken } from "@/lib/colorUtils";
 import {
@@ -8,10 +7,10 @@ import {
   BackLinkBase,
 } from "../foundation/DetailsBase.styled";
 
-/* 🧱 Global Section Wrapper */
+/* 🧱 Wrapper */
 export const Wrapper = styled(WrapperBase)``;
 
-/* 📸 Main Car Image */
+/* 🖼️ Image */
 export const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -22,14 +21,11 @@ export const ImageWrapper = styled.div`
   transition: all 0.35s ease;
   cursor: pointer;
 
-  /* 🌗 Hover Effect */
   &:hover {
-    background-color: ${({ theme }) => darken(theme.colors.surface, 10)};
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   }
 
-  /* 🖼️ Inner Image transition */
   img {
     transition:
       transform 0.35s ease,
@@ -42,47 +38,47 @@ export const ImageWrapper = styled.div`
   }
 `;
 
-/* 📄 Car Info Section */
+/* 📄 Info */
 export const InfoSection = styled(InfoSectionBase)``;
 
-/* ⚙️ Specs Grid */
-export const SpecsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: ${({ theme }) => theme.spacing.sm};
+/* 🧭 Details List */
+export const DetailsList = styled.ul`
+  list-style: none;
+  padding: 0;
   margin: ${({ theme }) => theme.spacing.md} 0;
 
-  div {
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     background-color: ${({ theme }) => theme.colors.surface};
     border-radius: ${({ theme }) => theme.radii.md};
-    text-align: center;
     padding: ${({ theme }) => theme.spacing.xs};
-    font-size: 0.8rem;
+    margin-bottom: ${({ theme }) => theme.spacing.xs};
     color: ${({ theme }) => theme.colors.text.muted};
+    font-size: 0.9rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-    cursor: default;
     transition: all 0.25s ease;
 
-    span {
-      display: block;
-      font-size: 1.2rem;
-      margin-bottom: 4px;
+    svg {
+      color: ${({ theme }) => theme.colors.accent};
       transition: color 0.25s ease;
     }
 
     &:hover {
       background-color: ${({ theme }) => darken(theme.colors.surface, 8)};
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
       color: ${({ theme }) => theme.colors.primary};
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 
-      span {
-        color: ${({ theme }) => theme.colors.accent};
+      svg {
+        color: ${({ theme }) => theme.colors.primary};
       }
     }
   }
 `;
 
-/* 🧡 CTA Section */
+/* 🟠 CTA */
 export const CTASection = styled(CTASectionBase)``;
 
 /* 🔙 Back Link */

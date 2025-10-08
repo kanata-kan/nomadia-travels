@@ -9,7 +9,6 @@ import { useTranslations } from "next-intl";
 import UniversalCard from "../components/UniversalCard";
 import Link from "next/link";
 import Button from "../foundation/Button";
-import { Car } from "@/types";
 
 export type DisplayItem = {
   id: string;

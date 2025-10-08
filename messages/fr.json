@@ -64,7 +64,8 @@
     "featuresTitle": "Caractéristiques",
     "durationTitle": "Durée",
     "priceTitle": "Prix",
-    "ctaButton": "Réserver ce pack"
+    "ctaButton": "Réserver ce pack",
+    "back": "Retour aux packs"
   },
   "privacy": {
     "title": "Politique de Confidentialité",
