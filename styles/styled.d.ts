@@ -1,28 +1,39 @@
-// styles/styled.d.ts
 import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
+    isDark: boolean;
+
     colors: {
+      // 🎨 Core palette
       primary: string;
       primaryHover: string;
       secondary: string;
       accent: string;
+
+      // 🧱 Surfaces & backgrounds
       background: string;
+      backgroundAlt: string; // 👈 NEW
       surface: string;
       surfaceAlt: string;
-      overlay?: string;
+      sectionAlt: string; // 👈 NEW
 
+      // ⚠️ States & helpers
       danger: string;
       heroText: string;
+
+      // 🧠 Text tokens
       text: {
         primary: string;
         secondary: string;
         muted: string;
         inverse: string;
         accent: string;
+        onPrimary?: string; // 👈 NEW (text color above gradients or primary areas)
       };
+
       divider: string;
+      overlay?: string;
     };
 
     spacing: {
@@ -88,7 +99,6 @@ declare module "styled-components" {
       xl: string;
     };
 
-    /** ✅ Typography tokens */
     typography: {
       fontFamily: {
         base: string;
@@ -113,36 +123,10 @@ declare module "styled-components" {
         relaxed: number;
       };
     };
-    isDark: boolean;
-    colors: {
-      primary: string;
-      surface: string;
-      surfaceAlt?: string;
-      text: {
-        primary: string;
-        secondary?: string;
-        muted?: string;
-        accent?: string;
-      };
-      accent?: string;
-      divider?: string;
-    };
-    radii: {
-      sm: string;
-      md: string;
-      lg: string;
-    };
-    spacing: {
-      xs: string;
-      sm: string;
-      md: string;
-      lg: string;
-      xl: string;
-    };
   }
 }
 
-// ✅ Optional JSX Fix (for polymorphic components)
+// ✅ Optional JSX Fix (for polymorphic styled components)
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -150,5 +134,3 @@ declare global {
     }
   }
 }
-
-import "styled-components";

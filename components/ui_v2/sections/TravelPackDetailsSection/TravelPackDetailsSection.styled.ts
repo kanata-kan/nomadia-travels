@@ -1,4 +1,6 @@
 // components/ui_v2/styled/TravelPackDetailsSection.styled.ts
+"use client";
+
 import styled from "styled-components";
 import { darken } from "@/lib/colorUtils";
 import {
@@ -6,7 +8,7 @@ import {
   InfoSectionBase,
   CTASectionBase,
   BackLinkBase,
-} from "../foundation/DetailsBase.styled";
+} from "../../styled/DetailsBase.styled";
 
 /* 🧱 Wrapper */
 export const Wrapper = styled(WrapperBase)``;

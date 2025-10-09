@@ -3,7 +3,7 @@ export const revalidate = 43200; // 12h ISR
 
 import { getMetadataStatic } from "@/lib/metadata/static";
 import { getTravelPacks } from "@/lib/api";
-import CategorySection from "@/components/ui_v2/sections/CategorySection";
+import { BaseSection } from "@/components/ui_v2/sections";
 
 export async function generateMetadata({
   params,
@@ -36,7 +36,7 @@ export default async function TravelPacksPage({
   // 🧱 Render directly inside the same file
   return (
     <main>
-      <CategorySection
+      <BaseSection
         items={travelPacks}
         namespace="travelPacks"
         ctaBasePath="/travel-packs"

@@ -1,11 +1,11 @@
+// 🧱 app/[local]/page.tsx
+
 export const dynamic = "force-dynamic";
 
-import ActivitiesSection from "@/components/ui/ActivitiesSection/ActivitiesSection";
 import HeroSection from "@/components/ui/molecules/Hero";
 import ServicesSectionServer from "@/components/ui/ServicesSection/ServicesSection.server";
-import TravelPacksSection from "@/components/ui/TravelPacksSection/TravelPacksSection";
+import { BaseSection } from "@/components/ui_v2/sections";
 import { getActivities, getHome, getTravelPacks } from "@/lib/api";
-import CategorySection from "@/components/ui_v2/sections/CategorySection";
 import { getCars } from "@/lib/api/cars";
 
 export default async function HomePage({
@@ -24,23 +24,28 @@ export default async function HomePage({
     <main>
       <HeroSection {...home.hero} />
       <ServicesSectionServer locale={locale} />
-      <CategorySection
+      <BaseSection
         items={cars}
         namespace="carsSection"
         ctaBasePath="/cars"
         variant="home"
+        showCTA
       />
-      <CategorySection
+
+      <BaseSection
         items={travelPacks}
         namespace="travelPacks"
         ctaBasePath="/travel-packs"
-        variant="home"
+        variant="alt"
+        showCTA
       />
-      <CategorySection
+
+      <BaseSection
         items={activities}
         namespace="activities"
         ctaBasePath="/activities"
-        variant="home"
+        variant="dark"
+        showCTA
       />
     </main>
   );

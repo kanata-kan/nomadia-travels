@@ -2,10 +2,11 @@
   "home": {
     "welcome": "Welcome to Nomadia Travels!"
   },
+
   "carsSection": {
     "title": "Available Cars",
     "subtitle": "Choose from our fleet of cars for your {country} adventure.",
-    "viewAll": "View all →",
+    "viewAll": "View all",
     "ctaLabel": "View Details",
     "viewDetails": "View Details"
   },
@@ -13,7 +14,12 @@
     "about": "About this car",
     "book": "Book this Car",
     "back": "Back to Cars",
-    "viewAll": "View all →",
+    "seats": "seats",
+    "fuel": "Fuel Type",
+    "transmission": "Transmission",
+    "luggage": "Luggage",
+    "price": "Price per day",
+    "viewAll": "View all",
     "viewDetails": "View Details"
   },
   "carGallery": {
@@ -24,7 +30,7 @@
   "activities": {
     "title": "Available Activities",
     "subtitle": "Choose from our curated activities for your <strong>Kyrgyzstan</strong> adventure.",
-    "viewAll": "View all →",
+    "viewAll": "View all",
     "cta": "View Details",
     "viewDetails": "View Details"
   },
@@ -56,7 +62,7 @@
   "travelPacks": {
     "title": "Explore Travel Packs",
     "subtitle": "Discover curated travel experiences for your next <strong>adventure</strong>.",
-    "viewAll": "View all →",
+    "viewAll": "View all",
     "cta": "View Details",
     "viewDetails": "View Details"
   },

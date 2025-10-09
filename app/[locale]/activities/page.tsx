@@ -1,7 +1,7 @@
 // app/[locale]/activities/page.tsx
 import { getMetadataStatic } from "@/lib/metadata/static";
 import { getActivities } from "@/lib/api";
-import CategorySection from "@/components/ui_v2/sections/CategorySection";
+import { BaseSection } from "@/components/ui_v2/sections";
 
 export const revalidate = 43200; // 12h ISR
 
@@ -33,7 +33,7 @@ export default async function ActivitiesPage({ params }: PageParams) {
 
   return (
     <main>
-      <CategorySection
+      <BaseSection
         items={activities}
         namespace="activities"
         ctaBasePath="/activities"

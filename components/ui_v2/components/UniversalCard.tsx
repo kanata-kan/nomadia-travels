@@ -2,9 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import Card from "../foundation/Card";
-import Typography from "../foundation/Typography";
-import Button from "../foundation/Button";
+import { Button, Card, Typography } from "../foundation";
 import { CardWrapper, SpecsGrid } from "./UniversalCard.styled";
 
 type Spec = {

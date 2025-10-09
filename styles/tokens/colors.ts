@@ -1,51 +1,53 @@
-// styles/tokens/colors.ts
-
 // 🌞 Light Theme
 export const lightColors = {
-  primary: "#F97316", // Vibrant orange CTA
-  primaryHover: "#EA580C", // Darker hover for contrast
-  secondary: "#2563EB", // Clear professional blue
-  accent: "#10B981", // Calming green for success or highlights
+  primary: "#F97316",
+  primaryHover: "#EA580C",
+  secondary: "#2563EB",
+  accent: "#10B981",
 
-  background: "#FAFAFA", // Neutral background
-  surface: "#FFFFFF", // Card / section base
-  surfaceAlt: "#F3F4F6", // Soft grey for subtle separation
+  background: "#FAFAFA",
+  backgroundAlt: "#F3F4F6", // 👈 NEW alias
+  surface: "#FFFFFF",
+  surfaceAlt: "#F3F4F6",
+  sectionAlt: "#F9FAFB", // 👈 NEW for subtle alternation
 
-  danger: "#DC2626", // Error / alert
-  heroText: "#FFFFFF", // Text on dark hero or images
+  danger: "#DC2626",
+  heroText: "#FFFFFF",
 
   text: {
-    primary: "#111827", // Strong titles
-    secondary: "#374151", // Normal content
-    muted: "#6B7280", // Low-contrast text
-    inverse: "#F9FAFB", // Text on dark backgrounds
+    primary: "#111827",
+    secondary: "#374151",
+    muted: "#6B7280",
+    inverse: "#F9FAFB",
     accent: "#10B981",
   },
 
-  divider: "#E5E7EB", // Soft borders
-  overlay: "rgba(0, 0, 0, 0.75)", // Modal background
+  divider: "#E5E7EB",
+  overlay: "rgba(0, 0, 0, 0.75)",
 };
 
 // 🌚 Dark Theme
 export const darkColors = {
-  primary: "#FB923C", // Warm orange CTA
-  primaryHover: "#F97316", // Slightly deeper tone
-  secondary: "#3B82F6", // Blue that reads well on dark
-  accent: "#22C55E", // Brighter green for visibility
+  primary: "#FB923C",
+  primaryHover: "#F97316",
+  secondary: "#3B82F6",
+  accent: "#22C55E",
 
-  background: "#0F172A", // Deep navy base
-  surface: "#1E293B", // Slightly lighter surface
-  surfaceAlt: "#334155", // Mid-grey for cards
+  background: "#0F172A",
+  backgroundAlt: "#1E293B", // 👈 NEW alias
+  surface: "#1E293B",
+  surfaceAlt: "#334155",
+  sectionAlt: "#1A2235", // 👈 NEW variant for alternation
 
   danger: "#F87171",
   heroText: "#FFFFFF",
 
   text: {
-    primary: "#F9FAFB", // White text for headers
-    secondary: "#E2E8F0", // Softer white for content
-    muted: "#94A3B8", // Muted tone for captions
-    inverse: "#111827", // Inverse for light-on-dark
-    accent: "#22C55E", // Brighter green for visibility
+    primary: "#F9FAFB",
+    secondary: "#E2E8F0",
+    muted: "#94A3B8",
+    inverse: "#111827",
+    accent: "#22C55E",
   },
 
   divider: "#475569",

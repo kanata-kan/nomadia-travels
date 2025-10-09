@@ -1,22 +1,52 @@
-"use client";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-/* --------------------------------------------
-   🔹 Interface Props
--------------------------------------------- */
 interface SectionWrapperProps {
-  $variant?: "tight" | "default" | "loose";
-  $bg?: "background" | "surface";
+  $variant?: "default" | "alt" | "hero" | "dark";
+  $centered?: boolean;
 }
 
-/* --------------------------------------------
-   🧱 Section Wrapper
--------------------------------------------- */
-export const SectionWrapper = styled.section<SectionWrapperProps>`
+const SectionWrapper = styled.section<SectionWrapperProps>`
   width: 100%;
-  background-color: ${({ theme, $bg = "background" }) =>
-    theme.colors[$bg] || theme.colors.background};
+  padding: ${({ theme }) => theme.layout.section.spacing.default.mobile};
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 
-  padding-block: ${({ theme, $variant = "default" }) =>
-    theme.layout.section.spacing[$variant].md};
+  ${({ $variant, theme }) => {
+    switch ($variant) {
+      case "alt":
+        return css`
+          background-color: ${theme.colors.sectionAlt};
+        `;
+      case "hero":
+        return css`
+          background: linear-gradient(
+            -135deg,
+            ${theme.colors.primary} 0%,
+            ${theme.colors.accent} 100%
+          );
+          color: ${theme.colors.text.onPrimary || theme.colors.heroText};
+        `;
+      case "dark":
+        return css`
+          background-color: ${theme.colors.backgroundAlt};
+          color: ${theme.colors.text.primary};
+        `;
+      default:
+        return css`
+          background-color: ${theme.colors.background};
+        `;
+    }
+  }}
+
+  ${({ $centered }) =>
+    $centered &&
+    css`
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    `}
 `;
+
+export default SectionWrapper;
