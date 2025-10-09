@@ -7,7 +7,7 @@
     "duration": "1.5 hours",
     "location": "Naryn Oblast Historical Museum / Guest House",
     "groupSize": "4+ participants (or 1 on request)",
-    "price": "12€/person",
+    "price": "12",
     "metadata": {
       "title": "Beshbarmak Cooking Class",
       "description": "Discover Kyrgyz cuisine by learning how to cook Beshbarmak with locals.",
@@ -24,7 +24,7 @@
     "duration": "1.5 hours",
     "location": "Alysh village, near Salkyn Tor mountain",
     "groupSize": "2+ participants",
-    "price": "45€/person",
+    "price": "45",
     "metadata": {
       "title": "Eagle Hunting Show",
       "description": "Watch a traditional eagle hunting demonstration in the Kyrgyz mountains.",
@@ -41,7 +41,7 @@
     "duration": "Full day",
     "location": "Shaar Waterfall trail (Naryn Region)",
     "groupSize": "2–6 participants",
-    "price": "90€/person",
+    "price": "90",
     "metadata": {
       "title": "Shaar Waterfall Horse Trek",
       "description": "Full-day horse trek to Shaar Waterfall, the highest waterfall in Kyrgyzstan.",

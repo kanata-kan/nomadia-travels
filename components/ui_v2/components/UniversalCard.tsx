@@ -2,8 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Button, Card, Typography } from "../foundation";
-import { CardWrapper, SpecsGrid } from "./UniversalCard.styled";
+import { Button, Typography } from "../foundation";
+import {
+  CardWrapper,
+  ImageBox,
+  PriceTag,
+  SpecsGrid,
+} from "./UniversalCard.styled";
+import { FiTag } from "react-icons/fi";
 
 type Spec = {
   icon: React.ReactNode;
@@ -30,87 +36,54 @@ export default function UniversalCard({
   ctaLink,
 }: Props) {
   return (
-    <Card interactive variant="outline">
-      <CardWrapper>
-        <div style={{ position: "relative", width: "100%", height: "230px" }}>
-          <Image
-            src={image}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, 400px"
-            style={{
-              borderRadius: "12px",
-              objectFit: "cover",
-              boxShadow: "0 3px 12px rgba(0,0,0,0.15)",
-            }}
-            priority
-          />
-        </div>
-
-        <div style={{ flexGrow: 1, marginTop: "1rem" }}>
-          <Typography as="h3" variant="h3" align="center" color="primary">
-            {title}
-          </Typography>
-
-          <Typography
-            as="p"
-            variant="body"
-            align="center"
-            className="text-clamp-2"
-          >
-            {description}
-          </Typography>
-
-          {specs && (
-            <SpecsGrid>
-              {specs.map((s, i) => (
-                <div key={i}>
-                  {s.icon}
-                  <span>{s.label}</span>
-                </div>
-              ))}
-            </SpecsGrid>
-          )}
-
-          {price && (
-            <Typography
-              as="p"
-              variant="body"
-              align="center"
-              color="accent"
-              style={{
-                fontWeight: "bold",
-                letterSpacing: "0.3px",
-              }}
-            >
-              {price}
-            </Typography>
-          )}
-        </div>
-
-        <Link
-          href={ctaLink}
+    <CardWrapper>
+      <ImageBox>
+        <Image
+          src={image}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 400px"
           style={{
-            textDecoration: "none",
-            marginTop: "1rem",
-            width: "100%",
+            borderRadius: "12px",
+            objectFit: "cover",
           }}
-        >
-          <Button
-            fullWidth
-            variant="primary"
-            style={{
-              width: "100%",
-              padding: "0.9rem 0",
-              borderRadius: "8px",
-              fontWeight: 600,
-              transition: "background 0.3s ease",
-            }}
-          >
-            {ctaLabel}
-          </Button>
-        </Link>
-      </CardWrapper>
-    </Card>
+          priority
+        />
+      </ImageBox>
+
+      <div className="card-content">
+        <Typography as="h3" variant="h4" className="card-title">
+          {title}
+        </Typography>
+
+        <Typography as="p" variant="body" className="card-desc text-clamp-2">
+          {description}
+        </Typography>
+
+        {specs && (
+          <SpecsGrid>
+            {specs.map((s, i) => (
+              <div key={i}>
+                {s.icon}
+                <span>{s.label}</span>
+              </div>
+            ))}
+          </SpecsGrid>
+        )}
+
+        {price && (
+          <PriceTag>
+            <FiTag />
+            <span>{price} €</span>
+          </PriceTag>
+        )}
+      </div>
+
+      <Link href={ctaLink} className="cta-link">
+        <Button variant="primary" fullWidth>
+          {ctaLabel}
+        </Button>
+      </Link>
+    </CardWrapper>
   );
 }

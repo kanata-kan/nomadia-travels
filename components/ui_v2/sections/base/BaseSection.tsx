@@ -4,7 +4,12 @@ import React from "react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { UniversalCard } from "../../components";
-import { Container, Grid, SectionWrapper, Typography } from "../../foundation";
+import {
+  Container,
+  SectionWrapper,
+  SmartSliderPro,
+  Typography,
+} from "../../foundation";
 import { mapVariantToSection } from "../../foundation/variantMap";
 import ViewAllButton from "../../foundation/ViewAllButton";
 
@@ -73,7 +78,7 @@ export default function BaseSection({
         {/* ------------------------------------------------------------------ */}
         {/* 🧩 Universal Card Grid */}
         {/* ------------------------------------------------------------------ */}
-        <Grid columns={variant === "home" ? 3 : 4} gap="xl">
+        <SmartSliderPro gap="sm" autoPlay>
           {visibleItems.map((item) => (
             <UniversalCard
               key={item.id}
@@ -86,7 +91,7 @@ export default function BaseSection({
               ctaLink={`${ctaBasePath}/${item.id}`}
             />
           ))}
-        </Grid>
+        </SmartSliderPro>
 
         {/* ------------------------------------------------------------------ */}
         {/* 🟠 Optional “View All” CTA (controlled via showCTA) */}

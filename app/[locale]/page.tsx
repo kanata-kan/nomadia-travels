@@ -3,8 +3,8 @@
 export const dynamic = "force-dynamic";
 
 import HeroSection from "@/components/ui/molecules/Hero";
-import ServicesSectionServer from "@/components/ui/ServicesSection/ServicesSection.server";
 import { BaseSection } from "@/components/ui_v2/sections";
+import { ServicesSectionServer } from "@/components/ui_v2/sections/ServicesSection";
 import { getActivities, getHome, getTravelPacks } from "@/lib/api";
 import { getCars } from "@/lib/api/cars";
 

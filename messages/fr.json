@@ -112,5 +112,9 @@
     "price": "Prix",
     "bookNow": "Réserver cette activité",
     "backToActivities": "Retour aux activités"
+  },
+  "servicesSection": {
+    "title": "Nos Services",
+    "subtitle": "Nous offrons des transports fiables, des circuits sur mesure et des expériences inoubliables à travers le Kirghizistan."
   }
 }

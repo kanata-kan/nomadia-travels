@@ -56,7 +56,7 @@ export default async function RootLayout(props: {
               <NextIntlClientProvider locale={locale} messages={messages}>
                 <Navbar />
                 {children}
-                <Footer />
+                {/* <Footer /> */}
               </NextIntlClientProvider>
             </ThemeProviderWrapper>
           </ThemeProviderCustom>

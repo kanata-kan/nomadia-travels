@@ -113,5 +113,9 @@
     "price": "Price",
     "bookNow": "Book this Activity",
     "backToActivities": "Back to Activities"
+  },
+  "servicesSection": {
+    "title": "Our Services",
+    "subtitle": "We provide reliable transportation, curated tours, and unforgettable experiences across Kyrgyzstan."
   }
 }

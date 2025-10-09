@@ -3,7 +3,10 @@
 import React from "react";
 import styled, { css, DefaultTheme } from "styled-components";
 
-export type TypographyVariant = "h1" | "h2" | "h3" | "body" | "caption";
+/* ---------------------------------------------
+   🧠 Type Definitions
+--------------------------------------------- */
+export type TypographyVariant = "h1" | "h2" | "h3" | "h4" | "body" | "caption";
 
 interface TypographyProps {
   as?: keyof JSX.IntrinsicElements;
@@ -16,42 +19,54 @@ interface TypographyProps {
 }
 
 /* ---------------------------------------------
-   Responsive variant styles using clamp()
+   🧩 Responsive Variants
 --------------------------------------------- */
 const variantStyles = (theme: DefaultTheme) => ({
   h1: css`
     font-family: ${theme.typography.fontFamily.heading};
-    font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+    font-size: clamp(2rem, 3.5vw + 1rem, 3.25rem);
     font-weight: ${theme.typography.fontWeights.bold};
     line-height: ${theme.typography.lineHeights.tight};
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   `,
   h2: css`
     font-family: ${theme.typography.fontFamily.heading};
-    font-size: clamp(1.75rem, 3vw + 0.8rem, 2.75rem);
+    font-size: clamp(1.75rem, 3vw + 0.8rem, 2.6rem);
     font-weight: ${theme.typography.fontWeights.semiBold};
     line-height: ${theme.typography.lineHeights.normal};
+    text-rendering: optimizeLegibility;
   `,
   h3: css`
     font-family: ${theme.typography.fontFamily.heading};
-    font-size: clamp(1.25rem, 2.2vw + 0.5rem, 2rem);
+    font-size: clamp(1.25rem, 2.2vw + 0.5rem, 1.9rem);
+    font-weight: ${theme.typography.fontWeights.medium};
+    line-height: ${theme.typography.lineHeights.normal};
+  `,
+  h4: css`
+    font-family: ${theme.typography.fontFamily.heading};
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.3rem);
     font-weight: ${theme.typography.fontWeights.medium};
     line-height: ${theme.typography.lineHeights.normal};
   `,
   body: css`
     font-family: ${theme.typography.fontFamily.base};
-    font-size: clamp(0.95rem, 1vw + 0.6rem, 1.125rem);
+    font-size: 1rem;
     font-weight: ${theme.typography.fontWeights.regular};
     line-height: ${theme.typography.lineHeights.relaxed};
+    text-rendering: geometricPrecision;
   `,
   caption: css`
     font-family: ${theme.typography.fontFamily.base};
-    font-size: clamp(0.8rem, 0.6vw + 0.5rem, 0.9rem);
-    font-weight: ${theme.typography.fontWeights.regular};
+    font-size: 0.85rem;
+    opacity: 0.9;
     line-height: ${theme.typography.lineHeights.relaxed};
-    opacity: 0.85;
   `,
 });
 
+/* ---------------------------------------------
+   🎨 Styled Component
+--------------------------------------------- */
 const StyledText = styled.p<{
   $variant: TypographyVariant;
   $align: "left" | "center" | "right";
@@ -61,15 +76,19 @@ const StyledText = styled.p<{
   text-align: ${({ $align }) => $align};
   color: ${({ theme, $color }) =>
     $color ? theme.colors.text[$color] : theme.colors.text.primary};
+  will-change: color;
+  font-display: swap;
 
-  ${({ theme, $variant }) =>
-    variantStyles(theme)[$variant] as ReturnType<typeof css>};
+  ${({ theme, $variant }) => variantStyles(theme)[$variant]};
 
   transition:
     color 0.25s ease-in-out,
-    font-size 0.25s ease;
+    transform 0.25s ease;
 `;
 
+/* ---------------------------------------------
+   🧱 React Component
+--------------------------------------------- */
 const Typography = ({
   as: Component = "p",
   variant = "body",
