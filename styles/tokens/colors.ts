@@ -6,20 +6,24 @@ export const lightColors = {
   accent: "#10B981",
 
   background: "#FAFAFA",
-  backgroundAlt: "#F3F4F6", // 👈 NEW alias
+  backgroundAlt: "#F3F4F6",
   surface: "#FFFFFF",
   surfaceAlt: "#F3F4F6",
-  sectionAlt: "#F9FAFB", // 👈 NEW for subtle alternation
+  sectionAlt: "#F9FAFB",
 
   danger: "#DC2626",
   heroText: "#FFFFFF",
 
+  // ✅ Added success + error directly in text scope
   text: {
     primary: "#111827",
     secondary: "#374151",
     muted: "#6B7280",
     inverse: "#F9FAFB",
     accent: "#10B981",
+    success: "#16A34A", // ✅ Added
+    error: "#DC2626", // ✅ Added
+    onPrimary: "#FFFFFF",
   },
 
   divider: "#E5E7EB",
@@ -33,8 +37,8 @@ export const darkColors = {
   secondary: "#3B82F6",
   accent: "#22C55E",
 
-  background: "#0C1424", // 🔥 أغمق بدرجة مع ميل أزرق ليلي
-  backgroundAlt: "#141C2E", // يعطي عمق متدرج
+  background: "#0C1424",
+  backgroundAlt: "#141C2E",
   surface: "#1E293B",
   surfaceAlt: "#27344A",
   sectionAlt: "#1A2235",
@@ -48,8 +52,11 @@ export const darkColors = {
     muted: "#94A3B8",
     inverse: "#111827",
     accent: "#22C55E",
+    success: "#22C55E", // ✅ Added
+    error: "#EF4444", // ✅ Added
+    onPrimary: "#FFFFFF",
   },
 
   divider: "#475569",
-  overlay: "rgba(5, 10, 25, 0.8)", // 👈 بدّل الأسود بخلفية شفافة زرقاء ليلية
+  overlay: "rgba(5, 10, 25, 0.8)",
 };

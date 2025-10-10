@@ -47,9 +47,14 @@ export default function HeroSection({
           alt={title}
           fill
           priority
-          quality={90} // ✅ Configured in next.config.ts
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
+          quality={75}
+          placeholder="blur"
+          blurDataURL="/images/home/blur-hero-light.png"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
         />
       </ImageLayer>
 

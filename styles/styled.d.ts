@@ -5,31 +5,29 @@ declare module "styled-components" {
     isDark: boolean;
 
     colors: {
-      // 🎨 Core palette
       primary: string;
       primaryHover: string;
       secondary: string;
       accent: string;
 
-      // 🧱 Surfaces & backgrounds
       background: string;
-      backgroundAlt: string; // 👈 NEW
+      backgroundAlt: string;
       surface: string;
       surfaceAlt: string;
-      sectionAlt: string; // 👈 NEW
+      sectionAlt: string;
 
-      // ⚠️ States & helpers
       danger: string;
       heroText: string;
 
-      // 🧠 Text tokens
       text: {
         primary: string;
         secondary: string;
         muted: string;
         inverse: string;
         accent: string;
-        onPrimary?: string; // 👈 NEW (text color above gradients or primary areas)
+        success: string; // ✅ Added
+        error: string; // ✅ Added
+        onPrimary?: string;
       };
 
       divider: string;
