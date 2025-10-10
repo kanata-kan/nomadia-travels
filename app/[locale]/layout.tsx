@@ -3,7 +3,6 @@ export const dynamic = "force-dynamic";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale, getMessages } from "next-intl/server";
 
-import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer/Footer";
 import { ThemeProviderCustom } from "@/hooks/useThemeToggle";
 import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
@@ -13,6 +12,7 @@ import { StyledComponentsRegistry } from "@/lib/registry";
 
 // 🧠 إضافة الخطوط من Google
 import { Inter, Poppins } from "next/font/google";
+import Navbar from "@/components/ui_v2/navigation/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,7 +55,7 @@ export default async function RootLayout(props: {
             <ThemeProviderWrapper>
               <NextIntlClientProvider locale={locale} messages={messages}>
                 <Navbar />
-                {children}
+                <main className="main-container">{children}</main>
                 {/* <Footer /> */}
               </NextIntlClientProvider>
             </ThemeProviderWrapper>

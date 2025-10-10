@@ -2,7 +2,6 @@
 
 import styled from "styled-components";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { m } from "@/lib/motion/motion";
 import { MotionLink } from "@/lib/motion/motion-link";
 

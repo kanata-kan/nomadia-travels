@@ -33,11 +33,11 @@ export const darkColors = {
   secondary: "#3B82F6",
   accent: "#22C55E",
 
-  background: "#0F172A",
-  backgroundAlt: "#1E293B", // 👈 NEW alias
+  background: "#0C1424", // 🔥 أغمق بدرجة مع ميل أزرق ليلي
+  backgroundAlt: "#141C2E", // يعطي عمق متدرج
   surface: "#1E293B",
-  surfaceAlt: "#334155",
-  sectionAlt: "#1A2235", // 👈 NEW variant for alternation
+  surfaceAlt: "#27344A",
+  sectionAlt: "#1A2235",
 
   danger: "#F87171",
   heroText: "#FFFFFF",
@@ -51,5 +51,5 @@ export const darkColors = {
   },
 
   divider: "#475569",
-  overlay: "rgba(0, 0, 0, 0.65)",
+  overlay: "rgba(5, 10, 25, 0.8)", // 👈 بدّل الأسود بخلفية شفافة زرقاء ليلية
 };

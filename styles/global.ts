@@ -46,6 +46,12 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+      height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* 🔥 يمنع الانزلاق الجانبي */
+  margin: 0;
+  padding: 0;
   }
 
   /* 🧠 Base Typography System */
@@ -118,5 +124,63 @@ export const GlobalStyle = createGlobalStyle`
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+section, main, header, footer {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (min-width: 1024px) {
+  .main-container {
+    padding-top: var(--navbar-height);
+  }
+}
+html {
+  --navbar-height: 60px;
+}
+
+/* 🎛️ Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: ${({ theme }) =>
+    theme.isDark
+      ? "rgba(15, 23, 42, 0.95)" // الخلفية الغامقة (نفس لون الموقع)
+      : "rgba(250, 250, 250, 0.95)"};
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: ${({ theme }) =>
+    theme.isDark
+      ? "linear-gradient(180deg, rgba(251, 146, 60, 0.85), rgba(234, 88, 12, 0.9))" // برتقالي متدرج
+      : "linear-gradient(180deg, rgba(16, 185, 129, 0.85), rgba(5, 150, 105, 0.9))"}; // أخضر متدرج
+  border-radius: 999px;
+  border: 2px solid
+    ${({ theme }) =>
+      theme.isDark ? "rgba(15, 23, 42, 1)" : "rgba(250, 250, 250, 1)"};
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: ${({ theme }) =>
+    theme.isDark
+      ? "linear-gradient(180deg, rgba(251, 146, 60, 1), rgba(234, 88, 12, 1))"
+      : "linear-gradient(180deg, rgba(16, 185, 129, 1), rgba(5, 150, 105, 1))"};
+}
+
+/* Firefox Support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: ${({ theme }) =>
+    theme.isDark
+      ? "rgba(251, 146, 60, 0.8) rgba(15, 23, 42, 0.95)"
+      : "rgba(16, 185, 129, 0.8) rgba(250, 250, 250, 0.95)"};
+}
+
 
 `;
