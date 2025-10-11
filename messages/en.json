@@ -52,7 +52,8 @@
     "subtitle": "A curated collection showcasing Kyrgyzstan’s beauty — from <strong>lakes</strong> and <strong>mountains</strong> to <strong>nomadic traditions</strong>."
   },
   "galleryDetails": {
-    "moreImages": "More photos from this destination",
+    "openGallery": "Open Gallery",
+    "moreImages": "More Images",
     "backToGallery": "Back to Gallery"
   },
   "ourStory": {
@@ -117,5 +118,12 @@
   "servicesSection": {
     "title": "Our Services",
     "subtitle": "We provide reliable transportation, curated tours, and unforgettable experiences across Kyrgyzstan."
+  },
+  "lightbox": {
+    "viewDetails": "View Details →",
+    "prev": "← Prev",
+    "next": "Next →",
+    "close": "✕ Close",
+    "swipeToNavigate": "Swipe to navigate"
   }
 }

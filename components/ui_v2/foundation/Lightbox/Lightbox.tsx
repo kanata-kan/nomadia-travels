@@ -1,42 +1,53 @@
+// components/ui_v2/foundation/Lightbox/Lightbox.tsx
+
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
+import { GalleryItem } from "@/types";
+import GalleryLightboxMobile from "./LightboxMobile";
+import GalleryLightboxDesktop from "./LightboxDesktop";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { UI_BREAKPOINTS } from "@/config";
 
-// 🧠 Lazy-loaded versions for performance
-const FooterDesktop = dynamic(() => import("./FooterDesktop"), { ssr: false });
-const FooterResponsive = dynamic(() => import("./FooterResponsive"), {
-  ssr: false,
-});
+type Props = {
+  items: GalleryItem[];
+  startIndex: number;
+  onClose: () => void;
+};
 
-export default function Footer() {
+export default function Lightbox({ items, startIndex, onClose }: Props) {
   const isMobile = useIsMobile(UI_BREAKPOINTS.tablet);
-
   if (isMobile === null) return null;
 
   return (
     <AnimatePresence mode="wait">
       {isMobile ? (
         <motion.div
-          key="footer-mobile"
+          key="mobile"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
         >
-          <FooterResponsive />
+          <GalleryLightboxMobile
+            items={items}
+            startIndex={startIndex}
+            onClose={onClose}
+          />
         </motion.div>
       ) : (
         <motion.div
-          key="footer-desktop"
+          key="desktop"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
         >
-          <FooterDesktop />
+          <GalleryLightboxDesktop
+            items={items}
+            startIndex={startIndex}
+            onClose={onClose}
+          />
         </motion.div>
       )}
     </AnimatePresence>

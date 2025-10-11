@@ -25,7 +25,11 @@
     "title": "Galerie de {name}",
     "empty": "Aucune photo supplémentaire disponible pour cette voiture."
   },
-
+  "galleryDetails": {
+    "openGallery": "Ouvrir la galerie",
+    "moreImages": "Plus d’images",
+    "backToGallery": "Retour à la galerie"
+  },
   "activities": {
     "title": "Activités Disponibles",
     "subtitle": "Choisissez parmi nos activités sélectionnées pour votre aventure au <strong>Kirghizistan</strong>.",
@@ -49,10 +53,6 @@
   "gallery": {
     "title": "Galerie de voyage",
     "subtitle": "Une collection sélectionnée mettant en valeur la beauté du Kirghizistan — des <strong>lacs</strong> et des <strong>montagnes</strong> aux <strong>traditions nomades</strong>."
-  },
-  "galleryDetails": {
-    "moreImages": "Plus de photos de cette destination",
-    "backToGallery": "Retour à la galerie"
   },
   "ourStory": {
     "heading": "Notre Histoire",
@@ -116,5 +116,12 @@
   "servicesSection": {
     "title": "Nos Services",
     "subtitle": "Nous offrons des transports fiables, des circuits sur mesure et des expériences inoubliables à travers le Kirghizistan."
+  },
+  "lightbox": {
+    "viewDetails": "Voir les détails →",
+    "prev": "← Précédent",
+    "next": "Suivant →",
+    "close": "✕ Fermer",
+    "swipeToNavigate": "Balayez pour naviguer"
   }
 }

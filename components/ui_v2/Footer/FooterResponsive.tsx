@@ -1,4 +1,3 @@
-// components/ui_v2/Footer/FooterResponsive.tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -16,16 +15,14 @@ import {
   BottomBar,
 } from "./Footer.styled";
 import { Typography } from "../foundation";
+import { SITE } from "@/config/constants";
 
 export default function FooterResponsive() {
-  // 🌍 Detect locale based on pathname
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] === "fr" ? "fr" : "en";
 
-  // ✉️ Manage newsletter subscription state
   const { email, setEmail, submitting, status, handleSubmit } = useFooter();
 
-  // 🔗 Load localized footer links dynamically
   const [footerLinks, setFooterLinks] = useState<
     Record<string, { href: string; label: string }[]>
   >({});
@@ -49,11 +46,11 @@ export default function FooterResponsive() {
           textAlign: "center",
         }}
       >
-        {/* ===== 🧭 Brand Section ===== */}
+        {/* 🧭 Brand */}
         <BrandCol style={{ alignItems: "center" }}>
           <Image
             src="/images/Logo.png"
-            alt="Nomadia Travels Logo"
+            alt={`${SITE.NAME} Logo`}
             width={160}
             height={60}
             priority
@@ -71,7 +68,7 @@ export default function FooterResponsive() {
             color="primary"
             style={{ marginTop: "0.6rem" }}
           >
-            Nomadia Travels
+            {SITE.NAME}
           </Typography>
 
           <Typography
@@ -84,12 +81,9 @@ export default function FooterResponsive() {
               marginInline: "auto",
             }}
           >
-            {locale === "fr"
-              ? "Voyages sur mesure et guides locaux au Kirghizistan."
-              : "Curated trips and local guides across Kyrgyzstan."}
+            {SITE.DESCRIPTION}
           </Typography>
 
-          {/* 🌐 Social Icons */}
           <SocialRow
             style={{
               justifyContent: "center",
@@ -106,7 +100,7 @@ export default function FooterResponsive() {
           </SocialRow>
         </BrandCol>
 
-        {/* ===== 🔗 Link Sections ===== */}
+        {/* 🔗 Links */}
         <div
           style={{
             display: "flex",
@@ -145,7 +139,7 @@ export default function FooterResponsive() {
           ))}
         </div>
 
-        {/* ===== 💌 Newsletter ===== */}
+        {/* 💌 Newsletter */}
         <NewsletterCol
           onSubmit={handleSubmit}
           style={{
@@ -171,29 +165,9 @@ export default function FooterResponsive() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             disabled={submitting}
-            style={{
-              width: "100%",
-              padding: "0.6rem 0.8rem",
-              borderRadius: "6px",
-              border: "1px solid var(--divider)",
-              marginBottom: "0.6rem",
-            }}
           />
 
-          <button
-            type="submit"
-            disabled={submitting}
-            style={{
-              width: "100%",
-              background: "var(--primary)",
-              color: "#fff",
-              border: "none",
-              borderRadius: "6px",
-              padding: "0.6rem 0",
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
-          >
+          <button type="submit" disabled={submitting}>
             {submitting
               ? locale === "fr"
                 ? "Envoi…"
@@ -213,7 +187,6 @@ export default function FooterResponsive() {
               {locale === "fr" ? "Inscrit avec succès !" : "Subscribed!"}
             </Typography>
           )}
-
           {status === "err" && (
             <Typography
               variant="caption"
@@ -226,10 +199,10 @@ export default function FooterResponsive() {
           )}
         </NewsletterCol>
 
-        {/* ===== ⚙️ Bottom Section ===== */}
+        {/* ⚙️ Bottom Bar */}
         <BottomBar style={{ flexDirection: "column", gap: "0.3rem" }}>
           <Typography variant="caption" align="center" color="muted">
-            © {new Date().getFullYear()} Nomadia Travels
+            {SITE.COPYRIGHT}
           </Typography>
           <Typography variant="caption" align="center" color="muted">
             {locale === "fr"

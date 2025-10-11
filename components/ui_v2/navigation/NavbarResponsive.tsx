@@ -14,63 +14,42 @@ import ThemeToggleButton from "../toggles/ThemeToggleButton/ThemeToggleButton";
 import LanguageSwitcher from "../toggles/LanguageSwitcher/LanguageSwitcher";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { SITE } from "@/config/constants";
 
 /* 📱 NavbarResponsive Component
    ------------------------------------------------------------
-   This component handles the mobile/tablet version of the Navbar.
-   - Toggles a drawer menu (open/close)
-   - Closes when clicking outside or on a link
-   - Contains localized nav links, theme, and language controls
+   - Drawer-based mobile navigation
+   - Localized links + Theme/Language toggles
 */
 
 export default function NavbarResponsive({ scrolled }: { scrolled?: boolean }) {
-  /* 🎛️ Drawer open/close state */
   const [open, setOpen] = useState(false);
-
-  /* 🌍 Detect current locale (from URL path) */
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] === "fr" ? "fr" : "en";
-
-  /* 🧩 State for storing localized navigation links */
   const [navLinks, setNavLinks] = useState<{ label: string; href: string }[]>(
     [],
   );
-
-  /* 🧱 Reference for detecting clicks outside the drawer */
   const drawerRef = useRef<HTMLDivElement>(null);
 
-  // ----------------------------------------------------------
-  // 📦 Dynamic import of navLinks.json (per locale)
-  // ----------------------------------------------------------
   useEffect(() => {
     import(`@/data/content/${locale}/navLinks.json`)
       .then((mod) => setNavLinks(mod.default))
       .catch(console.error);
   }, [locale]);
 
-  // ----------------------------------------------------------
-  // 🧭 Handle click outside the drawer → close it automatically
-  // ----------------------------------------------------------
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
         setOpen(false);
       }
     };
-
     if (open) document.addEventListener("mousedown", handleClickOutside);
-    else document.removeEventListener("mousedown", handleClickOutside);
-
-    // Cleanup to avoid memory leaks
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
-  // ----------------------------------------------------------
-  // 🎨 Render Section
-  // ----------------------------------------------------------
   return (
     <>
-      {/* 🍔 Burger Button (visible only when drawer is closed) */}
+      {/* 🍔 Burger Button */}
       {!open && (
         <BurgerButton
           onClick={() => setOpen(true)}
@@ -85,20 +64,17 @@ export default function NavbarResponsive({ scrolled }: { scrolled?: boolean }) {
         </BurgerButton>
       )}
 
-      {/* 🪄 AnimatePresence controls mount/unmount animation */}
       <AnimatePresence>
         {open && (
           <>
-            {/* 🌫️ Semi-transparent overlay behind the drawer */}
             <Overlay
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              onClick={() => setOpen(false)} // click overlay → close drawer
+              onClick={() => setOpen(false)}
             />
 
-            {/* 📦 The main Drawer container */}
             <Drawer
               ref={drawerRef}
               initial={{ x: "100%" }}
@@ -109,16 +85,15 @@ export default function NavbarResponsive({ scrolled }: { scrolled?: boolean }) {
               {/* 🧭 Drawer Header */}
               <DrawerHeader>
                 <div className="header-content">
-                  <h2>Nomadia Travels</h2>
-                  <span>Explore Kyrgyzstan</span>
+                  <h2>{SITE.NAME}</h2>
+                  <span>{SITE.SUBTITLE}</span>
                 </div>
-                {/* ❌ Close button */}
                 <button onClick={() => setOpen(false)} className="close-btn">
                   ✕
                 </button>
               </DrawerHeader>
 
-              {/* 🔗 Drawer Links (animated entrance one-by-one) */}
+              {/* 🔗 Drawer Links */}
               <DrawerLinks>
                 {navLinks.map((link, i) => (
                   <motion.div
@@ -129,7 +104,7 @@ export default function NavbarResponsive({ scrolled }: { scrolled?: boolean }) {
                   >
                     <Link
                       href={`/${locale}${link.href}`}
-                      onClick={() => setOpen(false)} // clicking a link closes the drawer
+                      onClick={() => setOpen(false)}
                     >
                       {link.label}
                     </Link>
@@ -140,10 +115,10 @@ export default function NavbarResponsive({ scrolled }: { scrolled?: boolean }) {
               {/* ⚙️ Drawer Footer */}
               <DrawerFooter>
                 <div className="footer-inner">
-                  <ThemeToggleButton /> {/* 🌗 Switch theme */}
-                  <LanguageSwitcher /> {/* 🌍 Switch language */}
+                  <ThemeToggleButton />
+                  <LanguageSwitcher />
                 </div>
-                <p>© 2025 Nomadia Travels</p>
+                <p>{SITE.COPYRIGHT}</p>
               </DrawerFooter>
             </Drawer>
           </>

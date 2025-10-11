@@ -2,7 +2,7 @@
 import { notFound } from "next/navigation";
 import { getGalleryItemById } from "@/lib/api";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
-import GalleryDetailsSection from "@/components/ui/GallerySection/GalleryDetailsSection";
+import GalleryDetailsSection from "@/components/ui_v2/sections/GalleryDetailsSection/GalleryDetailsSection";
 
 type Props = {
   params: Promise<{ id: string; locale: string }>;
@@ -10,10 +10,7 @@ type Props = {
 
 export default async function GalleryDetailsPage({ params }: Props) {
   const { id, locale } = await params;
-
-  // ✅ نجلب البيانات حسب اللغة
   const galleryItem = await getGalleryItemById(id, locale);
-
   if (!galleryItem) return notFound();
 
   return (
@@ -24,7 +21,7 @@ export default async function GalleryDetailsPage({ params }: Props) {
         coverImage: galleryItem.metadata.image || "",
         images: galleryItem.images,
       }}
-      locale={locale} // نمرر اللغة للكمبوننت
+      locale={locale}
     />
   );
 }
@@ -36,7 +33,6 @@ export async function generateMetadata({
   params: Promise<{ id: string; locale: string }>;
 }) {
   const { id, locale } = await params;
-
   const galleryItem = await getGalleryItemById(id, locale);
   if (!galleryItem) return {};
 

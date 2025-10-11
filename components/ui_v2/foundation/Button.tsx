@@ -1,7 +1,13 @@
+// components/ui_v2/foundation/Button/Button.tsx
 "use client";
 
 import styled from "styled-components";
 import { ReactNode } from "react";
+
+// -------------------------------------------------------------
+// 🧱 Button Component — Kanata UI v2
+// Responsive, theme-aware, and architecturally clean
+// -------------------------------------------------------------
 
 interface ButtonProps {
   children: ReactNode;
@@ -15,6 +21,7 @@ interface ButtonProps {
   style?: React.CSSProperties;
 }
 
+// --- Styled Core ---
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
     !["variant", "size", "fullWidth"].includes(prop as string),
@@ -24,16 +31,16 @@ const StyledButton = styled.button.withConfig({
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.sm};
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "auto")};
-  cursor: pointer;
   border: none;
   outline: none;
   border-radius: ${({ theme }) => theme.radii.md};
-  box-sizing: border-box;
+  cursor: pointer;
   position: relative;
   transition: all 0.25s ease;
   font-family: ${({ theme }) => theme.typography.fontFamily.base};
   font-weight: ${({ theme }) => theme.typography.fontWeights.semiBold};
   line-height: ${({ theme }) => theme.typography.lineHeights.normal};
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 
   /* 🧩 Dynamic size */
   ${({ size, theme }) => {
@@ -41,7 +48,7 @@ const StyledButton = styled.button.withConfig({
       case "sm":
         return `
           font-size: ${theme.typography.fontSizes.caption};
-          padding: ${theme.spacing.sm} ${theme.spacing.md};
+          padding: ${theme.spacing.xs} ${theme.spacing.md};
         `;
       case "lg":
         return `
@@ -56,15 +63,15 @@ const StyledButton = styled.button.withConfig({
     }
   }}
 
-  /* 🎨 Variants */
+  /* 🎨 Variants (theme-aware) */
   ${({ variant, theme }) => {
     switch (variant) {
       case "secondary":
         return `
-          background: ${theme.colors.secondary};
-          color: ${theme.colors.heroText};
+          background: ${theme.isDark ? "#334155" : "#E2E8F0"};
+          color: ${theme.isDark ? "#F1F5F9" : "#111827"};
           &:hover {
-            background: ${theme.colors.primaryHover};
+            background: ${theme.isDark ? "#475569" : "#CBD5E1"};
           }
         `;
       case "ghost":
@@ -79,17 +86,17 @@ const StyledButton = styled.button.withConfig({
       case "danger":
         return `
           background: ${theme.colors.danger};
-          color: ${theme.colors.heroText};
+          color: ${theme.colors.text.onPrimary};
           &:hover {
             background: #b91c1c;
           }
         `;
       default:
         return `
-          background: ${theme.colors.primary};
-          color: ${theme.colors.heroText};
+          background: ${theme.colors.brand.main};
+          color: ${theme.colors.text.onPrimary};
           &:hover {
-            background: ${theme.colors.primaryHover};
+            background: ${theme.colors.brand.hover};
           }
         `;
     }
@@ -104,6 +111,7 @@ const StyledButton = styled.button.withConfig({
       pointer-events: none;
       background: ${theme.colors.divider};
       color: ${theme.colors.text.muted};
+      box-shadow: none;
     `}
 
   /* 🧠 Focus / Active feedback */
@@ -117,6 +125,7 @@ const StyledButton = styled.button.withConfig({
   }
 `;
 
+// --- Component Wrapper ---
 export default function Button({
   children,
   as: Tag = "button",

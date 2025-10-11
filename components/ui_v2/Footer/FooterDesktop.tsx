@@ -1,4 +1,3 @@
-// components/ui_v2/Footer/FooterDesktop.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -18,16 +17,14 @@ import {
   BottomBar,
 } from "./Footer.styled";
 import { Typography } from "../foundation";
+import { SITE } from "@/config/constants";
 
 export default function FooterDesktop() {
-  // 🌍 Detect current locale from pathname
   const pathname = usePathname();
   const locale = pathname?.split("/")[1] === "fr" ? "fr" : "en";
 
-  // ✉️ Newsletter logic (email state + submission)
   const { email, setEmail, submitting, status, handleSubmit } = useFooter();
 
-  // 🔗 Dynamic footer links (localized)
   const [footerLinks, setFooterLinks] = useState<
     Record<string, { href: string; label: string }[]>
   >({});
@@ -46,11 +43,11 @@ export default function FooterDesktop() {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <FooterGrid>
-        {/* 🧭 Brand section */}
+        {/* 🧭 Brand */}
         <BrandCol>
           <Image
             src="/images/Logo.png"
-            alt="Nomadia Travels Logo"
+            alt={`${SITE.NAME} Logo`}
             width={160}
             height={60}
             priority
@@ -63,16 +60,14 @@ export default function FooterDesktop() {
           />
 
           <Typography variant="h3" align="left" color="primary">
-            Nomadia Travels
+            {SITE.NAME}
           </Typography>
 
           <Typography variant="body" align="left" color="muted">
-            {locale === "fr"
-              ? "Voyages sur mesure et guides locaux au Kirghizistan."
-              : "Curated trips and local guides across Kyrgyzstan."}
+            {SITE.DESCRIPTION}
           </Typography>
 
-          {/* 🌐 Social links */}
+          {/* 🌐 Socials */}
           <SocialRow>
             {SOCIALS.map((s) => (
               <Link key={s.name} href={s.href} aria-label={s.alt}>
@@ -82,7 +77,7 @@ export default function FooterDesktop() {
           </SocialRow>
         </BrandCol>
 
-        {/* 🔗 Dynamic link columns */}
+        {/* 🔗 Footer links */}
         {Object.entries(footerLinks).map(([sectionKey, section]) => (
           <LinksCol key={sectionKey}>
             <Typography variant="h4" align="left" color="primary">
@@ -99,7 +94,7 @@ export default function FooterDesktop() {
           </LinksCol>
         ))}
 
-        {/* 💌 Newsletter subscription */}
+        {/* 💌 Newsletter */}
         <NewsletterCol onSubmit={handleSubmit}>
           <Typography variant="h4" align="left">
             {locale === "fr" ? "Newsletter" : "Stay Updated"}
@@ -138,10 +133,10 @@ export default function FooterDesktop() {
         </NewsletterCol>
       </FooterGrid>
 
-      {/* ⚙️ Bottom bar */}
+      {/* ⚙️ Bottom Bar */}
       <BottomBar>
         <Typography variant="caption" align="center" color="muted">
-          © {new Date().getFullYear()} Nomadia Travels
+          {SITE.COPYRIGHT}
         </Typography>
         <Typography variant="caption" align="center" color="muted">
           {locale === "fr"

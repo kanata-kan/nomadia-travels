@@ -1,3 +1,4 @@
+// components/ui_v2/foundation/Typography.tsx
 "use client";
 
 import React from "react";

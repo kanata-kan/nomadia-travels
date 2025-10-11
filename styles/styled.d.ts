@@ -1,3 +1,9 @@
+// types/styled.d.ts
+// ---------------------------------------------------------
+// Kanata UI v2 — Styled Components Type Definition
+// Updated to match the new color system (light/dark + brand aliases)
+// ---------------------------------------------------------
+
 import "styled-components";
 
 declare module "styled-components" {
@@ -5,35 +11,51 @@ declare module "styled-components" {
     isDark: boolean;
 
     colors: {
+      // --- Brand & Core ---
       primary: string;
       primaryHover: string;
       secondary: string;
       accent: string;
 
+      // --- Background & Surfaces ---
       background: string;
       backgroundAlt: string;
       surface: string;
       surfaceAlt: string;
       sectionAlt: string;
 
+      // --- Functional ---
       danger: string;
+      success: string;
       heroText: string;
 
+      // --- Text Palette ---
       text: {
         primary: string;
         secondary: string;
         muted: string;
         inverse: string;
         accent: string;
-        success: string; // ✅ Added
-        error: string; // ✅ Added
-        onPrimary?: string;
+        success: string;
+        error: string;
+        onPrimary: string;
+        brand: string; // new tone for text brand usage
       };
 
+      // --- Utility ---
       divider: string;
-      overlay?: string;
+      overlay: string;
+
+      // --- Brand Aliases (optional usage in components) ---
+      brand: {
+        main: string;
+        hover: string;
+        text: string;
+        bg: string;
+      };
     };
 
+    // --- Spacing ---
     spacing: {
       xs: string;
       sm: string;
@@ -42,6 +64,7 @@ declare module "styled-components" {
       xl: string;
     };
 
+    // --- Radii ---
     radii: {
       sm: string;
       md: string;
@@ -52,6 +75,7 @@ declare module "styled-components" {
       full: string;
     };
 
+    // --- Breakpoints ---
     breakpoints: {
       sm: string;
       md: string;
@@ -60,6 +84,7 @@ declare module "styled-components" {
       "2xl": string;
     };
 
+    // --- Layout ---
     layout: {
       container: {
         padding: {
@@ -90,6 +115,7 @@ declare module "styled-components" {
       };
     };
 
+    // --- Shadows ---
     shadows: {
       sm: string;
       md: string;
@@ -97,6 +123,7 @@ declare module "styled-components" {
       xl: string;
     };
 
+    // --- Typography ---
     typography: {
       fontFamily: {
         base: string;
@@ -124,7 +151,7 @@ declare module "styled-components" {
   }
 }
 
-// ✅ Optional JSX Fix (for polymorphic styled components)
+// --- JSX polymorphic safety fix (for as={motion.div}) ---
 declare global {
   namespace JSX {
     interface IntrinsicElements {
