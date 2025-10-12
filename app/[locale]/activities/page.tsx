@@ -1,7 +1,7 @@
 // app/[locale]/activities/page.tsx
 import { getMetadataStatic } from "@/lib/metadata/static";
-import { getActivities } from "@/lib/api";
 import { BaseSection } from "@/components/ui_v2/sections";
+import { getActivities } from "@/lib/api/activities";
 
 export const revalidate = 43200; // 12h ISR
 

@@ -1,8 +1,8 @@
 // app/[locale]/activities/[id]/page.tsx
 import { notFound } from "next/navigation";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
-import { getActivityById } from "@/lib/api";
 import { ActivityDetailsSection } from "@/components/ui_v2/sections/ActivityDetailsSection";
+import { getActivityById } from "@/lib/api/activities";
 
 type PageParams = {
   params: Promise<{ locale: string; id: string }>;

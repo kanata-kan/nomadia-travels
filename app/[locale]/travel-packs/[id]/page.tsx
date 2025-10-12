@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
-import { getTravelPackById } from "@/lib/api";
 import { TravelPackDetailsSection } from "@/components/ui_v2/sections/TravelPackDetailsSection";
+import { getTravelPackById } from "@/lib/api/travel-packs";
 
 type PageParams = {
   params: Promise<{ locale: string; id: string }>;

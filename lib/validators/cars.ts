@@ -1,4 +1,4 @@
-// lib/validators/cars.ts
+// 🚗  lib/validators/cars.ts
 import { z } from "zod";
 
 export const CarSchema = z.object({

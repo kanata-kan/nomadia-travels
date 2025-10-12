@@ -12,6 +12,7 @@ type Props = {
     description?: string;
     coverImage: string;
     images?: string[];
+    image?: string;
   };
   locale: string;
 };

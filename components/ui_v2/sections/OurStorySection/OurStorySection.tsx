@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Button } from "@/components/ui_v2/foundation";
 import { SectionWrapperImage } from "@/components/ui_v2/foundation/SectionWrapperImage.styled";
-import { OurStoryPage } from "@/types";
 import {
   ClosingText,
   CTAWrapper,
@@ -16,6 +15,7 @@ import {
   StoryTitle,
   fadeInUp,
 } from "./OurStorySection.styled";
+import { OurStoryPage } from "@/lib/validators/our-story";
 
 /* --------------------------------------------
    🌄 OurStory Section

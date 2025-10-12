@@ -1,6 +1,6 @@
 // app/[locale]/gallery/page.tsx
 import GallerySection_v2 from "@/components/ui_v2/sections/GallerySection/GallerySection";
-import { getGallery } from "@/lib/api";
+import { getGallery } from "@/lib/api/gallery";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
 export const dynamic = "force-dynamic";

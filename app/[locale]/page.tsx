@@ -5,8 +5,10 @@ export const dynamic = "force-dynamic";
 import { BaseSection } from "@/components/ui_v2/sections";
 import { HeroSection } from "@/components/ui_v2/sections/HeroSection";
 import { ServicesSectionServer } from "@/components/ui_v2/sections/ServicesSection";
-import { getActivities, getHome, getTravelPacks } from "@/lib/api";
+import { getActivities } from "@/lib/api/activities";
 import { getCars } from "@/lib/api/cars";
+import { getHome } from "@/lib/api/home";
+import { getTravelPacks } from "@/lib/api/travel-packs";
 
 export default async function HomePage({
   params,

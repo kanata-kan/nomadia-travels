@@ -2,7 +2,7 @@
 export const dynamic = "force-dynamic";
 
 import OurStorySection from "@/components/ui_v2/sections/OurStorySection/OurStorySection";
-import { getOurStory } from "@/lib/api";
+import { getOurStory } from "@/lib/api/our-story";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
 // Dynamically generate metadata per locale

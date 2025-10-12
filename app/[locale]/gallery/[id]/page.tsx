@@ -1,8 +1,8 @@
 // app/[locale]/gallery/[id]/page.tsx
 import { notFound } from "next/navigation";
-import { getGalleryItemById } from "@/lib/api";
 import { getMetadataDynamic } from "@/lib/metadata/dynamic";
 import GalleryDetailsSection from "@/components/ui_v2/sections/GalleryDetailsSection/GalleryDetailsSection";
+import { getGalleryItemById } from "@/lib/api/gallery";
 
 type Props = {
   params: Promise<{ id: string; locale: string }>;
@@ -19,7 +19,7 @@ export default async function GalleryDetailsPage({ params }: Props) {
         title: galleryItem.metadata.title || "Untitled",
         description: galleryItem.metadata.description || "",
         coverImage: galleryItem.metadata.image || "",
-        images: galleryItem.images,
+        image: galleryItem.image,
       }}
       locale={locale}
     />

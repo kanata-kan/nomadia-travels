@@ -2,8 +2,8 @@
 export const revalidate = 43200; // 12h ISR
 
 import { getMetadataStatic } from "@/lib/metadata/static";
-import { getTravelPacks } from "@/lib/api";
 import { BaseSection } from "@/components/ui_v2/sections";
+import { getTravelPacks } from "@/lib/api/travel-packs";
 
 export async function generateMetadata({
   params,

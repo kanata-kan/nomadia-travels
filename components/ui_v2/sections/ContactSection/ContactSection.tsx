@@ -3,7 +3,6 @@
 
 import { useTranslations } from "next-intl";
 import { Typography, Button } from "@/components/ui_v2/foundation";
-import { ContactPage } from "@/types/contact";
 import {
   Description,
   FormField,
@@ -18,6 +17,7 @@ import {
   SubmitButton,
   Title,
 } from "./ContactSection.styled";
+import { ContactPage } from "@/lib/validators/contact";
 
 /* -----------------------------------------------------------
    🧭 Main Component
