@@ -1,9 +1,11 @@
+// app/[locale]/our-story/page.tsx
 export const dynamic = "force-dynamic";
 
-import OurStorySection from "@/components/ui/OurStorySection/OurStorySection";
+import OurStorySection from "@/components/ui_v2/sections/OurStorySection/OurStorySection";
 import { getOurStory } from "@/lib/api";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
+// Dynamically generate metadata per locale
 export async function generateMetadata({
   params,
 }: {
@@ -22,6 +24,7 @@ export async function generateMetadata({
   });
 }
 
+// Main page component
 export default async function OurStoryPage({
   params,
 }: {
@@ -30,5 +33,5 @@ export default async function OurStoryPage({
   const { locale } = await params;
   const story = await getOurStory(locale);
 
-  return <OurStorySection ourStory={story} locale={locale} />;
+  return <OurStorySection data={story} locale={locale} />;
 }

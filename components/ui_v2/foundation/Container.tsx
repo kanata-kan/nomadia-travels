@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 /* --------------------------------------------
    🧩 Props Interface
 -------------------------------------------- */
-interface ContainerProps {
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   max?: keyof typeof containerMax;

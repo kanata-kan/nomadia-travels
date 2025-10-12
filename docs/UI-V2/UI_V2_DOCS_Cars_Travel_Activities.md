@@ -1,4 +1,5 @@
 # 🧭 UI_V2_DOCS.md
+
 ### **Nomadia Travels — Section System (Cars, Travel Packs, Activities)**
 
 ---
@@ -16,7 +17,7 @@ which handles layout, translation, theme variants, and card rendering.
 
 ## 🏗️ Architectural Flow
 
-```
+```bash
 📂 components/
 └── ui_v2/
     ├── components/
@@ -49,13 +50,13 @@ is just a **data source + i18n namespace + variant type**.
 
 ## 🧠 Component Behavior
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `items` | `DisplayItem[]` | List of entities (Cars, Travel Packs, etc.) |
-| `namespace` | `string` | i18n namespace (e.g. `"carsSection"`) |
-| `ctaBasePath` | `string` | Base URL for the detail pages (e.g. `/cars`) |
-| `variant` | `"home" | "page" | "alt" | "dark" | "hero"` | Controls background + grid layout |
-| `specsEnabled` | `boolean` | Toggle for rendering specs below each card |
+| Prop           | Type            | Description                                  |
+| -------------- | --------------- | -------------------------------------------- | ----- | ------ | ------- | --------------------------------- |
+| `items`        | `DisplayItem[]` | List of entities (Cars, Travel Packs, etc.)  |
+| `namespace`    | `string`        | i18n namespace (e.g. `"carsSection"`)        |
+| `ctaBasePath`  | `string`        | Base URL for the detail pages (e.g. `/cars`) |
+| `variant`      | `"home"         | "page"                                       | "alt" | "dark" | "hero"` | Controls background + grid layout |
+| `specsEnabled` | `boolean`       | Toggle for rendering specs below each card   |
 
 ---
 
@@ -107,6 +108,7 @@ Example JSON (excerpt from `/messages/en.json`):
 ```
 
 🧩 Behavior:
+
 - Displays only 3 items (slice) per category
 - Adds “View All” button
 - Uses visual contrast via variant backgrounds
@@ -125,6 +127,7 @@ Example JSON (excerpt from `/messages/en.json`):
 ```
 
 🧩 Behavior:
+
 - Renders full list of cars
 - Includes section title and subtitle
 - No “View All” button (page variant)
@@ -143,6 +146,7 @@ Example JSON (excerpt from `/messages/en.json`):
 ```
 
 🧩 Behavior:
+
 - Same layout logic as CarsPage
 - Dynamic i18n per locale (en/fr)
 
@@ -160,6 +164,7 @@ Example JSON (excerpt from `/messages/en.json`):
 ```
 
 🧩 Behavior:
+
 - Same structure and styling logic
 - Reuses same foundation and typography system
 
@@ -169,13 +174,13 @@ Example JSON (excerpt from `/messages/en.json`):
 
 Handled by `variantMap.ts` + `SectionWrapper.tsx`.
 
-| Base Variant | Section Variant | Visual Effect |
-|---------------|----------------|----------------|
-| `"home"` | `"default"` | Light background (home preview) |
-| `"page"` | `"default"` | Full page layout with title/subtitle |
-| `"alt"` | `"alt"` | Soft contrast background |
-| `"dark"` | `"dark"` | Dark contrast background |
-| `"hero"` | `"hero"` | Gradient hero block |
+| Base Variant | Section Variant | Visual Effect                        |
+| ------------ | --------------- | ------------------------------------ |
+| `"home"`     | `"default"`     | Light background (home preview)      |
+| `"page"`     | `"default"`     | Full page layout with title/subtitle |
+| `"alt"`      | `"alt"`         | Soft contrast background             |
+| `"dark"`     | `"dark"`        | Dark contrast background             |
+| `"hero"`     | `"hero"`        | Gradient hero block                  |
 
 ---
 
@@ -195,6 +200,7 @@ export type DisplayItem = {
 ```
 
 Each card automatically inherits:
+
 - Image preview
 - Title + description
 - Optional price or specs
