@@ -24,6 +24,7 @@ const SliderWrapper = styled.div`
   position: relative;
   width: 100%;
   overflow: hidden;
+  padding: 1rem 0;
 `;
 
 const SliderTrack = styled.div`
@@ -31,7 +32,7 @@ const SliderTrack = styled.div`
   gap: ${({ theme }) => theme.spacing.lg};
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 1rem 0 1.5rem;
+  padding: 1rem 0 0rem;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;

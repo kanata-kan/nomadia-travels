@@ -10,12 +10,12 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   as?: keyof JSX.IntrinsicElements;
   max?: keyof typeof containerMax;
-  fluid?: boolean;
+  fluid?: boolean; // still supported manually
   className?: string;
 }
 
 /* --------------------------------------------
-   📏 Container Sizes from Tokens
+   📏 Container Sizes (from design tokens)
 -------------------------------------------- */
 const containerMax = {
   md: "720px",
@@ -25,22 +25,27 @@ const containerMax = {
 };
 
 /* --------------------------------------------
-   🧱 Styled Component (fixed version)
+   🧱 Styled Component (auto-responsive)
 -------------------------------------------- */
 const StyledContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== "fluid" && prop !== "max",
 })<ContainerProps>`
   width: 100%;
   margin-inline: auto;
-  box-sizing: border-box;
   position: relative;
+  box-sizing: border-box;
 
-  /* padding responsive */
+  /* Default padding (mobile first) */
   padding-inline: ${({ theme }) => theme.layout.container.padding.mobile};
 
-  /* dynamic max-width */
-  max-width: ${({ max, fluid }) =>
+  /* Smart width logic */
+  max-width: ${({ fluid, max }) =>
     fluid ? "100%" : containerMax[max || "xl"]};
+
+  /* ✅ Auto-responsive behaviour */
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    max-width: 100%; /* always full width on mobile */
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     padding-inline: ${({ theme }) => theme.layout.container.padding.md};
@@ -60,9 +65,16 @@ export default function Container({
   max = "xl",
   fluid = false,
   className,
+  ...rest
 }: ContainerProps) {
   return (
-    <StyledContainer as={Tag} max={max} fluid={fluid} className={className}>
+    <StyledContainer
+      as={Tag}
+      max={max}
+      fluid={fluid}
+      className={className}
+      {...rest}
+    >
       {children}
     </StyledContainer>
   );

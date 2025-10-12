@@ -114,7 +114,7 @@ export const BurgerButton = styled.button`
   background: none;
   border: none;
   font-size: 1.9rem;
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   transition: transform 0.25s ease;
 

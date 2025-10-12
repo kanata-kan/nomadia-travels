@@ -7,7 +7,8 @@ interface SectionWrapperProps {
 
 const SectionWrapper = styled.section<SectionWrapperProps>`
   width: 100%;
-  padding: ${({ theme }) => theme.layout.section.spacing.default.mobile};
+  padding-inline: ${({ theme }) => theme.layout.container.padding.mobile};
+
   transition:
     background-color 0.3s ease,
     box-shadow 0.3s ease;
