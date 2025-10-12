@@ -1,11 +1,14 @@
+// 🧱 app/[local]/page.tsx
+
 export const dynamic = "force-dynamic";
 
-import ActivitiesSection from "@/components/ui/ActivitiesSection/ActivitiesSection";
-import CarsSection from "@/components/ui/CarsSection/CarsSection";
-import HeroSection from "@/components/ui/molecules/Hero";
-import ServicesSectionServer from "@/components/ui/ServicesSection/ServicesSection.server";
-import TravelPacksSection from "@/components/ui/TravelPacksSection/TravelPacksSection";
-import { getActivities, getCars, getHome, getTravelPacks } from "@/lib/api";
+import { BaseSection } from "@/components/ui_v2/sections";
+import { HeroSection } from "@/components/ui_v2/sections/HeroSection";
+import { ServicesSectionServer } from "@/components/ui_v2/sections/ServicesSection";
+import { getActivities } from "@/lib/api/activities";
+import { getCars } from "@/lib/api/cars";
+import { getHome } from "@/lib/api/home";
+import { getTravelPacks } from "@/lib/api/travel-packs";
 
 export default async function HomePage({
   params,
@@ -16,20 +19,36 @@ export default async function HomePage({
 
   const home = await getHome(locale);
   const cars = await getCars(locale);
-  const packs = await getTravelPacks(locale);
+  const travelPacks = await getTravelPacks(locale);
   const activities = await getActivities(locale);
 
   return (
     <main>
       <HeroSection {...home.hero} />
       <ServicesSectionServer locale={locale} />
-      <CarsSection cars={cars.slice(0, 3)} context="home" />
-      <TravelPacksSection
-        packs={packs.slice(0, 3)}
-        context="home"
-        locale={locale}
+      <BaseSection
+        items={cars}
+        namespace="carsSection"
+        ctaBasePath="/cars"
+        variant="home"
+        showCTA
       />
-      <ActivitiesSection activities={activities} context="home" />
+
+      <BaseSection
+        items={travelPacks}
+        namespace="travelPacks"
+        ctaBasePath="/travel-packs"
+        variant="alt"
+        showCTA
+      />
+
+      <BaseSection
+        items={activities}
+        namespace="activities"
+        ctaBasePath="/activities"
+        variant="dark"
+        showCTA
+      />
     </main>
   );
 }

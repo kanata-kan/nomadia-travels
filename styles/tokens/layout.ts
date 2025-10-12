@@ -2,9 +2,9 @@
 export const layout = {
   container: {
     padding: {
-      mobile: "16px", // gutters
-      md: "24px",
-      lg: "32px",
+      mobile: "0.3rem", // gutters
+      md: "1.2rem",
+      lg: "2rem",
     },
     maxWidth: {
       md: "720px",

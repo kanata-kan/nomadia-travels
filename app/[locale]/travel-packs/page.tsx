@@ -1,8 +1,9 @@
-// app/travel-packs/page.tsx
+// app/[locale]/travel-packs/page.tsx
 export const revalidate = 43200; // 12h ISR
 
-import TravelPacksList from "./TravelPacksList";
 import { getMetadataStatic } from "@/lib/metadata/static";
+import { BaseSection } from "@/components/ui_v2/sections";
+import { getTravelPacks } from "@/lib/api/travel-packs";
 
 export async function generateMetadata({
   params,
@@ -29,9 +30,18 @@ export default async function TravelPacksPage({
 }) {
   const { locale } = await params;
 
+  // 🧠 Fetch data directly here
+  const travelPacks = await getTravelPacks(locale);
+
+  // 🧱 Render directly inside the same file
   return (
     <main>
-      <TravelPacksList locale={locale} />
+      <BaseSection
+        items={travelPacks}
+        namespace="travelPacks"
+        ctaBasePath="/travel-packs"
+        variant="page"
+      />
     </main>
   );
 }

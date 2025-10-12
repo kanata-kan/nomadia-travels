@@ -2,23 +2,37 @@
   "home": {
     "welcome": "Welcome to Nomadia Travels!"
   },
+
   "carsSection": {
     "title": "Available Cars",
     "subtitle": "Choose from our fleet of cars for your {country} adventure.",
-    "viewAll": "View all →",
-    "ctaLabel": "View Details"
+    "viewAll": "View all",
+    "ctaLabel": "View Details",
+    "viewDetails": "View Details"
   },
   "carDetails": {
     "about": "About this car",
     "book": "Book this Car",
     "back": "Back to Cars",
-    "viewAll": "View all →"
+    "seats": "seats",
+    "fuel": "Fuel Type",
+    "transmission": "Transmission",
+    "luggage": "Luggage",
+    "price": "Price per day",
+    "viewAll": "View all",
+    "viewDetails": "View Details"
   },
+  "carGallery": {
+    "title": "Gallery of {name}",
+    "empty": "No additional photos available for this car."
+  },
+
   "activities": {
     "title": "Available Activities",
     "subtitle": "Choose from our curated activities for your <strong>Kyrgyzstan</strong> adventure.",
-    "viewAll": "View all →",
-    "cta": "View Details"
+    "viewAll": "View all",
+    "cta": "View Details",
+    "viewDetails": "View Details"
   },
   "contact": {
     "info": {
@@ -38,7 +52,8 @@
     "subtitle": "A curated collection showcasing Kyrgyzstan’s beauty — from <strong>lakes</strong> and <strong>mountains</strong> to <strong>nomadic traditions</strong>."
   },
   "galleryDetails": {
-    "moreImages": "More photos from this destination",
+    "openGallery": "Open Gallery",
+    "moreImages": "More Images",
     "backToGallery": "Back to Gallery"
   },
   "ourStory": {
@@ -49,13 +64,15 @@
     "title": "Explore Travel Packs",
     "subtitle": "Discover curated travel experiences for your next <strong>adventure</strong>.",
     "viewAll": "View all",
-    "cta": "View Details"
+    "cta": "View Details",
+    "viewDetails": "View Details"
   },
   "travelPackDetails": {
     "featuresTitle": "Features",
     "durationTitle": "Duration",
     "priceTitle": "Price",
-    "ctaButton": "Book this Pack"
+    "ctaButton": "Book this Pack",
+    "back": "Back to Travel Packs"
   },
   "privacy": {
     "title": "Privacy Policy",
@@ -97,5 +114,16 @@
     "price": "Price",
     "bookNow": "Book this Activity",
     "backToActivities": "Back to Activities"
+  },
+  "servicesSection": {
+    "title": "Our Services",
+    "subtitle": "We provide reliable transportation, curated tours, and unforgettable experiences across Kyrgyzstan."
+  },
+  "lightbox": {
+    "viewDetails": "View Details →",
+    "prev": "← Prev",
+    "next": "Next →",
+    "close": "✕ Close",
+    "swipeToNavigate": "Swipe to navigate"
   }
 }

@@ -1,16 +1,32 @@
-// app/[locale]/layout.tsx
 export const dynamic = "force-dynamic";
 
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale, getMessages } from "next-intl/server";
 
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer/Footer";
 import { ThemeProviderCustom } from "@/hooks/useThemeToggle";
 import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
 
 import { routing } from "../../i18n/routing";
 import { StyledComponentsRegistry } from "@/lib/registry";
+
+// 🧠 إضافة الخطوط من Google
+import { Inter, Poppins } from "next/font/google";
+import Navbar from "@/components/ui_v2/navigation/Navbar";
+import Footer from "@/components/ui_v2/Footer/Footer";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-poppins",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -28,14 +44,18 @@ export default async function RootLayout(props: {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={`${inter.variable} ${poppins.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         <StyledComponentsRegistry>
           <ThemeProviderCustom>
             <ThemeProviderWrapper>
               <NextIntlClientProvider locale={locale} messages={messages}>
                 <Navbar />
-                {children}
+                <main className="main-container">{children}</main>
                 <Footer />
               </NextIntlClientProvider>
             </ThemeProviderWrapper>

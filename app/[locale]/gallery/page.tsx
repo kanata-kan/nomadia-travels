@@ -1,6 +1,6 @@
 // app/[locale]/gallery/page.tsx
-import GallerySection from "@/components/ui/GallerySection/GallerySection";
-import { getGallery } from "@/lib/api";
+import GallerySection_v2 from "@/components/ui_v2/sections/GallerySection/GallerySection";
+import { getGallery } from "@/lib/api/gallery";
 import { getMetadataStatic } from "@/lib/metadata/static";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +12,7 @@ type Props = {
 export default async function GalleryPage({ params }: Props) {
   const { locale } = await params;
   const items = await getGallery(locale);
-  return <GallerySection items={items} />;
+  return <GallerySection_v2 items={items} />;
 }
 
 export async function generateMetadata() {

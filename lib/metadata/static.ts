@@ -1,7 +1,6 @@
-// lib/metadata/static.ts
 import { Metadata } from "next";
 import { baseMetadata } from "./base";
-import { siteConfig } from "@/lib/config";
+import { SITE } from "@/config/constants";
 
 export function getMetadataStatic({
   title,
@@ -16,14 +15,14 @@ export function getMetadataStatic({
 }): Metadata {
   return {
     ...baseMetadata,
-    title: `${title} | ${siteConfig.name}`,
-    description: description || siteConfig.description,
+    title: `${title} | ${SITE.NAME}`,
+    description: description || SITE.DESCRIPTION,
     openGraph: {
       ...baseMetadata.openGraph,
-      url: `${siteConfig.url}${path || ""}`,
+      url: `${SITE.URL}${path || ""}`,
       images: [
         {
-          url: image || siteConfig.ogImage,
+          url: image || SITE.OG_IMAGE,
           width: 1200,
           height: 630,
           alt: title,
@@ -31,8 +30,11 @@ export function getMetadataStatic({
       ],
     },
     twitter: {
-      ...baseMetadata.twitter,
-      images: [image || siteConfig.ogImage],
+      card: "summary_large_image",
+      site: SITE.TWITTER,
+      title: `${title} | ${SITE.NAME}`,
+      description: description || SITE.DESCRIPTION,
+      images: [image || SITE.OG_IMAGE],
     },
   };
 }

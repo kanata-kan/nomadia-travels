@@ -5,20 +5,37 @@
   "carsSection": {
     "title": "Voitures disponibles",
     "subtitle": "Choisissez parmi notre flotte de voitures pour votre aventure au {country}.",
-    "viewAll": "Voir toutes →",
-    "ctaLabel": "Voir les détails"
+    "viewAll": "Voir toutes",
+    "ctaLabel": "Voir les détails",
+    "viewDetails": "Voir les détails"
   },
   "carDetails": {
     "about": "À propos de cette voiture",
     "book": "Réserver cette voiture",
     "back": "Retour aux voitures",
-    "viewAll": "Voir tout →"
+    "seats": "sièges",
+    "fuel": "Type de carburant",
+    "transmission": "Transmission",
+    "luggage": "Bagages",
+    "price": "Prix par jour",
+    "viewAll": "Voir tout",
+    "viewDetails": "Voir les détails"
+  },
+  "carGallery": {
+    "title": "Galerie de {name}",
+    "empty": "Aucune photo supplémentaire disponible pour cette voiture."
+  },
+  "galleryDetails": {
+    "openGallery": "Ouvrir la galerie",
+    "moreImages": "Plus d’images",
+    "backToGallery": "Retour à la galerie"
   },
   "activities": {
     "title": "Activités Disponibles",
     "subtitle": "Choisissez parmi nos activités sélectionnées pour votre aventure au <strong>Kirghizistan</strong>.",
-    "viewAll": "Voir tout →",
-    "cta": "Voir les détails"
+    "viewAll": "Voir tout",
+    "cta": "Voir les détails",
+    "viewDetails": "Voir les détails"
   },
   "contact": {
     "info": {
@@ -37,10 +54,6 @@
     "title": "Galerie de voyage",
     "subtitle": "Une collection sélectionnée mettant en valeur la beauté du Kirghizistan — des <strong>lacs</strong> et des <strong>montagnes</strong> aux <strong>traditions nomades</strong>."
   },
-  "galleryDetails": {
-    "moreImages": "Plus de photos de cette destination",
-    "backToGallery": "Retour à la galerie"
-  },
   "ourStory": {
     "heading": "Notre Histoire",
     "closing": "Nous poursuivons ce voyage avec vous — un voyageur, une histoire à la fois."
@@ -49,13 +62,15 @@
     "title": "Découvrez nos forfaits de voyage",
     "subtitle": "Explorez nos expériences de voyage soigneusement sélectionnées pour votre prochaine <strong>aventure</strong>.",
     "viewAll": "Voir tout",
-    "cta": "Voir les détails"
+    "cta": "Voir les détails",
+    "viewDetails": "Voir les détails"
   },
   "travelPackDetails": {
     "featuresTitle": "Caractéristiques",
     "durationTitle": "Durée",
     "priceTitle": "Prix",
-    "ctaButton": "Réserver ce pack"
+    "ctaButton": "Réserver ce pack",
+    "back": "Retour aux packs"
   },
   "privacy": {
     "title": "Politique de Confidentialité",
@@ -97,5 +112,16 @@
     "price": "Prix",
     "bookNow": "Réserver cette activité",
     "backToActivities": "Retour aux activités"
+  },
+  "servicesSection": {
+    "title": "Nos Services",
+    "subtitle": "Nous offrons des transports fiables, des circuits sur mesure et des expériences inoubliables à travers le Kirghizistan."
+  },
+  "lightbox": {
+    "viewDetails": "Voir les détails →",
+    "prev": "← Précédent",
+    "next": "Suivant →",
+    "close": "✕ Fermer",
+    "swipeToNavigate": "Balayez pour naviguer"
   }
 }
