@@ -1,6 +1,7 @@
+// app/[local]/error.tsx
 "use client";
 
-import { ErrorState } from "@/components/ui/status";
+import { ErrorState } from "@/components/ui_v2/status/ErrorState";
 
 export default function GlobalError({
   error,
