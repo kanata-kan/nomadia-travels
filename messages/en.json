@@ -6,12 +6,10 @@
     "title": "All Cars",
     "description": "Browse all available cars for your Kyrgyzstan adventure."
   },
-
   "homePage": {
     "title": "Explore Kyrgyzstan — Nomadic Adventures Await",
     "description": "Discover the majestic landscapes, lakes, and nomadic culture of Kyrgyzstan with Nomadia Travels."
   },
-
   "carsSection": {
     "title": "Available Cars",
     "subtitle": "Choose from our fleet of cars for your {country} adventure.",
@@ -39,7 +37,6 @@
     "title": "Gallery — Explore Kyrgyzstan",
     "description": "Discover the breathtaking landscapes, nomadic culture, and wild beauty of Kyrgyzstan through our curated photo gallery."
   },
-
   "activities": {
     "title": "Available Activities",
     "subtitle": "Choose from our curated activities for your <strong>Kyrgyzstan</strong> adventure.",
