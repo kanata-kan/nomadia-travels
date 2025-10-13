@@ -2,6 +2,10 @@
   "home": {
     "welcome": "Bienvenue chez Nomadia Travels!"
   },
+  "carsPage": {
+    "title": "Toutes les voitures",
+    "description": "Découvrez toutes les voitures disponibles pour votre aventure au Kirghizistan."
+  },
   "carsSection": {
     "title": "Voitures disponibles",
     "subtitle": "Choisissez parmi notre flotte de voitures pour votre aventure au {country}.",

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageParams) {
     title,
     description,
     path: `/${locale}/cars`,
-    image: "/images/cars/og-cars.webp",
+    image: `${process.env.NEXT_PUBLIC_BASE_URL || "https://explore-kyrgyzstan.vercel.app"}/images/cars/og-cars.webp`,
   });
 }
 
