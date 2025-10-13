@@ -1,7 +1,12 @@
 // app/[local]/loading.tsx
 
-import { Spinner } from "@/components/ui_v2/status/Spinner";
+import { NomadiaGlassSpinner } from "@/components/ui_v2/status/NomadiaGlassSpinner";
 
 export default function Loading() {
-  return <Spinner />;
+  // prevent layout focus behavior
+  return (
+    <div suppressHydrationWarning>
+      <NomadiaGlassSpinner />
+    </div>
+  );
 }
