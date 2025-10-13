@@ -12,11 +12,6 @@
     "description": "Discover the majestic landscapes, lakes, and nomadic culture of Kyrgyzstan with Nomadia Travels."
   },
 
-  "carsPage": {
-    "title": "All Cars",
-    "description": "Browse all available cars for your Kyrgyzstan adventure."
-  },
-
   "carsSection": {
     "title": "Available Cars",
     "subtitle": "Choose from our fleet of cars for your {country} adventure.",
