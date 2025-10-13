@@ -151,5 +151,9 @@
   "travelPacksPage": {
     "title": "All Travel Packs — Explore Kyrgyzstan",
     "description": "Explore our curated travel packs designed for unforgettable adventures across Kyrgyzstan, from the mountains to the lakes."
+  },
+  "contactPage": {
+    "title": "Contact — Nomadia Travels",
+    "description": "Have questions or need assistance? Contact Nomadia Travels for tailor-made experiences, car rentals, and travel advice across Kyrgyzstan."
   }
 }

@@ -147,5 +147,9 @@
   "travelPacksPage": {
     "title": "Tous les Forfaits de Voyage — Explorez le Kirghizistan",
     "description": "Découvrez nos forfaits de voyage soigneusement sélectionnés pour des aventures inoubliables à travers le Kirghizistan, des montagnes aux lacs."
+  },
+  "contactPage": {
+    "title": "Contact — Nomadia Travels",
+    "description": "Des questions ou besoin d'aide ? Contactez Nomadia Travels pour des expériences sur mesure, la location de voitures et des conseils de voyage au Kirghizistan."
   }
 }
