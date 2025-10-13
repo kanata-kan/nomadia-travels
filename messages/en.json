@@ -2,6 +2,10 @@
   "home": {
     "welcome": "Welcome to Nomadia Travels!"
   },
+  "carsPage": {
+    "title": "All Cars",
+    "description": "Browse all available cars for your Kyrgyzstan adventure."
+  },
 
   "carsSection": {
     "title": "Available Cars",
