@@ -7,6 +7,16 @@
     "description": "Browse all available cars for your Kyrgyzstan adventure."
   },
 
+  "homePage": {
+    "title": "Explore Kyrgyzstan — Nomadic Adventures Await",
+    "description": "Discover the majestic landscapes, lakes, and nomadic culture of Kyrgyzstan with Nomadia Travels."
+  },
+
+  "carsPage": {
+    "title": "All Cars",
+    "description": "Browse all available cars for your Kyrgyzstan adventure."
+  },
+
   "carsSection": {
     "title": "Available Cars",
     "subtitle": "Choose from our fleet of cars for your {country} adventure.",
@@ -29,6 +39,10 @@
   "carGallery": {
     "title": "Gallery of {name}",
     "empty": "No additional photos available for this car."
+  },
+  "galleryPage": {
+    "title": "Gallery — Explore Kyrgyzstan",
+    "description": "Discover the breathtaking landscapes, nomadic culture, and wild beauty of Kyrgyzstan through our curated photo gallery."
   },
 
   "activities": {
@@ -129,5 +143,17 @@
     "next": "Next →",
     "close": "✕ Close",
     "swipeToNavigate": "Swipe to navigate"
+  },
+  "ourStoryPage": {
+    "title": "Our Story — The Spirit Behind Nomadia Travels",
+    "description": "Learn about the journey, vision, and mission of Nomadia Travels — connecting travelers with Kyrgyzstan’s nomadic culture."
+  },
+  "activitiesPage": {
+    "title": "All Activities — Explore Kyrgyzstan",
+    "description": "Discover all available adventures in Kyrgyzstan: hiking, horse trekking, yurt experiences, and more with Nomadia Travels."
+  },
+  "travelPacksPage": {
+    "title": "All Travel Packs — Explore Kyrgyzstan",
+    "description": "Explore our curated travel packs designed for unforgettable adventures across Kyrgyzstan, from the mountains to the lakes."
   }
 }
