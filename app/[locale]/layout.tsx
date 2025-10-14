@@ -3,7 +3,7 @@
 // ==========================================================
 // ✅ Fully SSR-compatible
 // ✅ Next.js 15+ compliant with Promise params
-// ✅ Restores metadata inside <head>
+// ✅ Includes canonical & alternate hreflang links in <head>
 // ==========================================================
 
 import { ReactNode } from "react";
@@ -18,6 +18,8 @@ import { routing } from "../../i18n/routing";
 
 import NextIntlProviderWrapper from "@/components/providers/NextIntlProviderWrapper";
 import { getMessages } from "next-intl/server";
+import LocaleMetaLinks from "@/components/ui_v2/seo/LocaleMetaLinks";
+import { SITE } from "@/config/constants";
 
 // ==========================================================
 // 🧠 Fonts
@@ -54,9 +56,10 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-
-  // ✅ نجيبو messages مرّة وحدة فـserver
   const messages = await getMessages();
+
+  // ✅ Build current path for LocaleMetaLinks
+  const currentPath = `/${locale}`;
 
   return (
     <html
@@ -64,12 +67,20 @@ export default async function RootLayout({
       className={`${inter.variable} ${poppins.variable}`}
       suppressHydrationWarning
     >
-      <head />
+      <head>
+        {/* ✅ Canonical & Alternate hreflang links */}
+        <LocaleMetaLinks path={currentPath} />
+
+        {/* ✅ Base meta fallback */}
+        <meta name="description" content={SITE.DESCRIPTION} />
+        <meta property="og:site_name" content={SITE.NAME} />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
+
       <body>
         <StyledComponentsRegistry>
           <ThemeProviderCustom>
             <ThemeProviderWrapper>
-              {/* ✅ نمرّرو messages للـclient wrapper */}
               <NextIntlProviderWrapper locale={locale} messages={messages}>
                 <Navbar />
                 <main className="main-container">{children}</main>

@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { UI_BREAKPOINTS } from "@/config";
+import { UI_BREAKPOINTS } from "@/config/constants";
 
 // 🧠 Lazy-loaded versions for performance
 const FooterDesktop = dynamic(() => import("./FooterDesktop"), { ssr: false });
