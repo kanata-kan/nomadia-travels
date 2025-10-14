@@ -84,24 +84,26 @@
     "ctaButton": "Book this Pack",
     "back": "Back to Travel Packs"
   },
-  "privacy": {
+  "privacyPage": {
     "title": "Privacy Policy",
-    "lastUpdated": "Last updated:",
+    "description": "Learn how Nomadia Travels collects, uses, and protects your personal information.",
+    "lastUpdated": "Last updated on",
     "section1": {
-      "title": "1. Information We Collect",
-      "text": "We collect personal information you provide directly, such as your email when subscribing to our newsletter or booking a trip."
+      "title": "1. Data Collection",
+      "text": "We collect only the information necessary to provide and improve our services, including contact details and booking information submitted through our website forms."
     },
     "section2": {
-      "title": "2. How We Use Your Information",
-      "text": "We use the collected data to provide and improve our services, send updates, and ensure booking safety."
+      "title": "2. Use of Information",
+      "text": "Your information is used solely for communication, personalized travel offers, and service improvements. We never sell or share your data with third parties without consent."
     },
     "section3": {
       "title": "3. Data Protection",
-      "text": "Your data is stored securely and not shared with third parties except as required by law."
+      "text": "We implement security measures such as encryption and secure storage to protect your data from unauthorized access, alteration, or disclosure."
     }
   },
   "terms": {
     "title": "Terms of Service",
+    "description": "Read the terms and conditions for using Nomadia Travels services, website, and bookings.",
     "lastUpdated": "Last updated:",
     "section1": {
       "title": "1. Introduction",

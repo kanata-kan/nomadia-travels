@@ -6,7 +6,7 @@ import { Typography } from "@/components/ui_v2/foundation";
 import { Section, Inner, Block, Divider } from "./TermsSection.styled";
 
 /* -----------------------------------------------------------
-   ⚖️ Terms of Service — Kanata UI v2 Style
+   ⚖️ Terms of Service — Kanata UI v2 Standard
 ----------------------------------------------------------- */
 export default function TermsSection_v2() {
   const t = useTranslations("terms");

@@ -15,11 +15,20 @@ export default function TravelPackDetailsSection({
 }: Props) {
   const t = useTranslations("travelPackDetails");
 
+  // ✅ Fallback-safe values
+  const title =
+    travelPack.metadata?.title || travelPack.name || "Untitled Pack";
+  const description =
+    travelPack.metadata?.description ||
+    travelPack.description ||
+    "Explore Kyrgyzstan with Nomadia Travels.";
+  const imageSrc = travelPack.metadata?.image || travelPack.coverImage;
+
   return (
     <DetailsBaseSection
-      imageSrc={travelPack.coverImage}
-      title={travelPack.name}
-      description={travelPack.description}
+      imageSrc={imageSrc}
+      title={title}
+      description={description}
       backHref="/travel-packs"
       locale={locale}
       cta={<Button variant="primary">{t("ctaButton")}</Button>}
@@ -28,6 +37,7 @@ export default function TravelPackDetailsSection({
           <Typography as="h2" variant="h3" color="accent" className="mb-strong">
             {t("featuresTitle")}
           </Typography>
+
           <FeaturesList>
             {travelPack.features?.map((feature, i) => (
               <li key={i}>
@@ -41,6 +51,7 @@ export default function TravelPackDetailsSection({
               <FaClock /> {t("durationTitle")}: {travelPack.duration}
             </DetailsCard>
           )}
+
           {travelPack.price && (
             <DetailsCard>
               <FaTag /> {t("priceTitle")}: {travelPack.price}

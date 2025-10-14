@@ -2,58 +2,33 @@
 // 📄 app/[locale]/our-story/page.tsx
 // ==========================================================
 // 🏕️ OurStoryPage — Learn about Nomadia Travels' mission
-// Uses localized metadata (SEO + i18n) and Promise params
+// Uses Smart Metadata Layer + Promise params
 // ==========================================================
 
 export const dynamic = "force-dynamic";
 
 import OurStorySection from "@/components/ui_v2/sections/OurStorySection/OurStorySection";
 import { getOurStory } from "@/lib/api/our-story";
-import { getMetadataStatic } from "@/lib/metadata/static";
-import { getTranslations } from "next-intl/server";
-import { SITE } from "@/config/constants";
+import { getStaticPageMetadata } from "@/lib/metadata/smart";
 
-// --------------------------------------------
-// ⚙️ 1. Generate Metadata (SEO + i18n)
-// --------------------------------------------
-// Uses translation namespace "ourStoryPage" for localized metadata
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+type PageParams = { params: Promise<{ locale: string }> };
+
+// ⚙️ Metadata
+export async function generateMetadata({ params }: PageParams) {
   const { locale } = await params;
-
-  // 🗣️ Load translations
-  const t = await getTranslations({ locale, namespace: "ourStoryPage" });
-
-  const title = t("title") || "Our Story | Nomadia Travels";
-  const description =
-    t("description") ||
-    "Learn about the journey, vision, and mission of Nomadia Travels — bringing you closer to Kyrgyzstan’s nomadic spirit.";
-
-  // 🖼️ OG image for preview
-  const image = `${SITE.URL}/images/our-story/our-story-og.webp`;
-
-  // ✅ Return SEO metadata
-  return getMetadataStatic({
-    title,
-    description,
-    path: `/${locale}/our-story`,
-    image,
+  return getStaticPageMetadata({
+    locale,
+    namespace: "ourStoryPage",
+    path: "/our-story",
+    imagePath: "/images/our-story/our-story-og.webp",
+    fallbackTitle: "Our Story | Nomadia Travels",
+    fallbackDescription:
+      "Learn about the journey, vision, and mission of Nomadia Travels — bringing you closer to Kyrgyzstan’s nomadic spirit.",
   });
 }
 
-// --------------------------------------------
-// 🏕️ 2. Page Component
-// --------------------------------------------
-// Fetches localized “Our Story” content and renders it
-// --------------------------------------------
-export default async function OurStoryPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+// 🏕️ Page
+export default async function OurStoryPage({ params }: PageParams) {
   const { locale } = await params;
   const story = await getOurStory(locale);
 

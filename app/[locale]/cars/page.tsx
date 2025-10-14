@@ -1,46 +1,33 @@
 // ==========================================================
 // 📄 app/[locale]/cars/page.tsx
 // ==========================================================
+// 🚗 CarsPage — Browse all cars
+// Uses Smart Metadata Layer + Promise params
+// ==========================================================
 
 import { getCars } from "@/lib/api/cars";
-import { getMetadataStatic } from "@/lib/metadata/static";
 import { BaseSection } from "@/components/ui_v2/sections";
-import { getTranslations } from "next-intl/server";
+import { getStaticPageMetadata } from "@/lib/metadata/smart";
 
-// --------------------------------------------
-// 🧠 Types
-// --------------------------------------------
-type PageParams = {
-  params: Promise<{ locale: string }>;
-};
+type PageParams = { params: Promise<{ locale: string }> };
 
-// --------------------------------------------
-// ⚙️ 1. Generate Metadata (SEO + i18n)
-// --------------------------------------------
+// ⚙️ Metadata
 export async function generateMetadata({ params }: PageParams) {
   const { locale } = await params;
-
-  const t = await getTranslations({ locale, namespace: "carsPage" });
-
-  const title = t("title") || "All Cars";
-  const description =
-    t("description") ||
-    "Browse all available cars for your Kyrgyzstan adventure.";
-
-  return getMetadataStatic({
-    title,
-    description,
-    path: `/${locale}/cars`,
-    image: `${process.env.NEXT_PUBLIC_BASE_URL || "https://explore-kyrgyzstan.vercel.app"}/images/cars/og-cars.webp`,
+  return getStaticPageMetadata({
+    locale,
+    namespace: "carsPage",
+    path: "/cars",
+    imagePath: "/images/cars/og-cars.webp",
+    fallbackTitle: "All Cars",
+    fallbackDescription:
+      "Browse all available cars for your Kyrgyzstan adventure.",
   });
 }
 
-// --------------------------------------------
-// 🖼️ 2. Page Component
-// --------------------------------------------
+// 🖼️ Page
 export default async function CarsPage({ params }: PageParams) {
   const { locale } = await params;
-
   const cars = await getCars(locale);
 
   return (
