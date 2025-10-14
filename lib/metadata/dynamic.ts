@@ -8,6 +8,11 @@ import {
 } from "./utils";
 import { SITE } from "@/config/constants";
 
+/**
+ * 🧠 getMetadataDynamic
+ * Builds localized, SEO-ready, and OG-complete metadata for dynamic pages.
+ * Ensures image URLs are absolute for WhatsApp / social crawlers.
+ */
 export function getMetadataDynamic({
   name,
   description,
@@ -23,7 +28,12 @@ export function getMetadataDynamic({
 }): Metadata {
   const safeLocale = locale === "fr" ? "fr" : "en";
   const localizedPath = buildLocalizedPath(safeLocale, path);
-  const safeImage = image || SITE.OG_IMAGE;
+
+  // ✅ Convert relative image to absolute URL for external crawlers (WhatsApp, FB, etc.)
+  const safeImage = image?.startsWith("http")
+    ? image
+    : `${SITE.URL}${image?.startsWith("/") ? image : `/${image}`}`;
+
   const safeTitle = name || SITE.NAME;
 
   return {
