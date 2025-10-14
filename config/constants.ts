@@ -1,5 +1,12 @@
 // config/constants.ts
 
+// ==========================================================
+// 🌍 SITE CONFIGURATION (Environment-Aware)
+// ==========================================================
+
+const isProd = process.env.NODE_ENV === "production";
+const defaultProdUrl = "https://explore-kyrgyzstan.vercel.app";
+
 export const SITE = {
   NAME: process.env.NEXT_PUBLIC_SITE_NAME || "Explore Kyrgyzstan",
   SUBTITLE: "by Nomadia Travels",
@@ -8,7 +15,10 @@ export const SITE = {
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
     "Explore the majestic landscapes, lakes, and nomadic culture of Kyrgyzstan — powered by Nomadia Travels.",
 
-  URL: process.env.NEXT_PUBLIC_BASE_URL || "https://explore-kyrgyzstan.com",
+  // ✅ Use Vercel domain automatically in production
+  URL: isProd
+    ? process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, "") || defaultProdUrl
+    : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
 
   LOGO_TEXT: "Explore Kyrgyzstan",
   TAGLINE: "Live the Nomadic Adventure",
