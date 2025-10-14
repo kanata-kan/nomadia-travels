@@ -2,21 +2,18 @@
 
 import { SITE } from "@/config/constants";
 
-export default function LocaleMetaLinks({ path }: { path: string }) {
-  // ✅ نتحقق واش حنا فـlocal أو production
-  const isLocal =
-    typeof window !== "undefined" && window.location.hostname === "localhost";
-  const base = isLocal
-    ? "https://explore-kyrgyzstan.vercel.app"
-    : SITE.URL.replace(/\/$/, "");
+// دالة لتطبيع URL
+function normalize(url: string) {
+  return url.endsWith("/") && url !== "/" ? url.slice(0, -1) : url;
+}
 
-  // ✅ نبني المسار النظيف
+export default function LocaleMetaLinks({ path }: { path: string }) {
+  const base = SITE.URL.replace(/\/$/, ""); // نضمن أنه بدون slash نهائي
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   const noLocalePath = cleanPath.replace(/^\/(en|fr)/, "");
 
-  // ✅ نبني الروابط
-  const enUrl = `${base}/en${noLocalePath}`;
-  const frUrl = `${base}/fr${noLocalePath}`;
+  const enUrl = normalize(`${base}/en${noLocalePath}`);
+  const frUrl = normalize(`${base}/fr${noLocalePath}`);
   const canonical = cleanPath.includes("/fr") ? frUrl : enUrl;
 
   return (
