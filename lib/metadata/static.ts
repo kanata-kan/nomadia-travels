@@ -5,6 +5,7 @@ import {
   buildMetadataBase,
   buildAlternates,
   buildLocalizedPath,
+  withBaseUrl,
 } from "./utils";
 import { SITE } from "@/config/constants";
 
@@ -17,15 +18,14 @@ export function getMetadataStatic({
 }: {
   title: string;
   description?: string;
-  image?: string; // may be relative; we'll absolutize below
-  path?: string; // should be relative (e.g. "/cars")
+  image?: string;
+  path?: string;
   locale?: string;
 }): Metadata {
   const safeLocale = locale === "fr" ? "fr" : "en";
   const localizedPath = buildLocalizedPath(safeLocale, path);
-  const safeDescription = description ?? SITE.DESCRIPTION;
+  const alternates = buildAlternates(safeLocale, localizedPath);
 
-  // ✅ absolutize image for external crawlers
   const safeImage = image?.startsWith("http")
     ? image
     : `${SITE.URL}${image?.startsWith("/") ? image : `/${image}`}`;
@@ -34,10 +34,10 @@ export function getMetadataStatic({
     ...baseMetadata,
     ...buildMetadataBase({
       title,
-      description: safeDescription,
+      description: description ?? SITE.DESCRIPTION,
       image: safeImage,
-      path: localizedPath, // ✅ pass relative; base builder resolves canonical
+      canonical: alternates.canonical,
     }),
-    alternates: buildAlternates(safeLocale, localizedPath), // ✅ single source of truth
+    alternates,
   };
 }
