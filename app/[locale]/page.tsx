@@ -5,10 +5,8 @@
 // Uses Smart Metadata Layer + Promise params
 // ==========================================================
 
-export const dynamic = "force-dynamic";
-
 import { SITE } from "@/config/constants";
-import { getStaticPageMetadata } from "@/lib/metadata/smart";
+import { getStaticPageMetadata } from "@/lib/metadata/smart"; // ✅ تأكد من المسار الصحيح
 import { HeroSection } from "@/components/ui_v2/sections/HeroSection";
 import { ServicesSectionServer } from "@/components/ui_v2/sections/ServicesSection";
 import { BaseSection } from "@/components/ui_v2/sections";
@@ -17,15 +15,22 @@ import { getCars } from "@/lib/api/cars";
 import { getTravelPacks } from "@/lib/api/travel-packs";
 import { getActivities } from "@/lib/api/activities";
 
+// --------------------------------------------
+// 🧠 Types
+// --------------------------------------------
 type PageParams = { params: Promise<{ locale: string }> };
 
-// ⚙️ Metadata
+// --------------------------------------------
+// ⚙️ Metadata (Smart Layer Integration)
+// --------------------------------------------
 export async function generateMetadata({ params }: PageParams) {
   const { locale } = await params;
+
+  // ✅ نولدو metadata عبر Smart Layer
   return getStaticPageMetadata({
     locale,
     namespace: "homePage",
-    path: "",
+    path: "/", // ✅ المسار لازم يكون '/' باش canonical يبان صح
     imagePath: "/images/home/hero-home.webp",
     fallbackTitle: SITE.NAME,
     fallbackDescription:
@@ -34,7 +39,9 @@ export async function generateMetadata({ params }: PageParams) {
   });
 }
 
+// --------------------------------------------
 // 🏡 Page
+// --------------------------------------------
 export default async function HomePage({ params }: PageParams) {
   const { locale } = await params;
 
