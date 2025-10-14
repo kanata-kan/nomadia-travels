@@ -1,3 +1,7 @@
+// ==========================================================
+// ⚙️ Next.js Configuration — Kanata UI v2 (App Router clean)
+// ==========================================================
+
 import createNextIntlPlugin from "next-intl/plugin";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 
