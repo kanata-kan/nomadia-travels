@@ -39,7 +39,7 @@
       "title": "Guided Adventure | Explore Kyrgyzstan",
       "description": "Discover Kyrgyzstan worry-free with an expert local guide.",
       "path": "/travel-packs/pack-2",
-      "image": "/images/travel-packs/expert-guide-og.png",
+      "image": "/images/travel-packs/expert_guide.svg",
       "alt": "Guided travel experience in Kyrgyzstan"
     }
   },
@@ -61,7 +61,7 @@
       "title": "Group Adventure | Explore Kyrgyzstan",
       "description": "Join a group of 15–20 explorers and share unforgettable moments.",
       "path": "/travel-packs/pack-3",
-      "image": "/images/travel-packs/group-adventure-og.png",
+      "image": "/images/travel-packs/group_adventure.svg",
       "alt": "Group travel adventure in Kyrgyzstan"
     }
   }

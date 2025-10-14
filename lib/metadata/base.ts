@@ -1,7 +1,6 @@
-// lib/metadata/base.ts
-
 import { Metadata } from "next";
 import { SITE } from "@/config/constants";
+import { DEFAULT_SEO } from "@/config/seo";
 
 export const baseMetadata: Metadata = {
   metadataBase: new URL(SITE.URL),
@@ -10,17 +9,8 @@ export const baseMetadata: Metadata = {
     template: `%s | ${SITE.NAME}`,
   },
   description: SITE.DESCRIPTION,
-  keywords: [
-    "Kyrgyzstan",
-    "Nomadia Travels",
-    "Travel",
-    "Tours",
-    "Central Asia",
-    "Hiking",
-    "Cars rental",
-    "Adventure",
-    "Explore Kyrgyzstan",
-  ],
+  // ✅ Centralized keywords from DEFAULT_SEO
+  keywords: DEFAULT_SEO.keywords,
   openGraph: {
     title: SITE.NAME,
     description: SITE.DESCRIPTION,

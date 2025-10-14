@@ -37,11 +37,6 @@
     "title": "Galerie — Explorez le Kirghizistan",
     "description": "Découvrez les paysages à couper le souffle, la culture nomade et la beauté sauvage du Kirghizistan à travers notre galerie de photos."
   },
-  "galleryDetails": {
-    "openGallery": "Ouvrir la galerie",
-    "moreImages": "Plus d’images",
-    "backToGallery": "Retour à la galerie"
-  },
   "activities": {
     "title": "Activités Disponibles",
     "subtitle": "Choisissez parmi nos activités sélectionnées pour votre aventure au <strong>Kirghizistan</strong>.",
@@ -66,6 +61,11 @@
     "title": "Galerie de voyage",
     "subtitle": "Une collection sélectionnée mettant en valeur la beauté du Kirghizistan — des <strong>lacs</strong> et des <strong>montagnes</strong> aux <strong>traditions nomades</strong>."
   },
+  "galleryDetails": {
+    "openGallery": "Ouvrir la galerie",
+    "moreImages": "Plus d’images",
+    "backToGallery": "Retour à la galerie"
+  },
   "ourStory": {
     "heading": "Notre Histoire",
     "closing": "Nous poursuivons ce voyage avec vous — un voyageur, une histoire à la fois."
@@ -84,24 +84,26 @@
     "ctaButton": "Réserver ce pack",
     "back": "Retour aux packs"
   },
-  "privacy": {
+  "privacyPage": {
     "title": "Politique de Confidentialité",
-    "lastUpdated": "Dernière mise à jour :",
+    "description": "Découvrez comment Nomadia Travels collecte, utilise et protège vos informations personnelles.",
+    "lastUpdated": "Dernière mise à jour le",
     "section1": {
-      "title": "1. Informations que nous collectons",
-      "text": "Nous collectons les informations personnelles que vous fournissez directement, comme votre email lors de l'inscription à notre newsletter ou la réservation d'un voyage."
+      "title": "1. Collecte des Données",
+      "text": "Nous collectons uniquement les informations nécessaires pour fournir et améliorer nos services, y compris les coordonnées et les informations de réservation soumises via nos formulaires en ligne."
     },
     "section2": {
-      "title": "2. Comment nous utilisons vos informations",
-      "text": "Nous utilisons les données collectées pour fournir et améliorer nos services, envoyer des mises à jour et garantir la sécurité des réservations."
+      "title": "2. Utilisation des Informations",
+      "text": "Vos informations sont utilisées uniquement pour la communication, les offres de voyage personnalisées et l’amélioration de nos services. Nous ne vendons ni ne partageons vos données avec des tiers sans votre consentement."
     },
     "section3": {
-      "title": "3. Protection des données",
-      "text": "Vos données sont stockées en toute sécurité et ne sont pas partagées avec des tiers, sauf si la loi l'exige."
+      "title": "3. Protection des Données",
+      "text": "Nous mettons en place des mesures de sécurité telles que le chiffrement et le stockage sécurisé pour protéger vos données contre tout accès, modification ou divulgation non autorisés."
     }
   },
   "terms": {
     "title": "Conditions d'utilisation",
+    "description": "Lisez les conditions générales d'utilisation des services, du site web et des réservations de Nomadia Travels.",
     "lastUpdated": "Dernière mise à jour :",
     "section1": {
       "title": "1. Introduction",

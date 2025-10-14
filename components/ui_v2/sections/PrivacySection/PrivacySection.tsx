@@ -6,10 +6,10 @@ import { Typography } from "@/components/ui_v2/foundation";
 import { Section, Inner, Block, Divider } from "./PrivacySection.styled";
 
 /* -----------------------------------------------------------
-   🔒 Privacy Policy — Kanata UI v2 Style
+   🔒 Privacy Policy — Kanata UI v2 Standard
 ----------------------------------------------------------- */
 export default function PrivacySection_v2() {
-  const t = useTranslations("privacy");
+  const t = useTranslations("privacyPage");
 
   return (
     <Section
