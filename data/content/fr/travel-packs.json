@@ -17,7 +17,7 @@
       "title": "Louez une Voiture & Partez | Explorez le Kirghizistan",
       "description": "Profitez du Kirghizistan à votre rythme avec un 4x4 et du matériel de camping.",
       "path": "/travel-packs/pack-1",
-      "image": "/images/travel-packs/rent_car_go.svg",
+      "image": "/images/travel-packs/rent_car_go.webp",
       "alt": "Aventure en 4x4 au Kirghizistan"
     }
   },
@@ -39,7 +39,7 @@
       "title": "Aventure Guidée | Explorez le Kirghizistan",
       "description": "Découvrez le Kirghizistan en toute sérénité avec un guide local expérimenté.",
       "path": "/travel-packs/pack-2",
-      "image": "/images/travel-packs/expert_guide.svg",
+      "image": "/images/travel-packs/expert_guide.webp",
       "alt": "Voyage guidé au Kirghizistan"
     }
   },
@@ -61,7 +61,7 @@
       "title": "Aventure en Groupe | Explorez le Kirghizistan",
       "description": "Rejoignez un groupe de 15 à 20 explorateurs et partagez des moments inoubliables.",
       "path": "/travel-packs/pack-3",
-      "image": "/images/travel-packs/group_adventure.svg",
+      "image": "/images/travel-packs/group_adventure.webp",
       "alt": "Aventure en groupe au Kirghizistan"
     }
   }

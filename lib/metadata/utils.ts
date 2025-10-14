@@ -16,34 +16,26 @@ export function buildMetadataBase({
   description: string;
   image: string;
   path: string;
-}): Metadata {
-  const fullUrl = withBaseUrl(path);
+}) {
+  // ✅ Canonical absolute URL (fix for Lighthouse SEO warning)
+  const canonical = `${SITE.URL}${path.startsWith("/") ? path : `/${path}`}`;
 
   return {
-    title: `${title} | ${SITE.NAME}`,
-    description: description || SITE.DESCRIPTION,
+    title,
+    description,
     openGraph: {
-      title: `${title} | ${SITE.NAME}`,
-      description: description || SITE.DESCRIPTION,
-      url: fullUrl,
-      siteName: SITE.NAME,
-      images: [
-        {
-          url: image || SITE.OG_IMAGE,
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
-      locale: "en_US",
-      type: "website",
+      title,
+      description,
+      images: [{ url: image }],
+      url: canonical, // ✅ OG url tag for crawlers
     },
     twitter: {
-      card: "summary_large_image",
-      site: SITE.TWITTER,
-      title: `${title} | ${SITE.NAME}`,
-      description: description || SITE.DESCRIPTION,
-      images: [image || SITE.OG_IMAGE],
+      title,
+      description,
+      images: [image],
+    },
+    alternates: {
+      canonical, // ✅ Added canonical link tag
     },
   };
 }
