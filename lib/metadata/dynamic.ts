@@ -1,17 +1,17 @@
+// lib/metadata/dynamic.ts
 import { Metadata } from "next";
 import { baseMetadata } from "./base";
 import {
   buildMetadataBase,
   buildAlternates,
   buildLocalizedPath,
-  withBaseUrl,
 } from "./utils";
 import { SITE } from "@/config/constants";
 
 /**
  * 🧠 getMetadataDynamic
- * Builds localized, SEO-ready, and OG-complete metadata for dynamic pages.
- * Ensures image URLs are absolute for WhatsApp / social crawlers.
+ * Builds localized, SEO-ready metadata for dynamic pages ([id]).
+ * Ensures OG/Twitter images are absolute (for WhatsApp/Facebook/Twitter).
  */
 export function getMetadataDynamic({
   name,
@@ -22,17 +22,18 @@ export function getMetadataDynamic({
 }: {
   name: string;
   description: string;
-  image?: string;
-  path: string;
+  image?: string; // may be relative; we'll absolutize
+  path: string; // relative to locale (e.g. "/cars/{id}")
   locale?: string;
 }): Metadata {
   const safeLocale = locale === "fr" ? "fr" : "en";
   const localizedPath = buildLocalizedPath(safeLocale, path);
 
-  // ✅ Convert relative image to absolute URL for external crawlers (WhatsApp, FB, etc.)
-  const safeImage = image?.startsWith("http")
-    ? image
-    : `${SITE.URL}${image?.startsWith("/") ? image : `/${image}`}`;
+  // ✅ convert relative to absolute (social crawlers need absolute)
+  const relativeOrDefault = image || SITE.OG_IMAGE;
+  const safeImage = relativeOrDefault.startsWith("http")
+    ? relativeOrDefault
+    : `${SITE.URL}${relativeOrDefault.startsWith("/") ? relativeOrDefault : `/${relativeOrDefault}`}`;
 
   const safeTitle = name || SITE.NAME;
 
@@ -42,7 +43,7 @@ export function getMetadataDynamic({
       title: safeTitle,
       description: description || SITE.DESCRIPTION,
       image: safeImage,
-      path: withBaseUrl(localizedPath),
+      path: localizedPath, // ✅ pass relative; base builder resolves canonical
     }),
     alternates: buildAlternates(safeLocale, localizedPath),
   };
