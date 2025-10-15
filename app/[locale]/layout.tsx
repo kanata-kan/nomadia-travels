@@ -3,7 +3,7 @@
 // ==========================================================
 // ✅ Fully SSR-compatible
 // ✅ Next.js 15+ compliant with Promise params
-// ✅ Includes canonical & alternate hreflang links in <head>
+// ✅ Includes canonical  & alternate hreflang links in <head>
 // ==========================================================
 
 import { ReactNode } from "react";
