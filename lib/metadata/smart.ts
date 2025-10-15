@@ -46,23 +46,5 @@ export async function getStaticPageMetadata({
     locale,
   });
 
-  // 🧠 SEO Validator (Static Pages)
-  const canonical = String(metadata?.alternates?.canonical || "");
-  if (!canonical.includes(`/${locale}/`)) {
-    console.warn(
-      `[SEO][STATIC] ⚠️ Invalid canonical for locale "${locale}" → ${canonical}\n` +
-        `   (Check path argument: "${path}")`,
-    );
-  } else {
-    console.log(
-      `[SEO][STATIC] ✅ Canonical OK for locale "${locale}" → ${canonical}`,
-    );
-  }
-
   return metadata;
 }
-
-// ==========================================================
-// ✅ Confirm module loaded successfully
-// ==========================================================
-console.log("[SEO] Smart Metadata Layer loaded successfully ✅");

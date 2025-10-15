@@ -55,23 +55,5 @@ export function getMetadataDynamic({
     alternates,
   };
 
-  // 🧠 SEO Validator for dynamic pages
-  const canonical = String(metadata?.alternates?.canonical || "");
-  if (!canonical.includes(`/${safeLocale}/`)) {
-    console.warn(
-      `[SEO][DYNAMIC] ⚠️ Invalid canonical for locale "${safeLocale}" → ${canonical}\n` +
-        `   (Check path argument: "${path}")`,
-    );
-  } else {
-    console.log(
-      `[SEO][DYNAMIC] ✅ Canonical OK for locale "${safeLocale}" → ${canonical}`,
-    );
-  }
-
   return metadata;
 }
-
-// ==========================================================
-// ✅ Confirm module loaded successfully
-// ==========================================================
-console.log("[SEO] Dynamic Metadata Layer loaded successfully ✅");
