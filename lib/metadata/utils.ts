@@ -1,5 +1,50 @@
-// lib/metadata/utils.ts
 import { SITE } from "@/config/constants";
+
+/* ==========================================================
+   🧠 withTrailingSlash — Normalize all URLs
+   Ensures every path ends with a single trailing slash
+========================================================== */
+export function withTrailingSlash(url: string) {
+  return url.endsWith("/") ? url : `${url}/`;
+}
+
+/* ==========================================================
+   🌐 withBaseUrl
+   Ensures clean absolute URL (no double slashes)
+========================================================== */
+export const withBaseUrl = (path: string, base = SITE.URL) => {
+  const normalized = `${base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
+  return withTrailingSlash(normalized);
+};
+
+/* ==========================================================
+   🧭 buildLocalizedPath
+   Normalizes to /{locale}/{core}
+========================================================== */
+export function buildLocalizedPath(locale: "en" | "fr", path: string) {
+  const core = path.replace(/^\/(en|fr)/, "");
+  const localized = `/${locale}${core.startsWith("/") ? core : `/${core}`}`;
+  return withTrailingSlash(localized);
+}
+
+/* ==========================================================
+   🌍 buildAlternates
+   Builds canonical + per-language alternates based on locale + path
+========================================================== */
+export function buildAlternates(locale: "en" | "fr", path: string) {
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  const core = cleanPath.replace(/^\/(en|fr)/, "");
+
+  const canonical = withBaseUrl(`/${locale}${core}`);
+
+  return {
+    canonical,
+    languages: {
+      en: withBaseUrl(`/en${core}`),
+      fr: withBaseUrl(`/fr${core}`),
+    },
+  };
+}
 
 /* ==========================================================
    🧠 buildMetadataBase
@@ -14,7 +59,7 @@ export function buildMetadataBase({
   title: string;
   description: string;
   image: string;
-  canonical: string; // ✅ pass precomputed canonical to ensure locale match
+  canonical: string;
 }) {
   return {
     title,
@@ -36,39 +81,3 @@ export function buildMetadataBase({
     },
   };
 }
-
-/* ==========================================================
-   🌍 buildAlternates
-   Builds canonical + per-language alternates based on locale + path
-========================================================== */
-export function buildAlternates(locale: "en" | "fr", path: string) {
-  const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  const core = cleanPath.replace(/^\/(en|fr)/, "");
-
-  // ✅ canonical always matches the current locale version
-  const canonical = withBaseUrl(`/${locale}${core}`);
-
-  return {
-    canonical,
-    languages: {
-      en: withBaseUrl(`/en${core}`),
-      fr: withBaseUrl(`/fr${core}`),
-    },
-  };
-}
-
-/* ==========================================================
-   🧭 buildLocalizedPath
-   Normalizes to /{locale}/{core}
-========================================================== */
-export function buildLocalizedPath(locale: "en" | "fr", path: string) {
-  const core = path.replace(/^\/(en|fr)/, "");
-  return `/${locale}${core.startsWith("/") ? core : `/${core}`}`;
-}
-
-/* ==========================================================
-   🌐 withBaseUrl
-   Ensures clean absolute URL (no double slashes)
-========================================================== */
-export const withBaseUrl = (path: string, base = SITE.URL) =>
-  `${base.replace(/\/$/, "")}/${path.replace(/^\//, "")}`;
