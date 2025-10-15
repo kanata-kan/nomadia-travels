@@ -12,19 +12,40 @@ const withAnalyzer = withBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // ======================================================
+  // 🧠 Core Architecture
+  // ======================================================
   compiler: {
     styledComponents: { displayName: true, ssr: true },
   },
+
+  // ======================================================
+  // 🌍 SEO & Routing — canonical stability
+  // ======================================================
+  trailingSlash: true,
+  reactStrictMode: true,
+  poweredByHeader: false,
+
+  // ======================================================
+  // 🖼️ Image Optimization
+  // ======================================================
   images: {
     qualities: [60, 75, 90],
-    formats: ["image/avif", "image/webp"] as ("image/avif" | "image/webp")[],
+    formats: ["image/avif", "image/webp"] as ("image/avif" | "image/webp")[], // ✅ fixed cast
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: false,
   },
+
+  // ======================================================
+  // 🧪 Experimental Features
+  // ======================================================
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
   },
 };
 
+// ==========================================================
+// 🧩 Compose Plugins
+// ==========================================================
 export default withNextIntl(withAnalyzer(nextConfig));
