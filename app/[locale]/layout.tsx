@@ -1,8 +1,10 @@
+// app/[locale]/layout.tsx
+import type { Metadata } from "next";
 import { ReactNode } from "react";
 import { Inter, Poppins } from "next/font/google";
 import { routing } from "../../i18n/routing";
-import { getMessages } from "next-intl/server";
 import { SITE } from "@/config/constants";
+import { getMessages } from "next-intl/server";
 import { StyledComponentsRegistry } from "@/lib/registry";
 import { ThemeProviderCustom } from "@/hooks/useThemeToggle";
 import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
@@ -12,14 +14,13 @@ import Footer from "@/components/ui_v2/Footer/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // ✅ ضروري نحدد الأوزان المستعملة
+  weight: ["400", "500", "700"],
   variable: "--font-inter",
   display: "swap",
 });
-
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // ✅ نفس الشيء هنا
+  weight: ["400", "500", "700"],
   variable: "--font-poppins",
   display: "swap",
 });
@@ -28,36 +29,26 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-// ✅ NEW — generateMetadata
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
-  const base = SITE.URL.replace(/\/$/, "");
-
-  const canonical = `${base}/${locale}/`;
-  const alternates = {
-    canonical,
-    languages: {
-      en: `${base}/en/`,
-      fr: `${base}/fr/`,
-      "x-default": `${base}/`,
-    },
-  };
-
+  // canonical لكل جذر لغة. الصفحات نفسها (gallery/cars/...) تولّد canonical الخاص بها عبر getMetadataStatic/getMetadataDynamic
   return {
-    title: {
-      default: SITE.NAME,
-      template: `%s | ${SITE.NAME}`,
-    },
+    metadataBase: new URL(SITE.URL),
+    title: { default: SITE.NAME, template: `%s | ${SITE.NAME}` },
     description: SITE.DESCRIPTION,
-    openGraph: {
-      siteName: SITE.NAME,
-      type: "website",
+    openGraph: { siteName: SITE.NAME, type: "website" },
+    alternates: {
+      canonical: `/${locale}/`,
+      languages: {
+        en: "/en/",
+        fr: "/fr/",
+        "x-default": "/",
+      },
     },
-    alternates, // ✅ Inject canonical + hreflang officially
   };
 }
 

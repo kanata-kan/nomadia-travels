@@ -16,9 +16,7 @@ export const SITE = {
     "Explore the majestic landscapes, lakes, and nomadic culture of Kyrgyzstan — powered by Nomadia Travels.",
 
   // ✅ Use Vercel domain automatically in production
-  URL: isProd
-    ? process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, "") || defaultProdUrl
-    : process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
+  URL: "https://explore-kyrgyzstan.vercel.app",
 
   LOGO_TEXT: "Explore Kyrgyzstan",
   TAGLINE: "Live the Nomadic Adventure",

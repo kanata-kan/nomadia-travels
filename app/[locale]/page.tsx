@@ -2,11 +2,12 @@
 // 📄 app/[locale]/page.tsx
 // ==========================================================
 // 🏡 HomePage — Explore Kyrgyzstan main landing page
-// Uses Smart Metadata Layer + Promise params
+// Pure Manual SEO Setup (no Smart Layer)
 // ==========================================================
 
+import type { Metadata } from "next";
 import { SITE } from "@/config/constants";
-import { getStaticPageMetadata } from "@/lib/metadata/smart"; // ✅ تأكد من المسار الصحيح
+
 import { HeroSection } from "@/components/ui_v2/sections/HeroSection";
 import { ServicesSectionServer } from "@/components/ui_v2/sections/ServicesSection";
 import { BaseSection } from "@/components/ui_v2/sections";
@@ -21,26 +22,66 @@ import { getActivities } from "@/lib/api/activities";
 type PageParams = { params: Promise<{ locale: string }> };
 
 // --------------------------------------------
-// ⚙️ Metadata (Smart Layer Integration)
+// ⚙️ Manual Metadata per Locale
 // --------------------------------------------
-export async function generateMetadata({ params }: PageParams) {
+export async function generateMetadata({
+  params,
+}: PageParams): Promise<Metadata> {
   const { locale } = await params;
 
-  // ✅ نولدو metadata عبر Smart Layer
-  return getStaticPageMetadata({
-    locale,
-    namespace: "homePage",
-    path: "/", // ✅ المسار لازم يكون '/' باش canonical يبان صح
-    imagePath: "/images/home/hero-home.webp",
-    fallbackTitle: SITE.NAME,
-    fallbackDescription:
+  const base = SITE.URL.replace(/\/$/, "");
+  const path = `/${locale}/`; // ✅ ensure locale-based canonical
+
+  const canonical = `${base}${path}`;
+  const image = `${base}/images/home/hero-home.webp`;
+
+  return {
+    title: `${SITE.NAME} — Explore Kyrgyzstan's Beauty`,
+    description:
       SITE.DESCRIPTION ||
-      "Explore the majestic landscapes, lakes, and nomadic culture of Kyrgyzstan — powered by Nomadia Travels.",
-  });
+      "Discover the breathtaking landscapes, nomadic culture, and mountains of Kyrgyzstan — curated by Nomadia Travels.",
+
+    metadataBase: new URL(SITE.URL),
+
+    alternates: {
+      canonical,
+      languages: {
+        en: `${base}/en/`,
+        fr: `${base}/fr/`,
+        "x-default": `${base}/`,
+      },
+    },
+
+    openGraph: {
+      title: `${SITE.NAME} — Explore Kyrgyzstan's Beauty`,
+      description:
+        "Discover the breathtaking landscapes, nomadic culture, and mountains of Kyrgyzstan — curated by Nomadia Travels.",
+      url: canonical,
+      siteName: SITE.NAME,
+      type: "website",
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: "Kyrgyzstan landscape — Nomadia Travels",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      site: "@nomadia_travels",
+      title: `${SITE.NAME} — Explore Kyrgyzstan's Beauty`,
+      description:
+        "Discover the breathtaking landscapes, nomadic culture, and mountains of Kyrgyzstan — curated by Nomadia Travels.",
+      images: [image],
+    },
+  };
 }
 
 // --------------------------------------------
-// 🏡 Page
+// 🏡 Page Component
 // --------------------------------------------
 export default async function HomePage({ params }: PageParams) {
   const { locale } = await params;
