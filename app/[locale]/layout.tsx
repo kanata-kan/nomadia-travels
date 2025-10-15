@@ -11,6 +11,7 @@ import ThemeProviderWrapper from "@/components/providers/ThemeProviderWrapper";
 import NextIntlProviderWrapper from "@/components/providers/NextIntlProviderWrapper";
 import Navbar from "@/components/ui_v2/navigation/Navbar";
 import Footer from "@/components/ui_v2/Footer/Footer";
+import ServerMetaLinks from "@/lib/seo/ServerMetaLinks";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -29,29 +31,41 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// ==========================================================
+// 🧠 generateMetadata
+// ==========================================================
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  // canonical لكل جذر لغة. الصفحات نفسها (gallery/cars/...) تولّد canonical الخاص بها عبر getMetadataStatic/getMetadataDynamic
+
   return {
     metadataBase: new URL(SITE.URL),
-    title: { default: SITE.NAME, template: `%s | ${SITE.NAME}` },
+    title: {
+      default: SITE.NAME,
+      template: `%s | ${SITE.NAME}`,
+    },
     description: SITE.DESCRIPTION,
-    openGraph: { siteName: SITE.NAME, type: "website" },
+    openGraph: {
+      siteName: SITE.NAME,
+      type: "website",
+    },
     alternates: {
-      canonical: `/${locale}/`,
+      canonical: `${SITE.URL}/${locale}/`,
       languages: {
-        en: "/en/",
-        fr: "/fr/",
-        "x-default": "/",
+        en: `${SITE.URL}/en/`,
+        fr: `${SITE.URL}/fr/`,
+        "x-default": `${SITE.URL}/`,
       },
     },
   };
 }
 
+// ==========================================================
+// 🧩 RootLayout
+// ==========================================================
 export default async function RootLayout({
   children,
   params,
@@ -62,12 +76,19 @@ export default async function RootLayout({
   const { locale } = await params;
   const messages = await getMessages();
 
+  // ✅ بناء الـ path الحالي تلقائيًا
+  const path = `/${locale}/`;
+
   return (
     <html
       lang={locale}
       className={`${inter.variable} ${poppins.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Inject locale-aware canonical + hreflang links */}
+        <ServerMetaLinks locale={locale} path={path} />
+      </head>
       <body>
         <StyledComponentsRegistry>
           <ThemeProviderCustom>

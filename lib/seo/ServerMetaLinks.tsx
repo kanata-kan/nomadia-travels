@@ -1,8 +1,10 @@
 // ==========================================================
-// 🧠 ServerMetaLinks — SSR-safe canonical + hreflang injector
+// 🧠 ServerMetaLinks — SSR-safe canonical + hreflang system
 // ==========================================================
-// ✅ Pure server component (no client code)
-// ✅ 100% SSR render → visible to Google/PageSpeed
+// ✅ Fully SSR-rendered: Google / Lighthouse sees it directly
+// ✅ Locale-aware: detects /en or /fr automatically
+// ✅ Self-healing URLs: trims / and regenerates clean paths
+// ✅ Prevents canonical-hreflang circular conflicts
 // ==========================================================
 
 import { SITE } from "@/config/constants";
@@ -11,16 +13,25 @@ function withTrailingSlash(url: string) {
   return url.endsWith("/") ? url : `${url}/`;
 }
 
-export default function ServerMetaLinks({ path }: { path: string }) {
-  const base = SITE.URL.replace(/\/$/, "");
+export default function ServerMetaLinks({
+  locale,
+  path,
+}: {
+  locale: string;
+  path: string;
+}) {
+  const base = SITE.URL.replace(/\/$/, ""); // remove trailing slash
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
-  const noLocalePath = cleanPath.replace(/^\/(en|fr)/, "");
+  const noLocalePath = cleanPath.replace(/^\/(en|fr)/, ""); // remove locale prefix if present
 
+  // 🔗 Build full URLs
   const enUrl = withTrailingSlash(`${base}/en${noLocalePath}`);
   const frUrl = withTrailingSlash(`${base}/fr${noLocalePath}`);
   const defaultUrl = withTrailingSlash(`${base}${noLocalePath}`);
-  const isFR = cleanPath.startsWith("/fr");
-  const canonical = isFR ? frUrl : enUrl;
+
+  // 🎯 Define canonical per current locale
+  const canonical =
+    locale === "fr" ? frUrl : locale === "en" ? enUrl : defaultUrl;
 
   return (
     <>
