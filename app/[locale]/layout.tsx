@@ -18,9 +18,9 @@ import { routing } from "../../i18n/routing";
 
 import NextIntlProviderWrapper from "@/components/providers/NextIntlProviderWrapper";
 import { getMessages } from "next-intl/server";
-import LocaleMetaLinks from "@/components/ui_v2/seo/LocaleMetaLinks";
 import { SITE } from "@/config/constants";
 import { headers } from "next/headers"; // ✅ new import
+import ServerMetaLinks from "@/lib/seo/ServerMetaLinks";
 
 // ==========================================================
 // 🧠 Fonts
@@ -72,7 +72,7 @@ export default async function RootLayout({
     >
       <head>
         {/* ✅ Canonical & Alternate hreflang links */}
-        <LocaleMetaLinks path={currentPath} />
+        <ServerMetaLinks path={currentPath} />
 
         {/* ✅ Base meta fallback */}
         <meta name="description" content={SITE.DESCRIPTION} />
