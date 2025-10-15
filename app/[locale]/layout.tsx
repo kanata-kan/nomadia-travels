@@ -20,6 +20,7 @@ import NextIntlProviderWrapper from "@/components/providers/NextIntlProviderWrap
 import { getMessages } from "next-intl/server";
 import LocaleMetaLinks from "@/components/ui_v2/seo/LocaleMetaLinks";
 import { SITE } from "@/config/constants";
+import { headers } from "next/headers"; // ✅ new import
 
 // ==========================================================
 // 🧠 Fonts
@@ -58,8 +59,10 @@ export default async function RootLayout({
   const { locale } = await params;
   const messages = await getMessages();
 
-  // ✅ Build current path for LocaleMetaLinks
-  const currentPath = `/${locale}`;
+  // ✅ Detect current path for LocaleMetaLinks automatically
+  const headersList = await headers(); // ⬅️ أضف await هنا
+  const currentUrl = headersList.get("x-pathname") || "";
+  const currentPath = currentUrl.startsWith("/") ? currentUrl : `/${locale}`;
 
   return (
     <html
