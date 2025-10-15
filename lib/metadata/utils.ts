@@ -35,13 +35,14 @@ export function buildAlternates(locale: "en" | "fr", path: string) {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   const core = cleanPath.replace(/^\/(en|fr)/, "");
 
-  const canonical = withBaseUrl(`/${locale}${core}`);
+  const canonical = withTrailingSlash(withBaseUrl(`/${locale}${core}`));
 
   return {
     canonical,
     languages: {
-      en: withBaseUrl(`/en${core}`),
-      fr: withBaseUrl(`/fr${core}`),
+      en: withTrailingSlash(withBaseUrl(`/en${core}`)),
+      fr: withTrailingSlash(withBaseUrl(`/fr${core}`)),
+      "x-default": withTrailingSlash(withBaseUrl(core)),
     },
   };
 }
