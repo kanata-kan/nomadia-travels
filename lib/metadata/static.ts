@@ -1,11 +1,9 @@
 // lib/metadata/static.ts
 import { Metadata } from "next";
-import { baseMetadata } from "./base";
 import {
   buildMetadataBase,
   buildAlternates,
   buildLocalizedPath,
-  withBaseUrl,
 } from "./utils";
 import { SITE } from "@/config/constants";
 
@@ -25,13 +23,12 @@ export function getMetadataStatic({
   const safeLocale = locale === "fr" ? "fr" : "en";
   const localizedPath = buildLocalizedPath(safeLocale, path);
   const alternates = buildAlternates(safeLocale, localizedPath);
-
-  const safeImage = image?.startsWith("http")
+  const safeImage = image.startsWith("http")
     ? image
-    : `${SITE.URL}${image?.startsWith("/") ? image : `/${image}`}`;
+    : `${SITE.URL}${image.startsWith("/") ? image : `/${image}`}`;
 
-  return {
-    ...baseMetadata,
+  const metadata = {
+    metadataBase: new URL(SITE.URL),
     ...buildMetadataBase({
       title,
       description: description ?? SITE.DESCRIPTION,
@@ -40,4 +37,14 @@ export function getMetadataStatic({
     }),
     alternates,
   };
+
+  // اختيارية: لوج فالديف
+  const canonical = String(metadata?.alternates?.canonical || "");
+  if (!canonical.includes(`/${safeLocale}/`)) {
+    console.warn(
+      `[SEO][STATIC] ⚠️ Invalid canonical for "${safeLocale}" → ${canonical}`,
+    );
+  }
+
+  return metadata;
 }

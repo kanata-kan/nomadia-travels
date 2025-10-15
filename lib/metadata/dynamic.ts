@@ -1,15 +1,9 @@
-// ==========================================================
-// 🧠 getMetadataDynamic (v3.2 Validator Edition)
-// - Builds localized, SEO-ready metadata for dynamic pages ([id])
-// - Includes real-time canonical validation
-// ==========================================================
-
+// lib/metadata/dynamic.ts
 import { Metadata } from "next";
-import { baseMetadata } from "./base";
 import {
-  buildMetadataBase,
   buildAlternates,
   buildLocalizedPath,
+  buildMetadataBase,
 } from "./utils";
 import { SITE } from "@/config/constants";
 
@@ -26,26 +20,16 @@ export function getMetadataDynamic({
   path: string;
   locale?: string;
 }): Metadata {
-  // Normalize locale
   const safeLocale = locale === "fr" ? "fr" : "en";
-
-  // Build canonical + alternates
   const localizedPath = buildLocalizedPath(safeLocale, path);
   const alternates = buildAlternates(safeLocale, localizedPath);
-
-  // Ensure absolute OG image
   const relativeOrDefault = image || SITE.OG_IMAGE;
   const safeImage = relativeOrDefault.startsWith("http")
     ? relativeOrDefault
-    : `${SITE.URL}${
-        relativeOrDefault.startsWith("/")
-          ? relativeOrDefault
-          : `/${relativeOrDefault}`
-      }`;
+    : `${SITE.URL}${relativeOrDefault.startsWith("/") ? relativeOrDefault : `/${relativeOrDefault}`}`;
 
-  // Compose metadata
   const metadata = {
-    ...baseMetadata,
+    metadataBase: new URL(SITE.URL),
     ...buildMetadataBase({
       title: name || SITE.NAME,
       description: description || SITE.DESCRIPTION,
@@ -54,6 +38,14 @@ export function getMetadataDynamic({
     }),
     alternates,
   };
+
+  // اختيارية: لوج فالديف
+  const canonical = String(metadata?.alternates?.canonical || "");
+  if (!canonical.includes(`/${safeLocale}/`)) {
+    console.warn(
+      `[SEO][DYNAMIC] ⚠️ Invalid canonical for "${safeLocale}" → ${canonical}`,
+    );
+  }
 
   return metadata;
 }
