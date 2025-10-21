@@ -5,14 +5,14 @@ export interface Car {
   name: string;
   description: string;
   coverImage: string;
-  images?: string[]; // optional for now
-  price: number; // updated to number
-  currency: string; // added for currency
-  unit: string; // added for unit (e.g., day, week)
-  seats: number;
+  images: string[]; // required now
+  price: number;
+  currency: string;
+  unit: string;
+  seats: string; // changed to string for consistency with data
   transmission: string;
-  drive: string; // e.g., "4x4", "AWD", "2WD"
-  luggage: string; // e.g., "Small", "Medium", "Large"
+  drive: string;
+  luggage: string;
   fuel: string;
   metadata: Metadata;
 }
