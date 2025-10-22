@@ -2,7 +2,7 @@
 export const layout = {
   container: {
     padding: {
-      mobile: "0rem",
+      mobile: "0.5rem",
       md: "1.2rem",
       lg: "2rem",
     },

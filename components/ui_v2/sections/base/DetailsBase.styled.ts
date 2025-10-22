@@ -2,40 +2,90 @@
 import styled from "styled-components";
 import { darken } from "@/lib/colorUtils";
 
+/* 🖼️ Slider Wrapper */
+export const SliderWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+
+  .slick-dots {
+    bottom: 10px;
+  }
+
+  .slick-dots li button:before {
+    font-size: 10px;
+    color: ${({ theme }) => theme.colors.text};
+    opacity: 0.7;
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: ${({ theme }) => theme.colors.primary};
+    opacity: 1;
+  }
+`;
+
+export const SlideItem = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+
 /* 🧱 Global Wrapper */
 export const Wrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.background};
   padding-block: ${({ theme }) => theme.layout.section.spacing.default.lg};
+  overflow: hidden;
 `;
 
-/* 🖼️ Image Wrapper */
+/* 🎞️ Image Wrapper */
 export const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border-radius: ${({ theme }) => theme.radii.xl};
   overflow: hidden;
   box-shadow: ${({ theme }) =>
     theme.shadows?.md || "0 6px 20px rgba(0,0,0,0.15)"};
-  transition: all 0.35s ease;
-  cursor: pointer;
+  will-change: transform, opacity;
+  transform: translateZ(0); /* GPU acceleration */
 
   &:hover {
     background-color: ${({ theme }) => darken(theme.colors.surface, 10)};
-    box-shadow: ${({ theme }) =>
-      theme.shadows?.md || "0 8px 25px rgba(0,0,0,0.25)"};
-    transform: scale(1.02);
+    transform: scale(1.01);
   }
 
   img {
-    transition:
-      transform 0.35s ease,
-      filter 0.35s ease;
+    transition: filter 0.4s ease;
   }
 
   &:hover img {
-    transform: scale(1.05);
     filter: brightness(0.9);
+  }
+`;
+
+/* ⚫ Dot Navigation */
+export const DotNav = styled.div`
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+
+  button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: ${({ theme }) => theme.colors.text.muted};
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &.active {
+      width: 10px;
+      height: 10px;
+      background: ${({ theme }) => theme.colors.primary};
+      opacity: 1;
+    }
   }
 `;
 

@@ -27,22 +27,50 @@ const nextConfig = {
   poweredByHeader: false,
 
   // ======================================================
-  // 🖼️ Image Optimization
+  // 🖼️ Image Optimization — modern (Next 13.4+)
   // ======================================================
   images: {
-    qualities: [60, 75, 90],
-    formats: ["image/avif", "image/webp"] as ("image/avif" | "image/webp")[], // ✅ fixed cast
+    remotePatterns: [
+      {
+        protocol: "http" as const,
+        hostname: "localhost",
+        port: "3000",
+      },
+      {
+        protocol: "https" as const,
+        hostname: "explore-kyrgyzstan.vercel.app",
+      },
+      {
+        protocol: "https" as const,
+        hostname: "example.com",
+      },
+      {
+        protocol: "https" as const,
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https" as const,
+        hostname: "**.cloudinary.com",
+      },
+    ],
+    formats: ["image/avif", "image/webp"] as ("image/avif" | "image/webp")[],
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: false,
   },
 
   // ======================================================
-  // 🧪 Experimental Features
+  // ⚗️ Experimental Features
   // ======================================================
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
   },
+
+  // ======================================================
+  // 🧱 Build Optimization
+  // ======================================================
+  productionBrowserSourceMaps: false,
+  compress: true,
 };
 
 // ==========================================================
