@@ -18,7 +18,7 @@ export const ActivitySchema = z.object({
   duration: z.string(),
   location: z.string(),
   groupSize: z.string(),
-  price: z.string().optional(), // optional
+  price: z.number().optional(),
   images: z.array(z.string()).optional(),
   metadata: MetadataSchema,
 });

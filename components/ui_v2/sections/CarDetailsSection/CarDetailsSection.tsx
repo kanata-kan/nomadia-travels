@@ -18,6 +18,7 @@ export default function CarDetailsSection({ car, locale }: Props) {
     <DetailsBaseSection
       imageSrc={car.coverImage}
       title={car.name}
+      images={car.images}
       description={car.description}
       backHref="/cars"
       locale={locale}

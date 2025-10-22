@@ -49,7 +49,7 @@ export default function HeroSection({
           priority
           quality={75}
           placeholder="blur"
-          blurDataURL="/images/home/blur-hero-light.png"
+          blurDataURL="/images/home/blur-hero-light-V2.webp"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 100vw"
           style={{
             objectFit: "cover",

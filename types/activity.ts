@@ -1,3 +1,4 @@
+// types/activity.ts
 import { Metadata } from "./common";
 
 export interface Activity {
@@ -8,7 +9,7 @@ export interface Activity {
   duration: string;
   location: string;
   groupSize: string;
-  price?: string | null; // optional فـMVP
-  images?: string[]; // optional: ممكن يمدّ الكلاينت صور إضافية
+  price?: number | null;
+  images?: string[];
   metadata: Metadata;
 }

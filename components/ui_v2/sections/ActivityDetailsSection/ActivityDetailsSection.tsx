@@ -16,6 +16,7 @@ export default function ActivityDetailsSection({ activity, locale }: Props) {
   return (
     <DetailsBaseSection
       imageSrc={activity.coverImage}
+      images={activity.images}
       title={activity.name}
       description={activity.description}
       backHref="/activities"
